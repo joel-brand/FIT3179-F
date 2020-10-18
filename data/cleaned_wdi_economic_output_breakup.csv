@@ -1,4 +1,4 @@
-Country Name ,Country Code ,Year ,GDP ,Agriculture ,Industry ,Manufacturing ,Services 
+Country Name,Country Code,Year,GDP,Agriculture,Industry,Manufacturing,Services
 Afghanistan,AFG,1990,,,,,
 Afghanistan,AFG,2000,,,,,
 Afghanistan,AFG,2011,17804292964.10,23.74,22.74,13.78,49.7
@@ -1235,18 +1235,18 @@ Kiribati,KIR,2017,187276210.91,30.51,12.49,4.31,63.31
 Kiribati,KIR,2018,196737896.00,28.62,12.47,4.08,63.26
 Kiribati,KIR,2019,194647201.95,,,,
 Kiribati,KIR,2020,,,,,
-"Korea, Dem. People’s Rep.",PRK,1990,,,,,
-"Korea, Dem. People’s Rep.",PRK,2000,,,,,
-"Korea, Dem. People’s Rep.",PRK,2011,,,,,
-"Korea, Dem. People’s Rep.",PRK,2012,,,,,
-"Korea, Dem. People’s Rep.",PRK,2013,,,,,
-"Korea, Dem. People’s Rep.",PRK,2014,,,,,
-"Korea, Dem. People’s Rep.",PRK,2015,,,,,
-"Korea, Dem. People’s Rep.",PRK,2016,,,,,
-"Korea, Dem. People’s Rep.",PRK,2017,,,,,
-"Korea, Dem. People’s Rep.",PRK,2018,,,,,
-"Korea, Dem. People’s Rep.",PRK,2019,,,,,
-"Korea, Dem. People’s Rep.",PRK,2020,,,,,
+"Korea, Dem. Peopleï¿½s Rep.",PRK,1990,,,,,
+"Korea, Dem. Peopleï¿½s Rep.",PRK,2000,,,,,
+"Korea, Dem. Peopleï¿½s Rep.",PRK,2011,,,,,
+"Korea, Dem. Peopleï¿½s Rep.",PRK,2012,,,,,
+"Korea, Dem. Peopleï¿½s Rep.",PRK,2013,,,,,
+"Korea, Dem. Peopleï¿½s Rep.",PRK,2014,,,,,
+"Korea, Dem. Peopleï¿½s Rep.",PRK,2015,,,,,
+"Korea, Dem. Peopleï¿½s Rep.",PRK,2016,,,,,
+"Korea, Dem. Peopleï¿½s Rep.",PRK,2017,,,,,
+"Korea, Dem. Peopleï¿½s Rep.",PRK,2018,,,,,
+"Korea, Dem. Peopleï¿½s Rep.",PRK,2019,,,,,
+"Korea, Dem. Peopleï¿½s Rep.",PRK,2020,,,,,
 "Korea, Rep.",KOR,1990,283367525714.93,7.61,36.32,25.02,46.49
 "Korea, Rep.",KOR,2000,576178114168.49,3.86,34.76,26.45,51.62
 "Korea, Rep.",KOR,2011,1253223044719.00,2.21,34.45,28.24,54.65
