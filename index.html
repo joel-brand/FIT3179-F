@@ -22,17 +22,255 @@
 
     <script>
       // Assign the specification to a local variable vlSpec.
-      var vlSpec = {
-        $schema: 'https://vega.github.io/schema/vega-lite/v4.json',
-        data: {
-            'url': 'https://cdn.jsdelivr.net/npm/vega-datasets@1.31.1/data/cars.json',
-        },
-        mark: 'bar',
-        encoding: {
-          y: { field: 'Miles_per_Gallon', type: 'quantitative' },
-          x: { field: 'Name', type: 'nominal' }
-        }
-      };
+      var vlSpec = 
+      {
+   "$schema":"https://vega.github.io/schema/vega-lite/v4.json",
+   "vconcat":[
+      {
+         "mark":{
+            "type":"point",
+            "filled":true
+         },
+         "data":{
+            "url":"https://raw.githubusercontent.com/joel-brand/FIT3179/main/data/cleaned_wdi_economic_output_breakup.csv",
+            "format":{
+               "type":"csv",
+               "parse":{
+                  "Year":"number",
+                  "GDP":"number",
+                  "Industry":"number",
+                  "Manufacturing":"number"
+               }
+            }
+         },
+         "transform":[
+            {
+               "lookup":"Country Code",
+               "from":{
+                  "data":{
+                     "url":"https://raw.githubusercontent.com/joel-brand/FIT3179/main/data/countries.csv",
+                     "format":{
+                        "type":"csv"
+                     }
+                  },
+                  "key":"country-code",
+                  "fields":[
+                     "income-group"
+                  ]
+               }
+            },
+            {
+               "lookup":"Country Code",
+               "from":{
+                  "data":{
+                     "url":"https://raw.githubusercontent.com/joel-brand/FIT3179/main/data/economic_fitness_2014.csv",
+                     "format":{
+                        "type":"csv",
+                        "parse":{
+                           "economic-fitness":"number"
+                        }
+                     }
+                  },
+                  "key":"country-code",
+                  "fields":[
+                     "economic-fitness"
+                  ]
+               }
+            },
+            {
+               "filter":"datum.Year==2014 && datum.Services!=0 && datum.Services!=null && datum['income-group']!=null"
+            }
+         ],
+         "encoding":{
+            "x":{
+               "field":"Country Name",
+               "type":"nominal",
+               "axis":{
+                  "labels":false,
+                  "ticks":false,
+                  "title":"Country (hover for detail)"
+               },
+               "sort":{
+                  "field":"Services",
+                  "type":"quantitative",
+                  "order":"ascending"
+               }
+            },
+            "y":{
+               "field":"Services",
+               "type":"quantitative",
+               "axis":{
+                  "title":"Services as % of GDP",
+                  "grid":false
+               },
+               "scale":{
+                  "zero":false
+               }
+            },
+            "color":{
+               "field":"economic-fitness",
+               "type":"quantitative",
+               "title":"Economic Fitness",
+               "legend":{
+                  "orient":"top"
+               },
+               "scale":{
+                  "type":"sqrt",
+                  "scheme":{
+                     "name":"bluegreen",
+                     "extent":[
+                        0.02,
+                        1
+                     ]
+                  }
+               }
+            },
+            "size":{
+               "value":50
+            },
+            "tooltip":[
+               {
+                  "field":"Country Name",
+                  "type":"nominal"
+               },
+               {
+                  "field":"GDP",
+                  "type":"nominal"
+               },
+               {
+                  "field":"Services",
+                  "type":"nominal"
+               },
+               {
+                  "field":"economic-fitness",
+                  "type":"nominal"
+               }
+            ]
+         },
+         "width":900,
+         "height":200
+      },
+      {
+         "mark":{
+            "type":"point",
+            "filled":true
+         },
+         "data":{
+            "url":"https://raw.githubusercontent.com/joel-brand/FIT3179/main/data/cleaned_wdi_economic_output_breakup.csv",
+            "format":{
+               "type":"csv",
+               "parse":{
+                  "Year":"number",
+                  "GDP":"number",
+                  "Industry":"number",
+                  "Manufacturing":"number"
+               }
+            }
+         },
+         "transform":[
+            {
+               "lookup":"Country Code",
+               "from":{
+                  "data":{
+                     "url":"https://raw.githubusercontent.com/joel-brand/FIT3179/main/data/countries.csv",
+                     "format":{
+                        "type":"csv"
+                     }
+                  },
+                  "key":"country-code",
+                  "fields":[
+                     "income-group",
+                     "region"
+                  ]
+               }
+            },
+            {
+               "lookup":"Country Code",
+               "from":{
+                  "data":{
+                     "url":"https://raw.githubusercontent.com/joel-brand/FIT3179/main/data/economic_fitness_2014.csv",
+                     "format":{
+                        "type":"csv",
+                        "parse":{
+                           "economic-fitness":"number"
+                        }
+                     }
+                  },
+                  "key":"country-code",
+                  "fields":[
+                     "economic-fitness"
+                  ]
+               }
+            },
+            {
+               "filter":"datum.Year == 2014 && datum.Services != 0 && datum.Services != null && datum['income-group'] != null"
+            }
+         ],
+         "encoding":{
+            "x":{
+               "field":"economic-fitness",
+               "type":"quantitative",
+               "axis":{
+                  "title":null
+               },
+               "scale":{
+                  "type":"sqrt"
+               }
+            },
+            "y":{
+               "field":"Services",
+               "type":"quantitative",
+               "axis":{
+                  "title":"Services as % of GDP",
+                  "grid":false
+               },
+               "scale":{
+                  "zero":false
+               }
+            },
+            "size":{
+               "field":"GDP",
+               "type":"quantitative",
+               "legend":{
+                  "orient":"top"
+               },
+               "scale":{
+                  "range":[
+                     10,
+                     1000
+                  ]
+               }
+            },
+            "tooltip":[
+               {
+                  "field":"Country Name",
+                  "type":"nominal"
+               },
+               {
+                  "field":"GDP",
+                  "type":"nominal"
+               },
+               {
+                  "field":"Services",
+                  "type":"nominal"
+               },
+               {
+                  "field":"economic-fitness",
+                  "type":"nominal"
+               }
+            ]
+         },
+         "title":{
+            "text":"Economic Fitness",
+            "subtitle":"(Sqrt scale, zero values are valid)",
+            "orient":"bottom"
+         },
+         "width":900,
+         "height":500
+      }
+   ]
+}
+      ;
 
       // Embed the visualization in the container with id `vis`
       vegaEmbed('#vis', vlSpec);
