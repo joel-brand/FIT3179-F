@@ -2,919 +2,919 @@ CountryCode,ServiceType,ServiceExports
 AFG,Transport,15.43236355
 AFG,Travel,8.4947979
 AFG,Insurance & Finance,12.84222693
-AFG,Computers, Communications & Others,63.23061162
+AFG,"Computers, Communications & Others",63.23061162
 ALB,Transport,7.852674558
 ALB,Travel,69.24250317
 ALB,Insurance & Finance,0.634986714
-ALB,Computers, Communications & Others,22.26983556
+ALB,"Computers, Communications & Others",22.26983556
 DZA,Transport,24.15797554
 DZA,Travel,7.414711674
 DZA,Insurance & Finance,9.329013811
-DZA,Computers, Communications & Others,59.09829897
+DZA,"Computers, Communications & Others",59.09829897
 AGO,Transport,1.498059158
 AGO,Travel,94.50942458
 AGO,Insurance & Finance,0
-AGO,Computers, Communications & Others,3.992516263
+AGO,"Computers, Communications & Others",3.992516263
 ATG,Transport,14.15873535
 ATG,Travel,76.37053986
 ATG,Insurance & Finance,3.722367935
-ATG,Computers, Communications & Others,5.748356854
+ATG,"Computers, Communications & Others",5.748356854
 ARG,Transport,18.61840295
 ARG,Travel,37.60504962
 ARG,Insurance & Finance,0.663085599
-ARG,Computers, Communications & Others,43.11346183
+ARG,"Computers, Communications & Others",43.11346183
 ARM,Transport,11.40140178
 ARM,Travel,60.59524899
 ARM,Insurance & Finance,1.840966113
-ARM,Computers, Communications & Others,26.16238312
+ARM,"Computers, Communications & Others",26.16238312
 ABW,Transport,5.603976902
 ABW,Travel,79.54426885
 ABW,Insurance & Finance,0.674504707
-ABW,Computers, Communications & Others,14.17724954
+ABW,"Computers, Communications & Others",14.17724954
 AUS,Transport,10.69322448
 AUS,Travel,60.36432116
 AUS,Insurance & Finance,6.347335611
-AUS,Computers, Communications & Others,22.59511875
+AUS,"Computers, Communications & Others",22.59511875
 AUT,Transport,23.98603634
 AUT,Travel,30.76174102
 AUT,Insurance & Finance,6.225170864
-AUT,Computers, Communications & Others,39.02705177
+AUT,"Computers, Communications & Others",39.02705177
 AZE,Transport,26.08705226
 AZE,Travel,56.95976046
 AZE,Insurance & Finance,0.594912788
-AZE,Computers, Communications & Others,16.35827449
+AZE,"Computers, Communications & Others",16.35827449
 BHS,Transport,4.564816408
 BHS,Travel,86.44891461
 BHS,Insurance & Finance,0
-BHS,Computers, Communications & Others,8.986268986
+BHS,"Computers, Communications & Others",8.986268986
 BHR,Transport,8.222663522
 BHR,Travel,14.09333499
 BHR,Insurance & Finance,52.42025568
-BHR,Computers, Communications & Others,25.26374581
+BHR,"Computers, Communications & Others",25.26374581
 BGD,Transport,23.9055281
 BGD,Travel,9.34935801
 BGD,Insurance & Finance,4.421320092
-BGD,Computers, Communications & Others,62.3237938
+BGD,"Computers, Communications & Others",62.3237938
 BRB,Transport,4.126252819
 BRB,Travel,66.00755563
 BRB,Insurance & Finance,0.73643009
-BRB,Computers, Communications & Others,29.12976146
+BRB,"Computers, Communications & Others",29.12976146
 BLR,Transport,47.98640762
 BLR,Travel,10.95980395
 BLR,Insurance & Finance,0.766782042
-BLR,Computers, Communications & Others,40.28700639
+BLR,"Computers, Communications & Others",40.28700639
 BEL,Transport,20.93644115
 BEL,Travel,11.26767691
 BEL,Insurance & Finance,8.649251483
-BEL,Computers, Communications & Others,59.14663046
+BEL,"Computers, Communications & Others",59.14663046
 BLZ,Transport,5.298243948
 BLZ,Travel,81.61795983
 BLZ,Insurance & Finance,0.661065215
-BLZ,Computers, Communications & Others,12.42273101
+BLZ,"Computers, Communications & Others",12.42273101
 BEN,Transport,32.13828211
 BEN,Travel,33.12100172
 BEN,Insurance & Finance,3.919642682
-BEN,Computers, Communications & Others,30.82107349
+BEN,"Computers, Communications & Others",30.82107349
 BMU,Transport,2.58515656
 BMU,Travel,31.63229776
 BMU,Insurance & Finance,22.2498333
-BMU,Computers, Communications & Others,43.53271238
+BMU,"Computers, Communications & Others",43.53271238
 BTN,Transport,29.22163153
 BTN,Travel,68.34654334
 BTN,Insurance & Finance,2.049378158
-BTN,Computers, Communications & Others,0.382446972
+BTN,"Computers, Communications & Others",0.382446972
 BOL,Transport,25.20841763
 BOL,Travel,56.05089642
 BOL,Insurance & Finance,0.207871607
-BOL,Computers, Communications & Others,18.53281434
+BOL,"Computers, Communications & Others",18.53281434
 BIH,Transport,20.13351902
 BIH,Travel,42.56185551
 BIH,Insurance & Finance,0.287969612
-BIH,Computers, Communications & Others,37.01665585
+BIH,"Computers, Communications & Others",37.01665585
 BWA,Transport,5.397772214
 BWA,Travel,60.12847941
 BWA,Insurance & Finance,0.401197619
-BWA,Computers, Communications & Others,34.07255076
+BWA,"Computers, Communications & Others",34.07255076
 BRA,Transport,14.96744312
 BRA,Travel,17.52422722
 BRA,Insurance & Finance,4.723795282
-BRA,Computers, Communications & Others,62.78453438
+BRA,"Computers, Communications & Others",62.78453438
 BRN,Transport,77.62942363
 BRN,Travel,14.15522431
-BRN,Computers, Communications & Others,8.215352057
+BRN,"Computers, Communications & Others",8.215352057
 BGR,Transport,23.51541388
 BGR,Travel,43.54275867
 BGR,Insurance & Finance,4.758282445
-BGR,Computers, Communications & Others,28.183545
+BGR,"Computers, Communications & Others",28.183545
 BFA,Transport,15.10754192
 BFA,Travel,31.59935717
 BFA,Insurance & Finance,18.88205707
-BFA,Computers, Communications & Others,34.41104385
+BFA,"Computers, Communications & Others",34.41104385
 BDI,Transport,8.640242492
 BDI,Travel,13.53635865
 BDI,Insurance & Finance,11.34798173
-BDI,Computers, Communications & Others,66.47541712
+BDI,"Computers, Communications & Others",66.47541712
 CPV,Transport,19.03550603
 CPV,Travel,67.02725236
 CPV,Insurance & Finance,1.398982568
-CPV,Computers, Communications & Others,12.53825904
+CPV,"Computers, Communications & Others",12.53825904
 KHM,Transport,10.56425301
 KHM,Travel,79.52398134
 KHM,Insurance & Finance,0.686971548
-KHM,Computers, Communications & Others,9.224794095
+KHM,"Computers, Communications & Others",9.224794095
 CMR,Transport,31.35446836
 CMR,Travel,30.67113954
 CMR,Insurance & Finance,5.490384014
-CMR,Computers, Communications & Others,32.48400808
+CMR,"Computers, Communications & Others",32.48400808
 CAN,Transport,15.03167277
 CAN,Travel,23.5962197
 CAN,Insurance & Finance,10.64114897
-CAN,Computers, Communications & Others,50.73095856
+CAN,"Computers, Communications & Others",50.73095856
 CHL,Transport,45.52973676
 CHL,Travel,22.01670156
 CHL,Insurance & Finance,3.895141786
-CHL,Computers, Communications & Others,28.55841989
+CHL,"Computers, Communications & Others",28.55841989
 CHN,Transport,17.53560392
 CHN,Travel,20.1955135
 CHN,Insurance & Finance,4.174978103
-CHN,Computers, Communications & Others,58.09390448
+CHN,"Computers, Communications & Others",58.09390448
 COL,Transport,24.99255437
 COL,Travel,54.11813763
 COL,Insurance & Finance,1.197202779
-COL,Computers, Communications & Others,19.69210523
+COL,"Computers, Communications & Others",19.69210523
 COM,Transport,7.317236547
 COM,Travel,68.46331431
 COM,Insurance & Finance,0.151029207
-COM,Computers, Communications & Others,24.06841994
+COM,"Computers, Communications & Others",24.06841994
 COD,Transport,56.3755572
 COD,Travel,19.4273082
 COD,Insurance & Finance,3.124113701
-COD,Computers, Communications & Others,21.07302089
+COD,"Computers, Communications & Others",21.07302089
 COG,Transport,30.29722488
 COG,Travel,8.823078254
 COG,Insurance & Finance,2.639351699
-COG,Computers, Communications & Others,58.24034517
+COG,"Computers, Communications & Others",58.24034517
 CRI,Transport,6.168343184
 CRI,Travel,42.35536374
 CRI,Insurance & Finance,1.242894237
-CRI,Computers, Communications & Others,50.23339884
+CRI,"Computers, Communications & Others",50.23339884
 CIV,Transport,18.62974442
 CIV,Travel,24.32475295
 CIV,Insurance & Finance,1.253557221
-CIV,Computers, Communications & Others,55.7919454
+CIV,"Computers, Communications & Others",55.7919454
 HRV,Transport,10.63909148
 HRV,Travel,69.90490632
 HRV,Insurance & Finance,0.866418632
-HRV,Computers, Communications & Others,18.58958357
+HRV,"Computers, Communications & Others",18.58958357
 CUW,Transport,14.97783169
 CUW,Travel,38.9302332
 CUW,Insurance & Finance,0.326528654
-CUW,Computers, Communications & Others,45.76540646
+CUW,"Computers, Communications & Others",45.76540646
 CYP,Transport,27.5524245
 CYP,Travel,25.40288814
 CYP,Insurance & Finance,31.94219031
-CYP,Computers, Communications & Others,15.10249705
+CYP,"Computers, Communications & Others",15.10249705
 CZE,Transport,22.57636264
 CZE,Travel,27.23636607
 CZE,Insurance & Finance,3.124382068
-CZE,Computers, Communications & Others,47.06288922
+CZE,"Computers, Communications & Others",47.06288922
 DNK,Transport,60.88382531
 DNK,Travel,10.44283884
 DNK,Insurance & Finance,1.569885978
-DNK,Computers, Communications & Others,27.10344987
+DNK,"Computers, Communications & Others",27.10344987
 DJI,Transport,82.47395882
 DJI,Travel,4.078392781
-DJI,Computers, Communications & Others,13.4476484
+DJI,"Computers, Communications & Others",13.4476484
 DMA,Transport,0.410637731
 DMA,Travel,92.45503112
 DMA,Insurance & Finance,1.838949043
-DMA,Computers, Communications & Others,5.295382108
+DMA,"Computers, Communications & Others",5.295382108
 DOM,Transport,7.36291963
 DOM,Travel,83.58895933
 DOM,Insurance & Finance,1.784680257
-DOM,Computers, Communications & Others,7.26344078
+DOM,"Computers, Communications & Others",7.26344078
 ECU,Transport,19.59146911
 ECU,Travel,66.43945179
 ECU,Insurance & Finance,4.293426917
-ECU,Computers, Communications & Others,9.675652191
+ECU,"Computers, Communications & Others",9.675652191
 EGY,Transport,48.29553587
 EGY,Travel,35.57239099
 EGY,Insurance & Finance,1.26496064
-EGY,Computers, Communications & Others,14.8671125
+EGY,"Computers, Communications & Others",14.8671125
 SLV,Transport,24.48868934
 SLV,Travel,36.27918023
 SLV,Insurance & Finance,3.692111571
-SLV,Computers, Communications & Others,35.54001886
+SLV,"Computers, Communications & Others",35.54001886
 EST,Transport,33.21460844
 EST,Travel,26.27886374
 EST,Insurance & Finance,1.912640247
-EST,Computers, Communications & Others,38.59388757
+EST,"Computers, Communications & Others",38.59388757
 SWZ,Transport,1.358701583
 SWZ,Travel,18.7714007
 SWZ,Insurance & Finance,17.64625241
-SWZ,Computers, Communications & Others,62.22364531
+SWZ,"Computers, Communications & Others",62.22364531
 ETH,Transport,80.48007415
 ETH,Travel,12.93636347
 ETH,Insurance & Finance,0.000533438
-ETH,Computers, Communications & Others,6.583028946
+ETH,"Computers, Communications & Others",6.583028946
 FJI,Transport,27.79259528
 FJI,Travel,66.48560432
 FJI,Insurance & Finance,0.506510269
-FJI,Computers, Communications & Others,5.215290136
+FJI,"Computers, Communications & Others",5.215290136
 FIN,Transport,12.60600396
 FIN,Travel,14.06610155
 FIN,Insurance & Finance,2.004368144
-FIN,Computers, Communications & Others,71.32352635
+FIN,"Computers, Communications & Others",71.32352635
 FRA,Transport,17.64149529
 FRA,Travel,21.50077364
 FRA,Insurance & Finance,7.010611982
-FRA,Computers, Communications & Others,53.84711909
+FRA,"Computers, Communications & Others",53.84711909
 PYF,Transport,37.28936916
 PYF,Travel,54.45444806
 PYF,Insurance & Finance,2.489965648
-PYF,Computers, Communications & Others,5.766217136
+PYF,"Computers, Communications & Others",5.766217136
 GAB,Transport,2.561551146
 GAB,Travel,30.55523967
 GAB,Insurance & Finance,1.876385967
-GAB,Computers, Communications & Others,65.00682322
+GAB,"Computers, Communications & Others",65.00682322
 GMB,Transport,23.29171928
 GMB,Travel,72.70423003
 GMB,Insurance & Finance,1.178395093
-GMB,Computers, Communications & Others,2.825655604
+GMB,"Computers, Communications & Others",2.825655604
 GEO,Transport,32.8887263
 GEO,Travel,60.5011773
 GEO,Insurance & Finance,0.919922259
-GEO,Computers, Communications & Others,5.690174136
+GEO,"Computers, Communications & Others",5.690174136
 DEU,Transport,20.747599
 DEU,Travel,14.52339807
 DEU,Insurance & Finance,12.47168992
-DEU,Computers, Communications & Others,52.25731301
+DEU,"Computers, Communications & Others",52.25731301
 GHA,Transport,31.15255878
 GHA,Travel,45.35247448
 GHA,Insurance & Finance,1.764062737
-GHA,Computers, Communications & Others,21.730904
+GHA,"Computers, Communications & Others",21.730904
 GRC,Transport,42.48405395
 GRC,Travel,43.4331275
 GRC,Insurance & Finance,1.84257709
-GRC,Computers, Communications & Others,12.24024145
+GRC,"Computers, Communications & Others",12.24024145
 GRD,Transport,3.583591198
 GRD,Travel,90.33189642
 GRD,Insurance & Finance,1.667741891
-GRD,Computers, Communications & Others,4.416770492
+GRD,"Computers, Communications & Others",4.416770492
 GTM,Transport,13.44993079
 GTM,Travel,38.02051217
 GTM,Insurance & Finance,3.074776932
-GTM,Computers, Communications & Others,45.45478011
+GTM,"Computers, Communications & Others",45.45478011
 GIN,Transport,0.598032197
 GIN,Travel,26.25701684
 GIN,Insurance & Finance,25.32892094
-GIN,Computers, Communications & Others,47.81603003
+GIN,"Computers, Communications & Others",47.81603003
 GNB,Travel,46.09853646
 GNB,Insurance & Finance,2.495184653
-GNB,Computers, Communications & Others,51.40627889
+GNB,"Computers, Communications & Others",51.40627889
 GUY,Transport,14.07576841
 GUY,Travel,43.5338788
 GUY,Insurance & Finance,13.80727212
-GUY,Computers, Communications & Others,28.58308067
+GUY,"Computers, Communications & Others",28.58308067
 HTI,Travel,89.82077051
 HTI,Insurance & Finance,1.534247974
-HTI,Computers, Communications & Others,8.644981521
+HTI,"Computers, Communications & Others",8.644981521
 HND,Transport,4.622269511
 HND,Travel,26.49904314
 HND,Insurance & Finance,0.03246011
-HND,Computers, Communications & Others,68.84622724
+HND,"Computers, Communications & Others",68.84622724
 HKG,Transport,29.90231817
 HKG,Travel,35.91987303
 HKG,Insurance & Finance,17.66895192
-HKG,Computers, Communications & Others,16.50885688
+HKG,"Computers, Communications & Others",16.50885688
 HUN,Transport,24.50620651
 HUN,Travel,23.66706495
 HUN,Insurance & Finance,1.486433857
-HUN,Computers, Communications & Others,50.34029468
+HUN,"Computers, Communications & Others",50.34029468
 ISL,Transport,38.15549923
 ISL,Travel,32.30139547
 ISL,Insurance & Finance,4.529849534
-ISL,Computers, Communications & Others,25.01325577
+ISL,"Computers, Communications & Others",25.01325577
 IND,Transport,11.87445855
 IND,Travel,12.57876306
 IND,Insurance & Finance,5.060903788
-IND,Computers, Communications & Others,70.48587461
+IND,"Computers, Communications & Others",70.48587461
 IDN,Transport,16.54027382
 IDN,Travel,44.7700808
 IDN,Insurance & Finance,1.084690222
-IDN,Computers, Communications & Others,37.60495516
+IDN,"Computers, Communications & Others",37.60495516
 IRQ,Transport,9.512787872
 IRQ,Travel,56.06700613
 IRQ,Insurance & Finance,0.963430159
-IRQ,Computers, Communications & Others,33.45677584
+IRQ,"Computers, Communications & Others",33.45677584
 IRL,Transport,5.223658924
 IRL,Travel,3.682331801
 IRL,Insurance & Finance,19.10925702
-IRL,Computers, Communications & Others,71.98475226
+IRL,"Computers, Communications & Others",71.98475226
 ISR,Transport,11.63144958
 ISR,Travel,16.04307803
 ISR,Insurance & Finance,0.079944896
-ISR,Computers, Communications & Others,72.2455275
+ISR,"Computers, Communications & Others",72.2455275
 ITA,Transport,13.83066869
 ITA,Travel,40.13600975
 ITA,Insurance & Finance,7.442481041
-ITA,Computers, Communications & Others,38.59084052
+ITA,"Computers, Communications & Others",38.59084052
 JAM,Transport,7.472035064
 JAM,Travel,77.21184934
 JAM,Insurance & Finance,0.504646913
-JAM,Computers, Communications & Others,14.81146868
+JAM,"Computers, Communications & Others",14.81146868
 JPN,Transport,24.8431331
 JPN,Travel,11.80704942
 JPN,Insurance & Finance,5.562625003
-JPN,Computers, Communications & Others,57.78719247
+JPN,"Computers, Communications & Others",57.78719247
 JOR,Transport,24.27567948
 JOR,Travel,66.32790315
 JOR,Insurance & Finance,1.214851506
-JOR,Computers, Communications & Others,8.181565856
+JOR,"Computers, Communications & Others",8.181565856
 KAZ,Transport,58.29497457
 KAZ,Travel,29.68301861
 KAZ,Insurance & Finance,1.312878882
-KAZ,Computers, Communications & Others,10.70912794
+KAZ,"Computers, Communications & Others",10.70912794
 KEN,Transport,51.78595212
 KEN,Travel,19.69559545
 KEN,Insurance & Finance,6.91120145
-KEN,Computers, Communications & Others,21.60725098
+KEN,"Computers, Communications & Others",21.60725098
 KIR,Transport,21.30048818
 KIR,Travel,29.20181619
 KIR,Insurance & Finance,12.49013713
-KIR,Computers, Communications & Others,37.00755849
+KIR,"Computers, Communications & Others",37.00755849
 KOR,Transport,34.43342735
 KOR,Travel,15.76403159
 KOR,Insurance & Finance,2.016121751
-KOR,Computers, Communications & Others,47.7864193
+KOR,"Computers, Communications & Others",47.7864193
 XKX,Transport,2.966538136
 XKX,Travel,74.56122696
 XKX,Insurance & Finance,2.445060833
-XKX,Computers, Communications & Others,20.02717407
+XKX,"Computers, Communications & Others",20.02717407
 KWT,Transport,29.31199991
 KWT,Travel,6.497162215
 KWT,Insurance & Finance,9.799135218
-KWT,Computers, Communications & Others,54.39170266
+KWT,"Computers, Communications & Others",54.39170266
 KGZ,Transport,17.76431433
 KGZ,Travel,47.28732149
 KGZ,Insurance & Finance,0.363151919
-KGZ,Computers, Communications & Others,34.58521226
+KGZ,"Computers, Communications & Others",34.58521226
 LAO,Transport,7.599651891
 LAO,Travel,85.12920299
 LAO,Insurance & Finance,1.642859614
-LAO,Computers, Communications & Others,5.628285509
+LAO,"Computers, Communications & Others",5.628285509
 LVA,Transport,45.59728778
 LVA,Travel,17.57183938
 LVA,Insurance & Finance,10.24480936
-LVA,Computers, Communications & Others,26.58606348
+LVA,"Computers, Communications & Others",26.58606348
 LBN,Transport,8.742133629
 LBN,Travel,44.40985114
 LBN,Insurance & Finance,13.58418524
-LBN,Computers, Communications & Others,33.26382999
+LBN,"Computers, Communications & Others",33.26382999
 LSO,Transport,6.891014002
 LSO,Travel,61.24476093
 LSO,Insurance & Finance,0.152497175
-LSO,Computers, Communications & Others,31.7117279
+LSO,"Computers, Communications & Others",31.7117279
 LBR,Insurance & Finance,100
-LBR,Computers, Communications & Others,-4.82E-12
+LBR,"Computers, Communications & Others",-4.82E-12
 LBY,Transport,41.66666667
 LBY,Insurance & Finance,41.16161616
-LBY,Computers, Communications & Others,17.17171717
+LBY,"Computers, Communications & Others",17.17171717
 LTU,Transport,61.47014967
 LTU,Travel,17.84465616
 LTU,Insurance & Finance,1.264195106
-LTU,Computers, Communications & Others,19.42099907
+LTU,"Computers, Communications & Others",19.42099907
 LUX,Transport,5.28773875
 LUX,Travel,5.173922807
 LUX,Insurance & Finance,60.64278437
-LUX,Computers, Communications & Others,28.89555407
+LUX,"Computers, Communications & Others",28.89555407
 MAC,Transport,1.385738741
 MAC,Travel,94.50344646
 MAC,Insurance & Finance,2.604281029
-MAC,Computers, Communications & Others,1.506533773
+MAC,"Computers, Communications & Others",1.506533773
 MDG,Transport,32.45102075
 MDG,Travel,51.49788186
 MDG,Insurance & Finance,0.211596251
-MDG,Computers, Communications & Others,15.83950114
+MDG,"Computers, Communications & Others",15.83950114
 MWI,Transport,20.20806461
 MWI,Travel,31.20964624
 MWI,Insurance & Finance,18.13116535
-MWI,Computers, Communications & Others,30.4511238
+MWI,"Computers, Communications & Others",30.4511238
 MYS,Transport,11.37177966
 MYS,Travel,53.84502091
 MYS,Insurance & Finance,1.924816236
-MYS,Computers, Communications & Others,32.85838319
+MYS,"Computers, Communications & Others",32.85838319
 MDV,Transport,7.171922512
 MDV,Travel,90.11526156
 MDV,Insurance & Finance,0
-MDV,Computers, Communications & Others,2.712815926
+MDV,"Computers, Communications & Others",2.712815926
 MLI,Transport,0.95361658
 MLI,Travel,52.35939993
 MLI,Insurance & Finance,1.6624519
-MLI,Computers, Communications & Others,45.02453159
+MLI,"Computers, Communications & Others",45.02453159
 MLT,Transport,4.383981876
 MLT,Travel,11.41475508
 MLT,Insurance & Finance,30.17569212
-MLT,Computers, Communications & Others,54.02557092
+MLT,"Computers, Communications & Others",54.02557092
 MHL,Transport,38.41072333
 MHL,Travel,48.41973528
-MHL,Computers, Communications & Others,13.16954139
+MHL,"Computers, Communications & Others",13.16954139
 MRT,Transport,13.68775317
 MRT,Travel,14.30477005
 MRT,Insurance & Finance,1.124911918
-MRT,Computers, Communications & Others,70.88256486
+MRT,"Computers, Communications & Others",70.88256486
 MUS,Transport,12.91291266
 MUS,Travel,50.8373127
 MUS,Insurance & Finance,5.149527777
-MUS,Computers, Communications & Others,31.10024687
+MUS,"Computers, Communications & Others",31.10024687
 MEX,Transport,4.120016025
 MEX,Travel,77.04005695
 MEX,Insurance & Finance,17.49635504
-MEX,Computers, Communications & Others,1.343571992
+MEX,"Computers, Communications & Others",1.343571992
 FSM,Transport,13.30171601
 FSM,Travel,75.71640161
-FSM,Computers, Communications & Others,10.98188238
+FSM,"Computers, Communications & Others",10.98188238
 MDA,Transport,35.919574
 MDA,Travel,21.11724874
 MDA,Insurance & Finance,0.664490873
-MDA,Computers, Communications & Others,42.29868639
+MDA,"Computers, Communications & Others",42.29868639
 MNG,Transport,33.84974818
 MNG,Travel,35.54343421
 MNG,Insurance & Finance,0.577225517
-MNG,Computers, Communications & Others,30.02959209
+MNG,"Computers, Communications & Others",30.02959209
 MNE,Transport,17.12267209
 MNE,Travel,66.33882121
 MNE,Insurance & Finance,0.402251354
-MNE,Computers, Communications & Others,16.13625534
+MNE,"Computers, Communications & Others",16.13625534
 MAR,Transport,19.49858123
 MAR,Travel,46.72415762
 MAR,Insurance & Finance,1.277113289
-MAR,Computers, Communications & Others,32.50014786
+MAR,"Computers, Communications & Others",32.50014786
 MOZ,Transport,59.66659797
 MOZ,Travel,28.50666982
 MOZ,Insurance & Finance,0.019647244
-MOZ,Computers, Communications & Others,11.80708497
+MOZ,"Computers, Communications & Others",11.80708497
 MMR,Transport,13.32901188
 MMR,Travel,52.14709024
 MMR,Insurance & Finance,0.193392687
-MMR,Computers, Communications & Others,34.3305052
+MMR,"Computers, Communications & Others",34.3305052
 NAM,Transport,13.42354139
 NAM,Travel,54.84888692
 NAM,Insurance & Finance,3.045000337
-NAM,Computers, Communications & Others,28.68257136
+NAM,"Computers, Communications & Others",28.68257136
 NRU,Transport,7.151637377
 NRU,Travel,20.684301
 NRU,Insurance & Finance,0
-NRU,Computers, Communications & Others,72.16406162
+NRU,"Computers, Communications & Others",72.16406162
 NPL,Transport,2.722819834
 NPL,Travel,44.324217
 NPL,Insurance & Finance,0.333445492
-NPL,Computers, Communications & Others,52.61951767
+NPL,"Computers, Communications & Others",52.61951767
 NLD,Transport,19.05046554
 NLD,Travel,9.460796083
 NLD,Insurance & Finance,4.708520165
-NLD,Computers, Communications & Others,66.78021821
+NLD,"Computers, Communications & Others",66.78021821
 NCL,Transport,32.29898408
 NCL,Travel,46.49803367
 NCL,Insurance & Finance,0.393272516
-NCL,Computers, Communications & Others,20.80970973
+NCL,"Computers, Communications & Others",20.80970973
 NZL,Transport,14.62871113
 NZL,Travel,59.57037083
 NZL,Insurance & Finance,4.01530871
-NZL,Computers, Communications & Others,21.78560933
+NZL,"Computers, Communications & Others",21.78560933
 NIC,Transport,4.161776654
 NIC,Travel,40.22749842
 NIC,Insurance & Finance,0.49652433
-NIC,Computers, Communications & Others,55.1142006
+NIC,"Computers, Communications & Others",55.1142006
 NER,Transport,7.060023262
 NER,Travel,33.05333128
 NER,Insurance & Finance,1.152656859
-NER,Computers, Communications & Others,58.7339886
+NER,"Computers, Communications & Others",58.7339886
 NGA,Transport,51.37026789
 NGA,Travel,36.0299565
 NGA,Insurance & Finance,2.407877208
-NGA,Computers, Communications & Others,10.1918984
+NGA,"Computers, Communications & Others",10.1918984
 MKD,Transport,24.0125267
 MKD,Travel,17.09204822
 MKD,Insurance & Finance,0.255602255
-MKD,Computers, Communications & Others,58.63982283
+MKD,"Computers, Communications & Others",58.63982283
 NOR,Transport,45.97169312
 NOR,Travel,11.31758178
 NOR,Insurance & Finance,5.557914998
-NOR,Computers, Communications & Others,37.1528101
+NOR,"Computers, Communications & Others",37.1528101
 OMN,Transport,37.05365773
 OMN,Travel,43.93169502
 OMN,Insurance & Finance,1.547805272
-OMN,Computers, Communications & Others,17.46684197
+OMN,"Computers, Communications & Others",17.46684197
 PAK,Transport,38.62612613
 PAK,Travel,7.939189189
 PAK,Insurance & Finance,5.489864865
-PAK,Computers, Communications & Others,47.94481982
+PAK,"Computers, Communications & Others",47.94481982
 PLW,Transport,2.907305744
 PLW,Travel,92.32589345
 PLW,Insurance & Finance,0.495583338
-PLW,Computers, Communications & Others,4.271217472
+PLW,"Computers, Communications & Others",4.271217472
 PAN,Transport,48.13765968
 PAN,Travel,32.90105159
 PAN,Insurance & Finance,9.788975933
-PAN,Computers, Communications & Others,9.172312796
+PAN,"Computers, Communications & Others",9.172312796
 PNG,Transport,11.16659201
 PNG,Travel,1.544694078
 PNG,Insurance & Finance,9.352131837
-PNG,Computers, Communications & Others,77.93658208
+PNG,"Computers, Communications & Others",77.93658208
 PRY,Transport,47.2667354
 PRY,Travel,34.98338001
 PRY,Insurance & Finance,3.690127524
-PRY,Computers, Communications & Others,14.05975706
+PRY,"Computers, Communications & Others",14.05975706
 PER,Transport,25.0670216
 PER,Travel,55.90775032
 PER,Insurance & Finance,11.04995842
-PER,Computers, Communications & Others,7.975269662
+PER,"Computers, Communications & Others",7.975269662
 PHL,Transport,7.356513441
 PHL,Travel,19.73878337
 PHL,Insurance & Finance,1.251199386
-PHL,Computers, Communications & Others,71.6535038
+PHL,"Computers, Communications & Others",71.6535038
 POL,Transport,27.29325315
 POL,Travel,24.31905417
 POL,Insurance & Finance,2.144953714
-POL,Computers, Communications & Others,46.24273897
+POL,"Computers, Communications & Others",46.24273897
 PRT,Transport,24.65821244
 PRT,Travel,44.90132229
 PRT,Insurance & Finance,1.86338673
-PRT,Computers, Communications & Others,28.57707854
+PRT,"Computers, Communications & Others",28.57707854
 QAT,Transport,50.32258065
 QAT,Travel,35.94193548
 QAT,Insurance & Finance,6.756989247
-QAT,Computers, Communications & Others,6.978494624
+QAT,"Computers, Communications & Others",6.978494624
 ROU,Transport,29.24896809
 ROU,Travel,9.644886754
 ROU,Insurance & Finance,1.986565031
-ROU,Computers, Communications & Others,59.11958012
+ROU,"Computers, Communications & Others",59.11958012
 RUS,Transport,31.69178239
 RUS,Travel,18.14168201
 RUS,Insurance & Finance,3.073484097
-RUS,Computers, Communications & Others,47.09305151
+RUS,"Computers, Communications & Others",47.09305151
 RWA,Transport,19.6350029
 RWA,Travel,76.37378322
-RWA,Computers, Communications & Others,3.991213877
+RWA,"Computers, Communications & Others",3.991213877
 WSM,Transport,4.124518753
 WSM,Travel,73.98389465
 WSM,Insurance & Finance,3.338632486
-WSM,Computers, Communications & Others,18.55295411
+WSM,"Computers, Communications & Others",18.55295411
 STP,Transport,0.243513485
 STP,Travel,80.50781282
 STP,Insurance & Finance,0
-STP,Computers, Communications & Others,19.24867369
+STP,"Computers, Communications & Others",19.24867369
 SAU,Transport,24.12917954
 SAU,Travel,68.87355012
 SAU,Insurance & Finance,3.234791241
-SAU,Computers, Communications & Others,3.762479102
+SAU,"Computers, Communications & Others",3.762479102
 SEN,Transport,12.90544276
 SEN,Travel,36.3348906
 SEN,Insurance & Finance,2.337876454
-SEN,Computers, Communications & Others,48.42179018
+SEN,"Computers, Communications & Others",48.42179018
 SRB,Transport,23.29409558
 SRB,Travel,22.69344975
 SRB,Insurance & Finance,1.537910557
-SRB,Computers, Communications & Others,52.47454411
+SRB,"Computers, Communications & Others",52.47454411
 SYC,Transport,23.37266096
 SYC,Travel,48.17922824
 SYC,Insurance & Finance,0
-SYC,Computers, Communications & Others,28.4481108
+SYC,"Computers, Communications & Others",28.4481108
 SLE,Transport,19.3666684
 SLE,Travel,17.10975271
 SLE,Insurance & Finance,0.686072619
-SLE,Computers, Communications & Others,62.83750627
+SLE,"Computers, Communications & Others",62.83750627
 SGP,Transport,32.87194153
 SGP,Travel,12.48529812
 SGP,Insurance & Finance,15.89423182
-SGP,Computers, Communications & Others,38.74852853
+SGP,"Computers, Communications & Others",38.74852853
 SXM,Transport,2.627812734
 SXM,Travel,81.42553694
 SXM,Insurance & Finance,0.27518467
-SXM,Computers, Communications & Others,15.67146566
+SXM,"Computers, Communications & Others",15.67146566
 SVK,Transport,29.85139821
 SVK,Travel,28.44894248
 SVK,Insurance & Finance,2.604188784
-SVK,Computers, Communications & Others,39.09547053
+SVK,"Computers, Communications & Others",39.09547053
 SVN,Transport,26.85277024
 SVN,Travel,37.60430774
 SVN,Insurance & Finance,2.363210963
-SVN,Computers, Communications & Others,33.17971105
+SVN,"Computers, Communications & Others",33.17971105
 SLB,Transport,19.43215847
 SLB,Travel,51.07340109
 SLB,Insurance & Finance,0.05998645
-SLB,Computers, Communications & Others,29.43445398
+SLB,"Computers, Communications & Others",29.43445398
 ZAF,Transport,18.44290833
 ZAF,Travel,56.76865399
 ZAF,Insurance & Finance,6.732486687
-ZAF,Computers, Communications & Others,18.05595099
+ZAF,"Computers, Communications & Others",18.05595099
 SSD,Transport,0.148723889
 SSD,Travel,2.861626995
 SSD,Insurance & Finance,65.00504465
-SSD,Computers, Communications & Others,31.98460446
+SSD,"Computers, Communications & Others",31.98460446
 ESP,Transport,11.13292064
 ESP,Travel,52.1020326
 ESP,Insurance & Finance,4.145035518
-ESP,Computers, Communications & Others,32.62001125
+ESP,"Computers, Communications & Others",32.62001125
 LKA,Transport,34.503559
 LKA,Travel,43.61683937
 LKA,Insurance & Finance,6.654015745
-LKA,Computers, Communications & Others,15.22558589
+LKA,"Computers, Communications & Others",15.22558589
 KNA,Transport,3.223387762
 KNA,Travel,84.14117404
 KNA,Insurance & Finance,5.054682873
-KNA,Computers, Communications & Others,7.580755328
+KNA,"Computers, Communications & Others",7.580755328
 LCA,Transport,1.787927735
 LCA,Travel,94.4354377
 LCA,Insurance & Finance,0.652662987
-LCA,Computers, Communications & Others,3.123971581
+LCA,"Computers, Communications & Others",3.123971581
 VCT,Transport,3.645467865
 VCT,Travel,85.57274899
 VCT,Insurance & Finance,3.684331733
-VCT,Computers, Communications & Others,7.097451407
+VCT,"Computers, Communications & Others",7.097451407
 SDN,Transport,27.29442848
 SDN,Travel,63.42229001
 SDN,Insurance & Finance,0.205922868
-SDN,Computers, Communications & Others,9.077358641
+SDN,"Computers, Communications & Others",9.077358641
 SUR,Transport,18.98504758
 SUR,Travel,48.16980247
 SUR,Insurance & Finance,3.479202001
-SUR,Computers, Communications & Others,29.36594795
+SUR,"Computers, Communications & Others",29.36594795
 SWE,Transport,16.53395278
 SWE,Travel,15.50070858
 SWE,Insurance & Finance,7.072761311
-SWE,Computers, Communications & Others,60.89257732
+SWE,"Computers, Communications & Others",60.89257732
 CHE,Transport,11.61223051
 CHE,Travel,14.95607492
 CHE,Insurance & Finance,24.33930187
-CHE,Computers, Communications & Others,49.0923927
+CHE,"Computers, Communications & Others",49.0923927
 TJK,Transport,80.09474812
 TJK,Travel,0.382045271
 TJK,Insurance & Finance,0.608861004
-TJK,Computers, Communications & Others,18.9143456
+TJK,"Computers, Communications & Others",18.9143456
 TZA,Transport,26.70502253
 TZA,Travel,59.46985155
 TZA,Insurance & Finance,1.775244578
-TZA,Computers, Communications & Others,12.04988135
+TZA,"Computers, Communications & Others",12.04988135
 THA,Transport,11.09441565
 THA,Travel,67.50210284
 THA,Insurance & Finance,1.200503667
-THA,Computers, Communications & Others,20.20297785
+THA,"Computers, Communications & Others",20.20297785
 TLS,Transport,1.49653781
 TLS,Travel,57.25644615
 TLS,Insurance & Finance,1.592622732
-TLS,Computers, Communications & Others,39.65439331
+TLS,"Computers, Communications & Others",39.65439331
 TGO,Transport,50.57783634
 TGO,Travel,28.46722199
 TGO,Insurance & Finance,2.482629303
-TGO,Computers, Communications & Others,18.47231237
+TGO,"Computers, Communications & Others",18.47231237
 TON,Transport,19.31215622
 TON,Travel,65.31250276
 TON,Insurance & Finance,0.467278977
-TON,Computers, Communications & Others,14.90806204
+TON,"Computers, Communications & Others",14.90806204
 TTO,Transport,40.31117876
 TTO,Travel,32.887274
 TTO,Insurance & Finance,4.25187457
-TTO,Computers, Communications & Others,22.54967267
+TTO,"Computers, Communications & Others",22.54967267
 TUN,Transport,25.54374531
 TUN,Travel,51.78317428
 TUN,Insurance & Finance,3.009025784
-TUN,Computers, Communications & Others,19.66405462
+TUN,"Computers, Communications & Others",19.66405462
 TUR,Transport,37.20449028
 TUR,Travel,48.14832918
 TUR,Insurance & Finance,3.033709696
-TUR,Computers, Communications & Others,11.61347084
+TUR,"Computers, Communications & Others",11.61347084
 TCA,Transport,5.00018341
 TCA,Travel,94.99981659
 TCA,Insurance & Finance,0
-TCA,Computers, Communications & Others,0
+TCA,"Computers, Communications & Others",0
 UGA,Transport,8.405770673
 UGA,Travel,48.21329685
 UGA,Insurance & Finance,3.06012673
-UGA,Computers, Communications & Others,40.32080575
+UGA,"Computers, Communications & Others",40.32080575
 UKR,Transport,42.73076396
 UKR,Travel,11.054725
 UKR,Insurance & Finance,1.604718146
-UKR,Computers, Communications & Others,44.6097929
+UKR,"Computers, Communications & Others",44.6097929
 GBR,Transport,10.8643165
 GBR,Travel,13.28313547
 GBR,Insurance & Finance,30.54158804
-GBR,Computers, Communications & Others,45.31095999
+GBR,"Computers, Communications & Others",45.31095999
 USA,Transport,12.30488679
 USA,Travel,24.45889325
 USA,Insurance & Finance,18.88120322
-USA,Computers, Communications & Others,44.35501674
+USA,"Computers, Communications & Others",44.35501674
 URY,Transport,16.56894862
 URY,Travel,42.15331582
 URY,Insurance & Finance,4.366889313
-URY,Computers, Communications & Others,36.91084625
+URY,"Computers, Communications & Others",36.91084625
 UZB,Transport,58.67144749
 UZB,Travel,21.46810947
 UZB,Insurance & Finance,1.999525783
-UZB,Computers, Communications & Others,17.86091726
+UZB,"Computers, Communications & Others",17.86091726
 VUT,Transport,14.05025372
 VUT,Travel,80.41944463
 VUT,Insurance & Finance,2.448057965
-VUT,Computers, Communications & Others,3.082243693
+VUT,"Computers, Communications & Others",3.082243693
 VEN,Transport,38.81253436
 VEN,Travel,45.95931831
 VEN,Insurance & Finance,1.044529962
-VEN,Computers, Communications & Others,14.18361737
+VEN,"Computers, Communications & Others",14.18361737
 PSE,Transport,2.158381648
 PSE,Travel,57.58988891
 PSE,Insurance & Finance,0.02123091
-PSE,Computers, Communications & Others,40.23049853
+PSE,"Computers, Communications & Others",40.23049853
 YEM,Transport,17.12685935
 YEM,Travel,68.09187457
 YEM,Insurance & Finance,0
-YEM,Computers, Communications & Others,14.78126609
+YEM,"Computers, Communications & Others",14.78126609
 ZMB,Transport,7.183118389
 ZMB,Travel,75.3986947
 ZMB,Insurance & Finance,9.338737015
-ZMB,Computers, Communications & Others,8.079449897
+ZMB,"Computers, Communications & Others",8.079449897
 ZWE,Transport,26.30411255
 ZWE,Travel,51.74695007
 ZWE,Insurance & Finance,0
-ZWE,Computers, Communications & Others,21.94893737
+ZWE,"Computers, Communications & Others",21.94893737
 ARB,Transport,28.55479202
 ARB,Travel,46.43363749
 ARB,Insurance & Finance,8.018879498
-ARB,Computers, Communications & Others,20.21838151
+ARB,"Computers, Communications & Others",20.21838151
 CSS,Transport,29.75321251
 CSS,Travel,44.32459062
 CSS,Insurance & Finance,3.944513032
-CSS,Computers, Communications & Others,21.97768384
+CSS,"Computers, Communications & Others",21.97768384
 CEB,Transport,27.34906439
 CEB,Travel,25.98913719
 CEB,Insurance & Finance,2.459586992
-CEB,Computers, Communications & Others,44.20221142
+CEB,"Computers, Communications & Others",44.20221142
 EAR,Transport,19.30869846
 EAR,Travel,46.50187012
 EAR,Insurance & Finance,7.300686923
-EAR,Computers, Communications & Others,28.17847434
+EAR,"Computers, Communications & Others",28.17847434
 EAS,Transport,21.94965402
 EAS,Travel,25.87537637
 EAS,Insurance & Finance,6.053437569
-EAS,Computers, Communications & Others,46.13373775
+EAS,"Computers, Communications & Others",46.13373775
 EAP,Transport,16.07434992
 EAP,Travel,29.43629704
 EAP,Insurance & Finance,3.40296864
-EAP,Computers, Communications & Others,51.08648065
+EAP,"Computers, Communications & Others",51.08648065
 TEA,Transport,16.07427839
 TEA,Travel,29.43643321
 TEA,Insurance & Finance,3.402947116
-TEA,Computers, Communications & Others,51.08643754
+TEA,"Computers, Communications & Others",51.08643754
 EMU,Transport,18.89108722
 EMU,Travel,20.84502594
 EMU,Insurance & Finance,8.701831639
-EMU,Computers, Communications & Others,51.5620552
+EMU,"Computers, Communications & Others",51.5620552
 ECS,Transport,21.75068942
 ECS,Travel,20.52700912
 ECS,Insurance & Finance,9.229119076
-ECS,Computers, Communications & Others,48.49318238
+ECS,"Computers, Communications & Others",48.49318238
 ECA,Transport,35.73488431
 ECA,Travel,25.75807078
 ECA,Insurance & Finance,2.603139299
-ECA,Computers, Communications & Others,35.90390561
+ECA,"Computers, Communications & Others",35.90390561
 TEC,Transport,33.68545275
 TEC,Travel,25.22903846
 TEC,Insurance & Finance,2.473621809
-TEC,Computers, Communications & Others,38.61188698
+TEC,"Computers, Communications & Others",38.61188698
 EUU,Transport,20.2660661
 EUU,Travel,20.91127769
 EUU,Insurance & Finance,7.877405333
-EUU,Computers, Communications & Others,50.94525087
+EUU,"Computers, Communications & Others",50.94525087
 FCS,Transport,33.30974439
 FCS,Travel,42.31869497
 FCS,Insurance & Finance,9.608478324
-FCS,Computers, Communications & Others,21.04714059
+FCS,"Computers, Communications & Others",21.04714059
 HPC,Transport,24.82679892
 HPC,Travel,38.92044511
 HPC,Insurance & Finance,3.207074993
-HPC,Computers, Communications & Others,33.36735424
+HPC,"Computers, Communications & Others",33.36735424
 HIC,Transport,21.09336021
 HIC,Travel,22.54091599
 HIC,Insurance & Finance,10.65313063
-HIC,Computers, Communications & Others,45.72206475
+HIC,"Computers, Communications & Others",45.72206475
 IBD,Transport,20.13498216
 IBD,Travel,32.89759318
 IBD,Insurance & Finance,4.712643101
-IBD,Computers, Communications & Others,42.60075966
+IBD,"Computers, Communications & Others",42.60075966
 IBT,Transport,20.907398
 IBT,Travel,32.91165139
 IBT,Insurance & Finance,4.739622911
-IBT,Computers, Communications & Others,41.77309821
+IBT,"Computers, Communications & Others",41.77309821
 IDB,Transport,45.81252674
 IDB,Travel,27.55424189
 IDB,Insurance & Finance,3.291563966
-IDB,Computers, Communications & Others,23.3416674
+IDB,"Computers, Communications & Others",23.3416674
 IDX,Transport,20.52146186
 IDX,Travel,38.89821696
 IDX,Insurance & Finance,7.122825511
-IDX,Computers, Communications & Others,33.67564055
+IDX,"Computers, Communications & Others",33.67564055
 IDA,Transport,33.39968065
 IDA,Travel,33.13607015
 IDA,Insurance & Finance,5.175232352
-IDA,Computers, Communications & Others,28.43058101
+IDA,"Computers, Communications & Others",28.43058101
 LTE,Transport,21.77332834
 LTE,Travel,25.90620645
 LTE,Insurance & Finance,4.144479346
-LTE,Computers, Communications & Others,48.18657502
+LTE,"Computers, Communications & Others",48.18657502
 LCN,Transport,17.51411497
 LCN,Travel,48.41395569
 LCN,Insurance & Finance,8.296232628
-LCN,Computers, Communications & Others,25.7870925
+LCN,"Computers, Communications & Others",25.7870925
 LAC,Transport,14.30564019
 LAC,Travel,51.13808532
 LAC,Insurance & Finance,8.822888822
-LAC,Computers, Communications & Others,25.74394702
+LAC,"Computers, Communications & Others",25.74394702
 TLA,Transport,17.57891981
 TLA,Travel,48.27710108
 TLA,Insurance & Finance,8.347555074
-TLA,Computers, Communications & Others,25.80793601
+TLA,"Computers, Communications & Others",25.80793601
 LDC,Transport,14.71578427
 LDC,Travel,57.77964385
 LDC,Insurance & Finance,6.079849515
-LDC,Computers, Communications & Others,21.60722316
+LDC,"Computers, Communications & Others",21.60722316
 LMY,Transport,20.13643298
 LMY,Travel,33.52067927
 LMY,Insurance & Finance,4.871872119
-LMY,Computers, Communications & Others,41.83246718
+LMY,"Computers, Communications & Others",41.83246718
 LIC,Transport,26.12934577
 LIC,Travel,37.97779407
 LIC,Insurance & Finance,14.41943532
-LIC,Computers, Communications & Others,22.15617013
+LIC,"Computers, Communications & Others",22.15617013
 LMC,Transport,23.3766404
 LMC,Travel,27.32428831
 LMC,Insurance & Finance,3.625549468
-LMC,Computers, Communications & Others,45.67407608
+LMC,"Computers, Communications & Others",45.67407608
 MEA,Transport,27.18083089
 MEA,Insurance & Finance,7.644208591
-MEA,Computers, Communications & Others,24.46500109
+MEA,"Computers, Communications & Others",24.46500109
 MNA,Transport,26.32541397
 MNA,Insurance & Finance,11.55449719
-MNA,Computers, Communications & Others,31.82070448
+MNA,"Computers, Communications & Others",31.82070448
 TMN,Transport,26.38788424
 TMN,Insurance & Finance,11.58432058
-TMN,Computers, Communications & Others,31.79896569
+TMN,"Computers, Communications & Others",31.79896569
 MIC,Transport,20.06617395
 MIC,Travel,33.46715833
 MIC,Insurance & Finance,4.75860954
-MIC,Computers, Communications & Others,42.06716815
+MIC,"Computers, Communications & Others",42.06716815
 NAC,Transport,12.9390053
 NAC,Travel,24.25831323
 NAC,Insurance & Finance,16.96473608
-NAC,Computers, Communications & Others,45.83794539
+NAC,"Computers, Communications & Others",45.83794539
 OED,Transport,19.36926727
 OED,Travel,23.1755757
 OED,Insurance & Finance,10.51470536
-OED,Computers, Communications & Others,46.94045168
+OED,"Computers, Communications & Others",46.94045168
 OSS,Transport,37.34065225
 OSS,Travel,32.26361908
 OSS,Insurance & Finance,11.54369841
-OSS,Computers, Communications & Others,19.60356368
+OSS,"Computers, Communications & Others",19.60356368
 PSS,Transport,24.08409825
 PSS,Travel,64.16753749
 PSS,Insurance & Finance,0.700993888
-PSS,Computers, Communications & Others,11.08169468
+PSS,"Computers, Communications & Others",11.08169468
 PST,Transport,20.57002735
 PST,Travel,21.36902567
 PST,Insurance & Finance,11.06855121
-PST,Computers, Communications & Others,46.99239577
+PST,"Computers, Communications & Others",46.99239577
 PRE,Transport,25.44066756
 PRE,Travel,49.64356211
 PRE,Insurance & Finance,4.395730109
-PRE,Computers, Communications & Others,20.59226875
+PRE,"Computers, Communications & Others",20.59226875
 SST,Transport,36.43433102
 SST,Travel,33.78785105
 SST,Insurance & Finance,10.60784156
-SST,Computers, Communications & Others,19.78789518
+SST,"Computers, Communications & Others",19.78789518
 SAS,Transport,15.4837076
 SAS,Travel,13.23548635
 SAS,Insurance & Finance,5.084884567
-SAS,Computers, Communications & Others,66.19592148
+SAS,"Computers, Communications & Others",66.19592148
 TSA,Transport,15.4837076
 TSA,Travel,13.23548635
 TSA,Insurance & Finance,5.084884567
-TSA,Computers, Communications & Others,66.19592148
+TSA,"Computers, Communications & Others",66.19592148
 SSF,Transport,25.28415016
 SSF,Travel,49.89141433
 SSF,Insurance & Finance,5.306654703
-SSF,Computers, Communications & Others,19.57904395
+SSF,"Computers, Communications & Others",19.57904395
 SSA,Transport,25.36688548
 SSA,Travel,49.88723076
 SSA,Insurance & Finance,5.313789781
-SSA,Computers, Communications & Others,19.49391239
+SSA,"Computers, Communications & Others",19.49391239
 TSS,Transport,25.28415016
 TSS,Travel,49.89141433
 TSS,Insurance & Finance,5.306654703
-TSS,Computers, Communications & Others,19.57904395
+TSS,"Computers, Communications & Others",19.57904395
 UMC,Transport,19.40707846
 UMC,Travel,34.70610375
 UMC,Insurance & Finance,4.984162952
-UMC,Computers, Communications & Others,41.3490528
+UMC,"Computers, Communications & Others",41.3490528
 WLD,Transport,20.79264287
 WLD,Travel,25.96653881
 WLD,Insurance & Finance,8.835112858
-WLD,Computers, Communications & Others,44.49957735
+WLD,"Computers, Communications & Others",44.49957735
