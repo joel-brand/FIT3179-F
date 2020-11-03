@@ -1,0 +1,886 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+    "hconcat": [
+        {
+            "vconcat": [
+                {
+                    "layer": [
+                        {
+                            "mark": {
+                                "type": "geoshape",
+                                "fill": "#e1ecfa"
+                            },
+                            "data": {
+                                "sphere": {}
+                            }
+                        },
+                        {
+                            "mark": {
+                                "type": "geoshape",
+                                "stroke": "white",
+                                "strokeWidth": 0.5
+                            },
+                            "data": {
+                                "graticule": {}
+                            }
+                        },
+                        {
+                            "mark": {
+                                "type": "geoshape",
+                                "stroke": "grey",
+                                "strokeOpacity": 0.7
+                            },
+                            "data": {
+                                "url": "https://raw.githubusercontent.com/joel-brand/FIT3179/main/data/world.lowres.json",
+                                "format": {
+                                    "type": "topojson",
+                                    "feature": "ne_110m_admin_0_countries"
+                                }
+                            },
+                            "transform": [
+                                {
+                                    "lookup": "properties.ISO_A3",
+                                    "from": {
+                                        "data": {
+                                            "url": "https://raw.githubusercontent.com/joel-brand/FIT3179-F/main/data/research-stats-updated.csv",
+                                            "format": {
+                                                "type": "csv"
+                                            }
+                                        },
+                                        "key": "CountryCode",
+                                        "fields": [
+                                            "Country",
+                                            "GERD - Basic research %"
+                                        ]
+                                    }
+                                },
+                                {
+                                    "filter": "isValid(datum[\"GERD - Basic research %\"]) && datum[\"GERD - Basic research %\"] > 0"
+                                }
+                            ],
+                            "selection": {
+                                "sel86": {
+                                    "type": "multi",
+                                    "fields": [
+                                        "Country"
+                                    ],
+                                    "resolve": "intersect"
+                                }
+                            },
+                            "encoding": {
+                                "color": {
+                                    "field": "GERD - Basic research %",
+                                    "type": "quantitative",
+                                    "legend": {
+                                        "type": "gradient",
+                                        "gradientLength": 300,
+                                        "direction": "horizontal",
+                                        "orient": "bottom",
+                                        "title": "% of R&D"
+                                    },
+                                    "scale": {
+                                        "type": "quantile"
+                                    }
+                                },
+                                "tooltip": [
+                                    {
+                                        "field": "Country",
+                                        "type": "Nominal"
+                                    },
+                                    {
+                                        "field": "GERD - Basic research %",
+                                        "type": "quantitative",
+                                        "title": "Basic Research (% of R&D)",
+                                        "format": ".2f"
+                                    }
+                                ],
+                                "opacity": {
+                                    "condition": {
+                                        "test": {
+                                            "and": [
+                                                {
+                                                    "selection": "sel86"
+                                                },
+                                                {
+                                                    "selection": "sel87"
+                                                }
+                                            ]
+                                        },
+                                        "value": 0.8
+                                    },
+                                    "value": 0.1
+                                }
+                            },
+                            "title": null,
+                            "width": 473,
+                            "height": 230
+                        },
+                        {
+                            "mark": {
+                                "type": "geoshape",
+                                "stroke": "grey",
+                                "strokeOpacity": 0.7,
+                                "fill": "#e8e8e8"
+                            },
+                            "data": {
+                                "url": "https://raw.githubusercontent.com/joel-brand/FIT3179/main/data/world.lowres.json",
+                                "format": {
+                                    "type": "topojson",
+                                    "feature": "ne_110m_admin_0_countries"
+                                }
+                            },
+                            "transform": [
+                                {
+                                    "lookup": "properties.ISO_A3",
+                                    "from": {
+                                        "data": {
+                                            "url": "https://raw.githubusercontent.com/joel-brand/FIT3179-F/main/data/research-stats-updated.csv",
+                                            "format": {
+                                                "type": "csv"
+                                            }
+                                        },
+                                        "key": "CountryCode",
+                                        "fields": [
+                                            "Country",
+                                            "GERD - Basic research %"
+                                        ]
+                                    }
+                                },
+                                {
+                                    "filter": "datum[\"GERD - Basic research %\"] == 0 || datum[\"GERD - Basic research %\"] == null"
+                                }
+                            ],
+                            "encoding": {
+                                "tooltip": [
+                                    {
+                                        "field": "properties.NAME",
+                                        "type": "Nominal",
+                                        "title": "Country (No Data Available)"
+                                    }
+                                ],
+                                "opacity": {
+                                    "condition": {
+                                        "test": {
+                                            "and": [
+                                                {
+                                                    "selection": "sel86"
+                                                },
+                                                {
+                                                    "selection": "sel87"
+                                                }
+                                            ]
+                                        },
+                                        "value": 0.8
+                                    },
+                                    "value": 0.1
+                                }
+                            },
+                            "width": 473,
+                            "height": 230
+                        }
+                    ],
+                    "projection": {
+                        "type": "equalEarth",
+                        "rotate": [
+                            {
+                                "signal": "RotateWorldActivity"
+                            },
+                            0,
+                            0
+                        ],
+                        "scale": 85,
+                        "translate": [
+                            237,
+                            115
+                        ]
+                    }
+                },
+                {
+                    "mark": {
+                        "type": "bar",
+                        "stroke": "grey"
+                    },
+                    "data": {
+                        "url": "https://raw.githubusercontent.com/joel-brand/FIT3179-F/main/data/research-stats-updated.csv",
+                        "format": {
+                            "type": "csv"
+                        }
+                    },
+                    "transform": [
+                        {
+                            "filter": "isValid(datum[\"GERD - Basic research %\"]) && datum[\"GERD - Basic research %\"] > 0"
+                        },
+                        {
+                            "calculate": "toNumber(datum[\"GERD - Basic research %\"])",
+                            "as": "numField"
+                        }
+                    ],
+                    "selection": {
+                        "sel87": {
+                            "type": "interval",
+                            "encodings": [
+                                "x"
+                            ],
+                            "resolve": "intersect"
+                        }
+                    },
+                    "encoding": {
+                        "color": {
+                            "field": "GERD - Basic research %",
+                            "type": "quantitative",
+                            "legend": null,
+                            "scale": {
+                                "type": "quantile"
+                            }
+                        },
+                        "y": {
+                            "field": "numField",
+                            "type": "quantitative",
+                            "axis": {
+                                "title": null,
+                                "tickCount": 5
+                            },
+                            "scale": {
+                                "domain": [
+                                    0,
+                                    100
+                                ]
+                            }
+                        },
+                        "x": {
+                            "field": "Country",
+                            "type": "nominal",
+                            "sort": "y",
+                            "axis": null
+                        },
+                        "tooltip": [
+                            {
+                                "field": "Country",
+                                "type": "Nominal"
+                            },
+                            {
+                                "field": "GERD - Basic research %",
+                                "type": "quantitative",
+                                "title": "Basic Research (% of R&D)",
+                                "format": ".2f"
+                            }
+                        ],
+                        "opacity": {
+                            "condition": {
+                                "test": {
+                                    "and": [
+                                        {
+                                            "selection": "sel86"
+                                        },
+                                        {
+                                            "selection": "sel87"
+                                        }
+                                    ]
+                                },
+                                "value": 0.8
+                            },
+                            "value": 0.1
+                        }
+                    },
+                    "title": null,
+                    "width": 473,
+                    "height": 100
+                }
+            ],
+            "title": "Basic Research (% of R&D)"
+        },
+        {
+            "vconcat": [
+                {
+                    "layer": [
+                        {
+                            "mark": {
+                                "type": "geoshape",
+                                "fill": "#e1ecfa"
+                            },
+                            "data": {
+                                "sphere": {}
+                            }
+                        },
+                        {
+                            "mark": {
+                                "type": "geoshape",
+                                "stroke": "white",
+                                "strokeWidth": 0.5
+                            },
+                            "data": {
+                                "graticule": {}
+                            }
+                        },
+                        {
+                            "mark": {
+                                "type": "geoshape",
+                                "stroke": "grey",
+                                "strokeOpacity": 0.7
+                            },
+                            "data": {
+                                "url": "https://raw.githubusercontent.com/joel-brand/FIT3179/main/data/world.lowres.json",
+                                "format": {
+                                    "type": "topojson",
+                                    "feature": "ne_110m_admin_0_countries"
+                                }
+                            },
+                            "transform": [
+                                {
+                                    "lookup": "properties.ISO_A3",
+                                    "from": {
+                                        "data": {
+                                            "url": "https://raw.githubusercontent.com/joel-brand/FIT3179-F/main/data/research-stats-updated.csv",
+                                            "format": {
+                                                "type": "csv"
+                                            }
+                                        },
+                                        "key": "CountryCode",
+                                        "fields": [
+                                            "Country",
+                                            "GERD - Applied research %"
+                                        ]
+                                    }
+                                },
+                                {
+                                    "filter": "isValid(datum[\"GERD - Applied research %\"]) && datum[\"GERD - Applied research %\"] > 0"
+                                }
+                            ],
+                            "selection": {
+                                "sel86": {
+                                    "type": "multi",
+                                    "fields": [
+                                        "Country"
+                                    ],
+                                    "resolve": "intersect"
+                                }
+                            },
+                            "encoding": {
+                                "color": {
+                                    "field": "GERD - Applied research %",
+                                    "type": "quantitative",
+                                    "legend": {
+                                        "type": "gradient",
+                                        "gradientLength": 300,
+                                        "direction": "horizontal",
+                                        "orient": "bottom",
+                                        "title": "% of R&D"
+                                    },
+                                    "scale": {
+                                        "type": "quantile"
+                                    }
+                                },
+                                "tooltip": [
+                                    {
+                                        "field": "Country",
+                                        "type": "Nominal"
+                                    },
+                                    {
+                                        "field": "GERD - Applied research %",
+                                        "type": "quantitative",
+                                        "title": "Applied Research (% of R&D)",
+                                        "format": ".2f"
+                                    }
+                                ],
+                                "opacity": {
+                                    "condition": {
+                                        "test": {
+                                            "and": [
+                                                {
+                                                    "selection": "sel86"
+                                                },
+                                                {
+                                                    "selection": "sel87"
+                                                }
+                                            ]
+                                        },
+                                        "value": 0.8
+                                    },
+                                    "value": 0.1
+                                }
+                            },
+                            "title": null,
+                            "width": 473,
+                            "height": 230
+                        },
+                        {
+                            "mark": {
+                                "type": "geoshape",
+                                "stroke": "grey",
+                                "strokeOpacity": 0.7,
+                                "fill": "#e8e8e8"
+                            },
+                            "data": {
+                                "url": "https://raw.githubusercontent.com/joel-brand/FIT3179/main/data/world.lowres.json",
+                                "format": {
+                                    "type": "topojson",
+                                    "feature": "ne_110m_admin_0_countries"
+                                }
+                            },
+                            "transform": [
+                                {
+                                    "lookup": "properties.ISO_A3",
+                                    "from": {
+                                        "data": {
+                                            "url": "https://raw.githubusercontent.com/joel-brand/FIT3179-F/main/data/research-stats-updated.csv",
+                                            "format": {
+                                                "type": "csv"
+                                            }
+                                        },
+                                        "key": "CountryCode",
+                                        "fields": [
+                                            "Country",
+                                            "GERD - Applied research %"
+                                        ]
+                                    }
+                                },
+                                {
+                                    "filter": "datum[\"GERD - Applied research %\"] == 0 || datum[\"GERD - Applied research %\"] == null"
+                                }
+                            ],
+                            "encoding": {
+                                "tooltip": [
+                                    {
+                                        "field": "properties.NAME",
+                                        "type": "Nominal",
+                                        "title": "Country (No Data Available)"
+                                    }
+                                ],
+                                "opacity": {
+                                    "condition": {
+                                        "test": {
+                                            "and": [
+                                                {
+                                                    "selection": "sel86"
+                                                },
+                                                {
+                                                    "selection": "sel87"
+                                                }
+                                            ]
+                                        },
+                                        "value": 0.8
+                                    },
+                                    "value": 0.1
+                                }
+                            },
+                            "width": 473,
+                            "height": 230
+                        }
+                    ],
+                    "projection": {
+                        "type": "equalEarth",
+                        "rotate": [
+                            {
+                                "signal": "RotateWorldActivity"
+                            },
+                            0,
+                            0
+                        ],
+                        "scale": 85,
+                        "translate": [
+                            237,
+                            115
+                        ]
+                    }
+                },
+                {
+                    "mark": {
+                        "type": "bar",
+                        "stroke": "grey"
+                    },
+                    "data": {
+                        "url": "https://raw.githubusercontent.com/joel-brand/FIT3179-F/main/data/research-stats-updated.csv",
+                        "format": {
+                            "type": "csv"
+                        }
+                    },
+                    "transform": [
+                        {
+                            "filter": "isValid(datum[\"GERD - Applied research %\"]) && datum[\"GERD - Applied research %\"] > 0"
+                        },
+                        {
+                            "calculate": "toNumber(datum[\"GERD - Applied research %\"])",
+                            "as": "numField"
+                        }
+                    ],
+                    "selection": {
+                        "sel87": {
+                            "type": "interval",
+                            "encodings": [
+                                "x"
+                            ],
+                            "resolve": "intersect"
+                        }
+                    },
+                    "encoding": {
+                        "color": {
+                            "field": "GERD - Applied research %",
+                            "type": "quantitative",
+                            "legend": null,
+                            "scale": {
+                                "type": "quantile"
+                            }
+                        },
+                        "y": {
+                            "field": "numField",
+                            "type": "quantitative",
+                            "axis": {
+                                "title": null,
+                                "tickCount": 5
+                            },
+                            "scale": {
+                                "domain": [
+                                    0,
+                                    100
+                                ]
+                            }
+                        },
+                        "x": {
+                            "field": "Country",
+                            "type": "nominal",
+                            "sort": "y",
+                            "axis": null
+                        },
+                        "tooltip": [
+                            {
+                                "field": "Country",
+                                "type": "Nominal"
+                            },
+                            {
+                                "field": "GERD - Applied research %",
+                                "type": "quantitative",
+                                "title": "Applied Research (% of R&D)",
+                                "format": ".2f"
+                            }
+                        ],
+                        "opacity": {
+                            "condition": {
+                                "test": {
+                                    "and": [
+                                        {
+                                            "selection": "sel86"
+                                        },
+                                        {
+                                            "selection": "sel87"
+                                        }
+                                    ]
+                                },
+                                "value": 0.8
+                            },
+                            "value": 0.1
+                        }
+                    },
+                    "title": null,
+                    "width": 473,
+                    "height": 100
+                }
+            ],
+            "title": "Applied Research (% of R&D)"
+        },
+        {
+            "vconcat": [
+                {
+                    "layer": [
+                        {
+                            "mark": {
+                                "type": "geoshape",
+                                "fill": "#e1ecfa"
+                            },
+                            "data": {
+                                "sphere": {}
+                            }
+                        },
+                        {
+                            "mark": {
+                                "type": "geoshape",
+                                "stroke": "white",
+                                "strokeWidth": 0.5
+                            },
+                            "data": {
+                                "graticule": {}
+                            }
+                        },
+                        {
+                            "mark": {
+                                "type": "geoshape",
+                                "stroke": "grey",
+                                "strokeOpacity": 0.7
+                            },
+                            "data": {
+                                "url": "https://raw.githubusercontent.com/joel-brand/FIT3179/main/data/world.lowres.json",
+                                "format": {
+                                    "type": "topojson",
+                                    "feature": "ne_110m_admin_0_countries"
+                                }
+                            },
+                            "transform": [
+                                {
+                                    "lookup": "properties.ISO_A3",
+                                    "from": {
+                                        "data": {
+                                            "url": "https://raw.githubusercontent.com/joel-brand/FIT3179-F/main/data/research-stats-updated.csv",
+                                            "format": {
+                                                "type": "csv"
+                                            }
+                                        },
+                                        "key": "CountryCode",
+                                        "fields": [
+                                            "Country",
+                                            "GERD - Experimental development %"
+                                        ]
+                                    }
+                                },
+                                {
+                                    "filter": "isValid(datum[\"GERD - Experimental development %\"]) && datum[\"GERD - Experimental development %\"] > 0"
+                                }
+                            ],
+                            "selection": {
+                                "sel86": {
+                                    "type": "multi",
+                                    "fields": [
+                                        "Country"
+                                    ],
+                                    "resolve": "intersect"
+                                }
+                            },
+                            "encoding": {
+                                "color": {
+                                    "field": "GERD - Experimental development %",
+                                    "type": "quantitative",
+                                    "legend": {
+                                        "type": "gradient",
+                                        "gradientLength": 300,
+                                        "direction": "horizontal",
+                                        "orient": "bottom",
+                                        "title": "% of R&D"
+                                    },
+                                    "scale": {
+                                        "type": "quantile"
+                                    }
+                                },
+                                "tooltip": [
+                                    {
+                                        "field": "Country",
+                                        "type": "Nominal"
+                                    },
+                                    {
+                                        "field": "GERD - Experimental development %",
+                                        "type": "quantitative",
+                                        "title": "Experimental Development (% of R&D)",
+                                        "format": ".2f"
+                                    }
+                                ],
+                                "opacity": {
+                                    "condition": {
+                                        "test": {
+                                            "and": [
+                                                {
+                                                    "selection": "sel86"
+                                                },
+                                                {
+                                                    "selection": "sel87"
+                                                }
+                                            ]
+                                        },
+                                        "value": 0.8
+                                    },
+                                    "value": 0.1
+                                }
+                            },
+                            "title": null,
+                            "width": 473,
+                            "height": 230
+                        },
+                        {
+                            "mark": {
+                                "type": "geoshape",
+                                "stroke": "grey",
+                                "strokeOpacity": 0.7,
+                                "fill": "#e8e8e8"
+                            },
+                            "data": {
+                                "url": "https://raw.githubusercontent.com/joel-brand/FIT3179/main/data/world.lowres.json",
+                                "format": {
+                                    "type": "topojson",
+                                    "feature": "ne_110m_admin_0_countries"
+                                }
+                            },
+                            "transform": [
+                                {
+                                    "lookup": "properties.ISO_A3",
+                                    "from": {
+                                        "data": {
+                                            "url": "https://raw.githubusercontent.com/joel-brand/FIT3179-F/main/data/research-stats-updated.csv",
+                                            "format": {
+                                                "type": "csv"
+                                            }
+                                        },
+                                        "key": "CountryCode",
+                                        "fields": [
+                                            "Country",
+                                            "GERD - Experimental development %"
+                                        ]
+                                    }
+                                },
+                                {
+                                    "filter": "datum[\"GERD - Experimental development %\"] == 0 || datum[\"GERD - Experimental development %\"] == null"
+                                }
+                            ],
+                            "encoding": {
+                                "tooltip": [
+                                    {
+                                        "field": "properties.NAME",
+                                        "type": "Nominal",
+                                        "title": "Country (No Data Available)"
+                                    }
+                                ],
+                                "opacity": {
+                                    "condition": {
+                                        "test": {
+                                            "and": [
+                                                {
+                                                    "selection": "sel86"
+                                                },
+                                                {
+                                                    "selection": "sel87"
+                                                }
+                                            ]
+                                        },
+                                        "value": 0.8
+                                    },
+                                    "value": 0.1
+                                }
+                            },
+                            "width": 473,
+                            "height": 230
+                        }
+                    ],
+                    "projection": {
+                        "type": "equalEarth",
+                        "rotate": [
+                            {
+                                "signal": "RotateWorldActivity"
+                            },
+                            0,
+                            0
+                        ],
+                        "scale": 85,
+                        "translate": [
+                            237,
+                            115
+                        ]
+                    }
+                },
+                {
+                    "mark": {
+                        "type": "bar",
+                        "stroke": "grey"
+                    },
+                    "data": {
+                        "url": "https://raw.githubusercontent.com/joel-brand/FIT3179-F/main/data/research-stats-updated.csv",
+                        "format": {
+                            "type": "csv"
+                        }
+                    },
+                    "transform": [
+                        {
+                            "filter": "isValid(datum[\"GERD - Experimental development %\"]) && datum[\"GERD - Experimental development %\"] > 0"
+                        },
+                        {
+                            "calculate": "toNumber(datum[\"GERD - Experimental development %\"])",
+                            "as": "numField"
+                        }
+                    ],
+                    "selection": {
+                        "sel87": {
+                            "type": "interval",
+                            "encodings": [
+                                "x"
+                            ],
+                            "resolve": "intersect"
+                        }
+                    },
+                    "encoding": {
+                        "color": {
+                            "field": "GERD - Experimental development %",
+                            "type": "quantitative",
+                            "legend": null,
+                            "scale": {
+                                "type": "quantile"
+                            }
+                        },
+                        "y": {
+                            "field": "numField",
+                            "type": "quantitative",
+                            "axis": {
+                                "title": null,
+                                "tickCount": 5
+                            },
+                            "scale": {
+                                "domain": [
+                                    0,
+                                    100
+                                ]
+                            }
+                        },
+                        "x": {
+                            "field": "Country",
+                            "type": "nominal",
+                            "sort": "y",
+                            "axis": null
+                        },
+                        "tooltip": [
+                            {
+                                "field": "Country",
+                                "type": "Nominal"
+                            },
+                            {
+                                "field": "GERD - Experimental development %",
+                                "type": "quantitative",
+                                "title": "Experimental Development (% of R&D)",
+                                "format": ".2f"
+                            }
+                        ],
+                        "opacity": {
+                            "condition": {
+                                "test": {
+                                    "and": [
+                                        {
+                                            "selection": "sel86"
+                                        },
+                                        {
+                                            "selection": "sel87"
+                                        }
+                                    ]
+                                },
+                                "value": 0.8
+                            },
+                            "value": 0.1
+                        }
+                    },
+                    "title": null,
+                    "width": 473,
+                    "height": 100
+                }
+            ],
+            "title": "Experimental Development (% of R&D)"
+        }
+    ],
+    "params": [
+        {
+            "name": "RotateWorldActivity",
+            "value": 0,
+            "bind": {
+                "input": "range",
+                "min": -180,
+                "max": 180,
+                "step": 1,
+                "name": "Rotation",
+                "element": "#mapSliderActivity"
+            }
+        }
+    ],
+    "config": {
+        "font": "Open Sans"
+    }
+}

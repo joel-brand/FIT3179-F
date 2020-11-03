@@ -1,0 +1,886 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+    "hconcat": [
+        {
+            "vconcat": [
+                {
+                    "layer": [
+                        {
+                            "mark": {
+                                "type": "geoshape",
+                                "fill": "#e1ecfa"
+                            },
+                            "data": {
+                                "sphere": {}
+                            }
+                        },
+                        {
+                            "mark": {
+                                "type": "geoshape",
+                                "stroke": "white",
+                                "strokeWidth": 0.5
+                            },
+                            "data": {
+                                "graticule": {}
+                            }
+                        },
+                        {
+                            "mark": {
+                                "type": "geoshape",
+                                "stroke": "grey",
+                                "strokeOpacity": 0.7
+                            },
+                            "data": {
+                                "url": "https://raw.githubusercontent.com/joel-brand/FIT3179/main/data/world.lowres.json",
+                                "format": {
+                                    "type": "topojson",
+                                    "feature": "ne_110m_admin_0_countries"
+                                }
+                            },
+                            "transform": [
+                                {
+                                    "lookup": "properties.ISO_A3",
+                                    "from": {
+                                        "data": {
+                                            "url": "https://raw.githubusercontent.com/joel-brand/FIT3179-F/main/data/research-stats-updated.csv",
+                                            "format": {
+                                                "type": "csv"
+                                            }
+                                        },
+                                        "key": "CountryCode",
+                                        "fields": [
+                                            "Country",
+                                            "GERD - financed by Business enterprise %"
+                                        ]
+                                    }
+                                },
+                                {
+                                    "filter": "isValid(datum[\"GERD - financed by Business enterprise %\"]) && datum[\"GERD - financed by Business enterprise %\"] > 0"
+                                }
+                            ],
+                            "selection": {
+                                "sel38": {
+                                    "type": "multi",
+                                    "fields": [
+                                        "Country"
+                                    ],
+                                    "resolve": "intersect"
+                                }
+                            },
+                            "encoding": {
+                                "color": {
+                                    "field": "GERD - financed by Business enterprise %",
+                                    "type": "quantitative",
+                                    "legend": {
+                                        "type": "gradient",
+                                        "gradientLength": 300,
+                                        "direction": "horizontal",
+                                        "orient": "bottom",
+                                        "title": "% of R&D"
+                                    },
+                                    "scale": {
+                                        "type": "quantile"
+                                    }
+                                },
+                                "tooltip": [
+                                    {
+                                        "field": "Country",
+                                        "type": "Nominal"
+                                    },
+                                    {
+                                        "field": "GERD - financed by Business enterprise %",
+                                        "type": "quantitative",
+                                        "title": "Funded by Local Business (% of R&D)",
+                                        "format": ".2f"
+                                    }
+                                ],
+                                "opacity": {
+                                    "condition": {
+                                        "test": {
+                                            "and": [
+                                                {
+                                                    "selection": "sel38"
+                                                },
+                                                {
+                                                    "selection": "sel39"
+                                                }
+                                            ]
+                                        },
+                                        "value": 0.8
+                                    },
+                                    "value": 0.1
+                                }
+                            },
+                            "title": null,
+                            "width": 473,
+                            "height": 230
+                        },
+                        {
+                            "mark": {
+                                "type": "geoshape",
+                                "stroke": "grey",
+                                "strokeOpacity": 0.7,
+                                "fill": "#e8e8e8"
+                            },
+                            "data": {
+                                "url": "https://raw.githubusercontent.com/joel-brand/FIT3179/main/data/world.lowres.json",
+                                "format": {
+                                    "type": "topojson",
+                                    "feature": "ne_110m_admin_0_countries"
+                                }
+                            },
+                            "transform": [
+                                {
+                                    "lookup": "properties.ISO_A3",
+                                    "from": {
+                                        "data": {
+                                            "url": "https://raw.githubusercontent.com/joel-brand/FIT3179-F/main/data/research-stats-updated.csv",
+                                            "format": {
+                                                "type": "csv"
+                                            }
+                                        },
+                                        "key": "CountryCode",
+                                        "fields": [
+                                            "Country",
+                                            "GERD - financed by Business enterprise %"
+                                        ]
+                                    }
+                                },
+                                {
+                                    "filter": "datum[\"GERD - financed by Business enterprise %\"] == 0 || datum[\"GERD - financed by Business enterprise %\"] == null"
+                                }
+                            ],
+                            "encoding": {
+                                "tooltip": [
+                                    {
+                                        "field": "properties.NAME",
+                                        "type": "Nominal",
+                                        "title": "Country (No Data Available)"
+                                    }
+                                ],
+                                "opacity": {
+                                    "condition": {
+                                        "test": {
+                                            "and": [
+                                                {
+                                                    "selection": "sel38"
+                                                },
+                                                {
+                                                    "selection": "sel39"
+                                                }
+                                            ]
+                                        },
+                                        "value": 0.8
+                                    },
+                                    "value": 0.1
+                                }
+                            },
+                            "width": 473,
+                            "height": 230
+                        }
+                    ],
+                    "projection": {
+                        "type": "equalEarth",
+                        "rotate": [
+                            {
+                                "signal": "RotateWorldFunding"
+                            },
+                            0,
+                            0
+                        ],
+                        "scale": 85,
+                        "translate": [
+                            237,
+                            115
+                        ]
+                    }
+                },
+                {
+                    "mark": {
+                        "type": "bar",
+                        "stroke": "grey"
+                    },
+                    "data": {
+                        "url": "https://raw.githubusercontent.com/joel-brand/FIT3179-F/main/data/research-stats-updated.csv",
+                        "format": {
+                            "type": "csv"
+                        }
+                    },
+                    "transform": [
+                        {
+                            "filter": "isValid(datum[\"GERD - financed by Business enterprise %\"]) && datum[\"GERD - financed by Business enterprise %\"] > 0"
+                        },
+                        {
+                            "calculate": "toNumber(datum[\"GERD - financed by Business enterprise %\"])",
+                            "as": "numField"
+                        }
+                    ],
+                    "selection": {
+                        "sel39": {
+                            "type": "interval",
+                            "encodings": [
+                                "x"
+                            ],
+                            "resolve": "intersect"
+                        }
+                    },
+                    "encoding": {
+                        "color": {
+                            "field": "GERD - financed by Business enterprise %",
+                            "type": "quantitative",
+                            "legend": null,
+                            "scale": {
+                                "type": "quantile"
+                            }
+                        },
+                        "y": {
+                            "field": "numField",
+                            "type": "quantitative",
+                            "axis": {
+                                "title": null,
+                                "tickCount": 5
+                            },
+                            "scale": {
+                                "domain": [
+                                    0,
+                                    100
+                                ]
+                            }
+                        },
+                        "x": {
+                            "field": "Country",
+                            "type": "nominal",
+                            "sort": "y",
+                            "axis": null
+                        },
+                        "tooltip": [
+                            {
+                                "field": "Country",
+                                "type": "Nominal"
+                            },
+                            {
+                                "field": "GERD - financed by Business enterprise %",
+                                "type": "quantitative",
+                                "title": "Funded by Local Business (% of R&D)",
+                                "format": ".2f"
+                            }
+                        ],
+                        "opacity": {
+                            "condition": {
+                                "test": {
+                                    "and": [
+                                        {
+                                            "selection": "sel38"
+                                        },
+                                        {
+                                            "selection": "sel39"
+                                        }
+                                    ]
+                                },
+                                "value": 0.8
+                            },
+                            "value": 0.1
+                        }
+                    },
+                    "title": null,
+                    "width": 473,
+                    "height": 100
+                }
+            ],
+            "title": "Funded by Local Business (% of R&D)"
+        },
+        {
+            "vconcat": [
+                {
+                    "layer": [
+                        {
+                            "mark": {
+                                "type": "geoshape",
+                                "fill": "#e1ecfa"
+                            },
+                            "data": {
+                                "sphere": {}
+                            }
+                        },
+                        {
+                            "mark": {
+                                "type": "geoshape",
+                                "stroke": "white",
+                                "strokeWidth": 0.5
+                            },
+                            "data": {
+                                "graticule": {}
+                            }
+                        },
+                        {
+                            "mark": {
+                                "type": "geoshape",
+                                "stroke": "grey",
+                                "strokeOpacity": 0.7
+                            },
+                            "data": {
+                                "url": "https://raw.githubusercontent.com/joel-brand/FIT3179/main/data/world.lowres.json",
+                                "format": {
+                                    "type": "topojson",
+                                    "feature": "ne_110m_admin_0_countries"
+                                }
+                            },
+                            "transform": [
+                                {
+                                    "lookup": "properties.ISO_A3",
+                                    "from": {
+                                        "data": {
+                                            "url": "https://raw.githubusercontent.com/joel-brand/FIT3179-F/main/data/research-stats-updated.csv",
+                                            "format": {
+                                                "type": "csv"
+                                            }
+                                        },
+                                        "key": "CountryCode",
+                                        "fields": [
+                                            "Country",
+                                            "GERD - financed by Government %"
+                                        ]
+                                    }
+                                },
+                                {
+                                    "filter": "isValid(datum[\"GERD - financed by Government %\"]) && datum[\"GERD - financed by Government %\"] > 0"
+                                }
+                            ],
+                            "selection": {
+                                "sel38": {
+                                    "type": "multi",
+                                    "fields": [
+                                        "Country"
+                                    ],
+                                    "resolve": "intersect"
+                                }
+                            },
+                            "encoding": {
+                                "color": {
+                                    "field": "GERD - financed by Government %",
+                                    "type": "quantitative",
+                                    "legend": {
+                                        "type": "gradient",
+                                        "gradientLength": 300,
+                                        "direction": "horizontal",
+                                        "orient": "bottom",
+                                        "title": "% of R&D"
+                                    },
+                                    "scale": {
+                                        "type": "quantile"
+                                    }
+                                },
+                                "tooltip": [
+                                    {
+                                        "field": "Country",
+                                        "type": "Nominal"
+                                    },
+                                    {
+                                        "field": "GERD - financed by Government %",
+                                        "type": "quantitative",
+                                        "title": "Funded by Government (% of R&D)",
+                                        "format": ".2f"
+                                    }
+                                ],
+                                "opacity": {
+                                    "condition": {
+                                        "test": {
+                                            "and": [
+                                                {
+                                                    "selection": "sel38"
+                                                },
+                                                {
+                                                    "selection": "sel39"
+                                                }
+                                            ]
+                                        },
+                                        "value": 0.8
+                                    },
+                                    "value": 0.1
+                                }
+                            },
+                            "title": null,
+                            "width": 473,
+                            "height": 230
+                        },
+                        {
+                            "mark": {
+                                "type": "geoshape",
+                                "stroke": "grey",
+                                "strokeOpacity": 0.7,
+                                "fill": "#e8e8e8"
+                            },
+                            "data": {
+                                "url": "https://raw.githubusercontent.com/joel-brand/FIT3179/main/data/world.lowres.json",
+                                "format": {
+                                    "type": "topojson",
+                                    "feature": "ne_110m_admin_0_countries"
+                                }
+                            },
+                            "transform": [
+                                {
+                                    "lookup": "properties.ISO_A3",
+                                    "from": {
+                                        "data": {
+                                            "url": "https://raw.githubusercontent.com/joel-brand/FIT3179-F/main/data/research-stats-updated.csv",
+                                            "format": {
+                                                "type": "csv"
+                                            }
+                                        },
+                                        "key": "CountryCode",
+                                        "fields": [
+                                            "Country",
+                                            "GERD - financed by Government %"
+                                        ]
+                                    }
+                                },
+                                {
+                                    "filter": "datum[\"GERD - financed by Government %\"] == 0 || datum[\"GERD - financed by Government %\"] == null"
+                                }
+                            ],
+                            "encoding": {
+                                "tooltip": [
+                                    {
+                                        "field": "properties.NAME",
+                                        "type": "Nominal",
+                                        "title": "Country (No Data Available)"
+                                    }
+                                ],
+                                "opacity": {
+                                    "condition": {
+                                        "test": {
+                                            "and": [
+                                                {
+                                                    "selection": "sel38"
+                                                },
+                                                {
+                                                    "selection": "sel39"
+                                                }
+                                            ]
+                                        },
+                                        "value": 0.8
+                                    },
+                                    "value": 0.1
+                                }
+                            },
+                            "width": 473,
+                            "height": 230
+                        }
+                    ],
+                    "projection": {
+                        "type": "equalEarth",
+                        "rotate": [
+                            {
+                                "signal": "RotateWorldFunding"
+                            },
+                            0,
+                            0
+                        ],
+                        "scale": 85,
+                        "translate": [
+                            237,
+                            115
+                        ]
+                    }
+                },
+                {
+                    "mark": {
+                        "type": "bar",
+                        "stroke": "grey"
+                    },
+                    "data": {
+                        "url": "https://raw.githubusercontent.com/joel-brand/FIT3179-F/main/data/research-stats-updated.csv",
+                        "format": {
+                            "type": "csv"
+                        }
+                    },
+                    "transform": [
+                        {
+                            "filter": "isValid(datum[\"GERD - financed by Government %\"]) && datum[\"GERD - financed by Government %\"] > 0"
+                        },
+                        {
+                            "calculate": "toNumber(datum[\"GERD - financed by Government %\"])",
+                            "as": "numField"
+                        }
+                    ],
+                    "selection": {
+                        "sel39": {
+                            "type": "interval",
+                            "encodings": [
+                                "x"
+                            ],
+                            "resolve": "intersect"
+                        }
+                    },
+                    "encoding": {
+                        "color": {
+                            "field": "GERD - financed by Government %",
+                            "type": "quantitative",
+                            "legend": null,
+                            "scale": {
+                                "type": "quantile"
+                            }
+                        },
+                        "y": {
+                            "field": "numField",
+                            "type": "quantitative",
+                            "axis": {
+                                "title": null,
+                                "tickCount": 5
+                            },
+                            "scale": {
+                                "domain": [
+                                    0,
+                                    100
+                                ]
+                            }
+                        },
+                        "x": {
+                            "field": "Country",
+                            "type": "nominal",
+                            "sort": "y",
+                            "axis": null
+                        },
+                        "tooltip": [
+                            {
+                                "field": "Country",
+                                "type": "Nominal"
+                            },
+                            {
+                                "field": "GERD - financed by Government %",
+                                "type": "quantitative",
+                                "title": "Funded by Government (% of R&D)",
+                                "format": ".2f"
+                            }
+                        ],
+                        "opacity": {
+                            "condition": {
+                                "test": {
+                                    "and": [
+                                        {
+                                            "selection": "sel38"
+                                        },
+                                        {
+                                            "selection": "sel39"
+                                        }
+                                    ]
+                                },
+                                "value": 0.8
+                            },
+                            "value": 0.1
+                        }
+                    },
+                    "title": null,
+                    "width": 473,
+                    "height": 100
+                }
+            ],
+            "title": "Funded by Government (% of R&D)"
+        },
+        {
+            "vconcat": [
+                {
+                    "layer": [
+                        {
+                            "mark": {
+                                "type": "geoshape",
+                                "fill": "#e1ecfa"
+                            },
+                            "data": {
+                                "sphere": {}
+                            }
+                        },
+                        {
+                            "mark": {
+                                "type": "geoshape",
+                                "stroke": "white",
+                                "strokeWidth": 0.5
+                            },
+                            "data": {
+                                "graticule": {}
+                            }
+                        },
+                        {
+                            "mark": {
+                                "type": "geoshape",
+                                "stroke": "grey",
+                                "strokeOpacity": 0.7
+                            },
+                            "data": {
+                                "url": "https://raw.githubusercontent.com/joel-brand/FIT3179/main/data/world.lowres.json",
+                                "format": {
+                                    "type": "topojson",
+                                    "feature": "ne_110m_admin_0_countries"
+                                }
+                            },
+                            "transform": [
+                                {
+                                    "lookup": "properties.ISO_A3",
+                                    "from": {
+                                        "data": {
+                                            "url": "https://raw.githubusercontent.com/joel-brand/FIT3179-F/main/data/research-stats-updated.csv",
+                                            "format": {
+                                                "type": "csv"
+                                            }
+                                        },
+                                        "key": "CountryCode",
+                                        "fields": [
+                                            "Country",
+                                            "GERD - financed by Rest of the world (abroad) %"
+                                        ]
+                                    }
+                                },
+                                {
+                                    "filter": "isValid(datum[\"GERD - financed by Rest of the world (abroad) %\"]) && datum[\"GERD - financed by Rest of the world (abroad) %\"] > 0"
+                                }
+                            ],
+                            "selection": {
+                                "sel38": {
+                                    "type": "multi",
+                                    "fields": [
+                                        "Country"
+                                    ],
+                                    "resolve": "intersect"
+                                }
+                            },
+                            "encoding": {
+                                "color": {
+                                    "field": "GERD - financed by Rest of the world (abroad) %",
+                                    "type": "quantitative",
+                                    "legend": {
+                                        "type": "gradient",
+                                        "gradientLength": 300,
+                                        "direction": "horizontal",
+                                        "orient": "bottom",
+                                        "title": "% of R&D"
+                                    },
+                                    "scale": {
+                                        "type": "quantile"
+                                    }
+                                },
+                                "tooltip": [
+                                    {
+                                        "field": "Country",
+                                        "type": "Nominal"
+                                    },
+                                    {
+                                        "field": "GERD - financed by Rest of the world (abroad) %",
+                                        "type": "quantitative",
+                                        "title": "Funded by Foreign Interests (% of R&D)",
+                                        "format": ".2f"
+                                    }
+                                ],
+                                "opacity": {
+                                    "condition": {
+                                        "test": {
+                                            "and": [
+                                                {
+                                                    "selection": "sel38"
+                                                },
+                                                {
+                                                    "selection": "sel39"
+                                                }
+                                            ]
+                                        },
+                                        "value": 0.8
+                                    },
+                                    "value": 0.1
+                                }
+                            },
+                            "title": null,
+                            "width": 473,
+                            "height": 230
+                        },
+                        {
+                            "mark": {
+                                "type": "geoshape",
+                                "stroke": "grey",
+                                "strokeOpacity": 0.7,
+                                "fill": "#e8e8e8"
+                            },
+                            "data": {
+                                "url": "https://raw.githubusercontent.com/joel-brand/FIT3179/main/data/world.lowres.json",
+                                "format": {
+                                    "type": "topojson",
+                                    "feature": "ne_110m_admin_0_countries"
+                                }
+                            },
+                            "transform": [
+                                {
+                                    "lookup": "properties.ISO_A3",
+                                    "from": {
+                                        "data": {
+                                            "url": "https://raw.githubusercontent.com/joel-brand/FIT3179-F/main/data/research-stats-updated.csv",
+                                            "format": {
+                                                "type": "csv"
+                                            }
+                                        },
+                                        "key": "CountryCode",
+                                        "fields": [
+                                            "Country",
+                                            "GERD - financed by Rest of the world (abroad) %"
+                                        ]
+                                    }
+                                },
+                                {
+                                    "filter": "datum[\"GERD - financed by Rest of the world (abroad) %\"] == 0 || datum[\"GERD - financed by Rest of the world (abroad) %\"] == null"
+                                }
+                            ],
+                            "encoding": {
+                                "tooltip": [
+                                    {
+                                        "field": "properties.NAME",
+                                        "type": "Nominal",
+                                        "title": "Country (No Data Available)"
+                                    }
+                                ],
+                                "opacity": {
+                                    "condition": {
+                                        "test": {
+                                            "and": [
+                                                {
+                                                    "selection": "sel38"
+                                                },
+                                                {
+                                                    "selection": "sel39"
+                                                }
+                                            ]
+                                        },
+                                        "value": 0.8
+                                    },
+                                    "value": 0.1
+                                }
+                            },
+                            "width": 473,
+                            "height": 230
+                        }
+                    ],
+                    "projection": {
+                        "type": "equalEarth",
+                        "rotate": [
+                            {
+                                "signal": "RotateWorldFunding"
+                            },
+                            0,
+                            0
+                        ],
+                        "scale": 85,
+                        "translate": [
+                            237,
+                            115
+                        ]
+                    }
+                },
+                {
+                    "mark": {
+                        "type": "bar",
+                        "stroke": "grey"
+                    },
+                    "data": {
+                        "url": "https://raw.githubusercontent.com/joel-brand/FIT3179-F/main/data/research-stats-updated.csv",
+                        "format": {
+                            "type": "csv"
+                        }
+                    },
+                    "transform": [
+                        {
+                            "filter": "isValid(datum[\"GERD - financed by Rest of the world (abroad) %\"]) && datum[\"GERD - financed by Rest of the world (abroad) %\"] > 0"
+                        },
+                        {
+                            "calculate": "toNumber(datum[\"GERD - financed by Rest of the world (abroad) %\"])",
+                            "as": "numField"
+                        }
+                    ],
+                    "selection": {
+                        "sel39": {
+                            "type": "interval",
+                            "encodings": [
+                                "x"
+                            ],
+                            "resolve": "intersect"
+                        }
+                    },
+                    "encoding": {
+                        "color": {
+                            "field": "GERD - financed by Rest of the world (abroad) %",
+                            "type": "quantitative",
+                            "legend": null,
+                            "scale": {
+                                "type": "quantile"
+                            }
+                        },
+                        "y": {
+                            "field": "numField",
+                            "type": "quantitative",
+                            "axis": {
+                                "title": null,
+                                "tickCount": 5
+                            },
+                            "scale": {
+                                "domain": [
+                                    0,
+                                    100
+                                ]
+                            }
+                        },
+                        "x": {
+                            "field": "Country",
+                            "type": "nominal",
+                            "sort": "y",
+                            "axis": null
+                        },
+                        "tooltip": [
+                            {
+                                "field": "Country",
+                                "type": "Nominal"
+                            },
+                            {
+                                "field": "GERD - financed by Rest of the world (abroad) %",
+                                "type": "quantitative",
+                                "title": "Funded by Foreign Interests (% of R&D)",
+                                "format": ".2f"
+                            }
+                        ],
+                        "opacity": {
+                            "condition": {
+                                "test": {
+                                    "and": [
+                                        {
+                                            "selection": "sel38"
+                                        },
+                                        {
+                                            "selection": "sel39"
+                                        }
+                                    ]
+                                },
+                                "value": 0.8
+                            },
+                            "value": 0.1
+                        }
+                    },
+                    "title": null,
+                    "width": 473,
+                    "height": 100
+                }
+            ],
+            "title": "Funded by Foreign Interests (% of R&D)"
+        }
+    ],
+    "params": [
+        {
+            "name": "RotateWorldFunding",
+            "value": 0,
+            "bind": {
+                "input": "range",
+                "min": -180,
+                "max": 180,
+                "step": 1,
+                "name": "Rotation",
+                "element": "#mapSliderFunding"
+            }
+        }
+    ],
+    "config": {
+        "font": "Open Sans"
+    }
+}

@@ -1,0 +1,207 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+    "mark": {
+        "type": "area",
+        "tooltip": true,
+        "interpolate": "natural"
+    },
+    "data": {
+        "url": "https://raw.githubusercontent.com/joel-brand/FIT3179-F/main/data/WIPO-IP-stats.csv",
+        "format": {
+            "type": "csv"
+        }
+    },
+    "selection": {
+        "sel15": {
+            "type": "single",
+            "fields": [
+                "FieldName"
+            ],
+            "bind": {
+                "input": "select",
+                "options": [
+                    null,
+                    "Unknown",
+                    "Electrical machinery, apparatus, energy",
+                    "Audio-visual technology",
+                    "Telecommunications",
+                    "Digital communication",
+                    "Basic communication processes",
+                    "Computer technology",
+                    "IT methods for management",
+                    "Semiconductors",
+                    "Optics",
+                    "Measurement",
+                    "Analysis of biological materials",
+                    "Control",
+                    "Medical technology",
+                    "Organic fine chemistry",
+                    "Biotechnology",
+                    "Pharmaceuticals",
+                    "Macromolecular chemistry, polymers",
+                    "Food chemistry",
+                    "Basic materials chemistry",
+                    "Materials, metallurgy",
+                    "Surface technology, coating",
+                    "Micro-structural and nano-technology",
+                    "Chemical engineering",
+                    "Environmental technology",
+                    "Handling",
+                    "Machine tools",
+                    "Engines, pumps, turbines",
+                    "Textile and paper machines",
+                    "Other special machines",
+                    "Thermal processes and apparatus",
+                    "Mechanical elements",
+                    "Transport",
+                    "Furniture, games",
+                    "Other consumer goods",
+                    "Civil engineering"
+                ],
+                "labels": [
+                    "All Fields",
+                    "Unknown",
+                    "Electrical machinery, apparatus, energy",
+                    "Audio-visual technology",
+                    "Telecommunications",
+                    "Digital communication",
+                    "Basic communication processes",
+                    "Computer technology",
+                    "IT methods for management",
+                    "Semiconductors",
+                    "Optics",
+                    "Measurement",
+                    "Analysis of biological materials",
+                    "Control",
+                    "Medical technology",
+                    "Organic fine chemistry",
+                    "Biotechnology",
+                    "Pharmaceuticals",
+                    "Macromolecular chemistry, polymers",
+                    "Food chemistry",
+                    "Basic materials chemistry",
+                    "Materials, metallurgy",
+                    "Surface technology, coating",
+                    "Micro-structural and nano-technology",
+                    "Chemical engineering",
+                    "Environmental technology",
+                    "Handling",
+                    "Machine tools",
+                    "Engines, pumps, turbines",
+                    "Textile and paper machines",
+                    "Other special machines",
+                    "Thermal processes and apparatus",
+                    "Mechanical elements",
+                    "Transport",
+                    "Furniture, games",
+                    "Other consumer goods",
+                    "Civil engineering"
+                ],
+                "name": "Field"
+            }
+        }
+    },
+    "transform": [
+        {
+            "lookup": "Field",
+            "from": {
+                "data": {
+                    "url": "https://raw.githubusercontent.com/joel-brand/FIT3179-F/main/data/ip_field_lookup.csv",
+                    "format": {
+                        "type": "csv"
+                    }
+                },
+                "key": "FieldCode",
+                "fields": [
+                    "FieldName"
+                ]
+            }
+        },
+        {
+            "filter": {
+                "selection": "sel15"
+            }
+        },
+        {
+            "lookup": "Origin (Code)",
+            "from": {
+                "data": {
+                    "url": "https://raw.githubusercontent.com/joel-brand/FIT3179/main/data/countries.csv",
+                    "format": {
+                        "type": "csv"
+                    }
+                },
+                "key": "alpha-2-code",
+                "fields": [
+                    "region"
+                ]
+            }
+        },
+        {
+            "filter": "isValid(datum.region)"
+        },
+        {
+            "calculate": "if(datum.region==\"East Asia & Pacific\"||datum.region==\"Europe & Central Asia\"||datum.region==\"North America\",datum.region,\"Other\")",
+            "as": "binned_regions"
+        },
+        {
+            "aggregate": [
+                {
+                    "op": "sum",
+                    "field": "Value",
+                    "as": "Total_Filed"
+                }
+            ],
+            "groupby": [
+                "binned_regions",
+                "Year"
+            ]
+        }
+    ],
+    "encoding": {
+        "x": {
+            "field": "Year",
+            "type": "temporal",
+            "axis": {
+                "grid": false,
+                "ticks": false,
+                "labelOverlap": true,
+                "labelSeparation": 40,
+                "labelAngle": 0
+            }
+        },
+        "y": {
+            "field": "Total_Filed",
+            "type": "quantitative",
+            "stack": "center",
+            "title": "Total Patents Granted"
+        },
+        "color": {
+            "field": "binned_regions",
+            "type": "nominal",
+            "title": "By Origin",
+            "legend": {
+                "orient": "top"
+            },
+            "scale": {
+                "domain": [
+                    "East Asia & Pacific",
+                    "Europe & Central Asia",
+                    "North America",
+                    "Other"
+                ],
+                "range": [
+                    "#e41a1c",
+                    "#377eb8",
+                    "#ff7f00",
+                    "grey"
+                ]
+            }
+        },
+        "opacity": {
+            "value": 0.8
+        }
+    },
+    "height": 500,
+    "width": 800
+}

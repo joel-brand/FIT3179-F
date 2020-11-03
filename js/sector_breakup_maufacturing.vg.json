@@ -1,0 +1,158 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+    "mark": {
+        "type": "bar",
+        "tooltip": true
+    },
+    "data": {
+        "url": "https://raw.githubusercontent.com/joel-brand/FIT3179-F/main/data/manufacturing-breakup.csv",
+        "format": {
+            "type": "csv"
+        }
+    },
+    "transform": [
+        {
+            "lookup": "CountryCode",
+            "from": {
+                "data": {
+                    "url": "https://raw.githubusercontent.com/joel-brand/FIT3179-F/main/data/universal-economic-fitness-2014.csv",
+                    "format": {
+                        "type": "csv",
+                        "parse": {
+                            "economic-fitness": "number"
+                        }
+                    }
+                },
+                "key": "country-code",
+                "fields": [
+                    "economic-fitness"
+                ]
+            }
+        },
+        {
+            "filter": "isValid(datum[\"economic-fitness\"])"
+        },
+        {
+            "calculate": "toNumber(datum[\"economic-fitness\"])",
+            "as": "numval"
+        },
+        {
+            "window": [
+                {
+                    "op": "ntile",
+                    "param": 5,
+                    "field": "numval",
+                    "type": "quantitative",
+                    "as": "quantileval"
+                }
+            ],
+            "frame": [
+                null,
+                null
+            ],
+            "sort": [
+                {
+                    "field": "numval",
+                    "type": "quantitative"
+                }
+            ]
+        },
+        {
+            "lookup": "quantileval",
+            "from": {
+                "data": {
+                    "values": [
+                        {
+                            "bucket": 1,
+                            "bucket-label": "1-20"
+                        },
+                        {
+                            "bucket": 2,
+                            "bucket-label": "21-40"
+                        },
+                        {
+                            "bucket": 3,
+                            "bucket-label": "41-60"
+                        },
+                        {
+                            "bucket": 4,
+                            "bucket-label": "61-80"
+                        },
+                        {
+                            "bucket": 5,
+                            "bucket-label": "81-100"
+                        }
+                    ]
+                },
+                "key": "bucket",
+                "fields": [
+                    "bucket-label"
+                ]
+            }
+        }
+    ],
+    "encoding": {
+        "x": {
+            "field": "ManufacturingVA",
+            "type": "quantitative",
+            "aggregate": "average",
+            "stack": "normalize",
+            "axis": {
+                "title": "% of Manufacturing Value Added",
+                "labels": false,
+                "ticks": false,
+                "grid": false
+            }
+        },
+        "y": {
+            "field": "bucket-label",
+            "type": "ordinal",
+            "title": "Economic Fitness (Percentile)"
+        },
+        "opacity": {
+            "value": 0.7
+        },
+        "color": {
+            "field": "ManufacturingType",
+            "type": "nominal",
+            "title": "Manufacturing Type",
+            "legend": {
+                "orient": "top"
+            },
+            "scale": {
+                "range": [
+                    "#e41a1c",
+                    "#377eb8",
+                    "#4daf4a",
+                    "#984ea3",
+                    "#ff7f00"
+                ]
+            }
+        },
+        "tooltip": [
+            {
+                "field": "bucket-label",
+                "title": "Economic Fitness Percentile",
+                "type": "Ordinal"
+            },
+            {
+                "field": "ManufacturingType",
+                "title": "Manufacturing Type",
+                "type": "Nominal"
+            },
+            {
+                "field": "ManufacturingVA",
+                "aggregate": "average",
+                "stack": "normalize",
+                "title": "Avg % of Manufacturing Value Added",
+                "type": "quantitative",
+                "format": ".2f"
+            }
+        ]
+    },
+    "width": 480,
+    "height": 190,
+    "config": {
+        "font": "Open Sans"
+    }
+}

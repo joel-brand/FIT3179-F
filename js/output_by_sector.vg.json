@@ -1,0 +1,1372 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+    "vconcat": [
+        {
+            "hconcat": [
+                {
+                    "layer": [
+                        {
+                            "mark": {
+                                "type": "point",
+                                "filled": true
+                            },
+                            "data": {
+                                "url": "https://raw.githubusercontent.com/joel-brand/FIT3179/main/data/cleaned_wdi_economic_output_breakup.csv",
+                                "format": {
+                                    "type": "csv",
+                                    "parse": {
+                                        "Year": "number",
+                                        "GDP": "number",
+                                        "Industry": "number",
+                                        "Manufacturing": "number"
+                                    }
+                                }
+                            },
+                            "transform": [
+                                {
+                                    "lookup": "Country Code",
+                                    "from": {
+                                        "data": {
+                                            "url": "https://raw.githubusercontent.com/joel-brand/FIT3179/main/data/countries.csv",
+                                            "format": {
+                                                "type": "csv"
+                                            }
+                                        },
+                                        "key": "country-code",
+                                        "fields": [
+                                            "income-group",
+                                            "region"
+                                        ]
+                                    }
+                                },
+                                {
+                                    "lookup": "Country Code",
+                                    "from": {
+                                        "data": {
+                                            "url": "https://raw.githubusercontent.com/joel-brand/FIT3179-F/main/data/universal-economic-fitness-2014.csv",
+                                            "format": {
+                                                "type": "csv",
+                                                "parse": {
+                                                    "economic-fitness": "number"
+                                                }
+                                            }
+                                        },
+                                        "key": "country-code",
+                                        "fields": [
+                                            "economic-fitness"
+                                        ]
+                                    }
+                                },
+                                {
+                                    "filter": "datum.Year == 2014 && datum.Services != 0 && datum.Services != null&& datum[\"income-group\"] != null"
+                                },
+                                {
+                                    "calculate": "datum.GDP / 1000000000",
+                                    "as": "GDP_billions"
+                                }
+                            ],
+                            "selection": {
+                                "bubbleHover": {
+                                    "fields": [
+                                        "Country Name"
+                                    ],
+                                    "type": "single",
+                                    "on": "mouseover"
+                                }
+                            },
+                            "encoding": {
+                                "x": {
+                                    "field": "economic-fitness",
+                                    "type": "quantitative",
+                                    "axis": {
+                                        "title": null
+                                    },
+                                    "scale": {
+                                        "type": "pow",
+                                        "exponent": 0.34
+                                    }
+                                },
+                                "y": {
+                                    "field": "Services",
+                                    "type": "quantitative",
+                                    "axis": {
+                                        "grid": false,
+                                        "title": "Services"
+                                    },
+                                    "scale": {
+                                        "domain": [
+                                            0,
+                                            100
+                                        ]
+                                    }
+                                },
+                                "size": {
+                                    "field": "GDP_billions",
+                                    "type": "quantitative",
+                                    "legend": null,
+                                    "scale": {
+                                        "range": [
+                                            10,
+                                            1000
+                                        ]
+                                    }
+                                },
+                                "opacity": {
+                                    "condition": {
+                                        "selection": "bubbleHover",
+                                        "value": 0.7
+                                    },
+                                    "value": 0.15
+                                },
+                                "tooltip": [
+                                    {
+                                        "field": "economic-fitness",
+                                        "type": "quantitative",
+                                        "title": "Economic Fitness",
+                                        "format": ".2f"
+                                    },
+                                    {
+                                        "field": "Services",
+                                        "type": "quantitative",
+                                        "title": "Services (% of GDP)",
+                                        "format": ".2f"
+                                    },
+                                    {
+                                        "field": "GDP_billions",
+                                        "type": "quantitative",
+                                        "title": "GDP (billions USD)",
+                                        "format": ".2f"
+                                    }
+                                ]
+                            },
+                            "title": null,
+                            "width": 400,
+                            "height": 300
+                        },
+                        {
+                            "mark": {
+                                "type": "line",
+                                "color": "#007E20",
+                                "clip": true
+                            },
+                            "data": {
+                                "url": "https://raw.githubusercontent.com/joel-brand/FIT3179/main/data/cleaned_wdi_economic_output_breakup.csv",
+                                "format": {
+                                    "type": "csv",
+                                    "parse": {
+                                        "Year": "number",
+                                        "GDP": "number",
+                                        "Industry": "number",
+                                        "Manufacturing": "number"
+                                    }
+                                }
+                            },
+                            "transform": [
+                                {
+                                    "lookup": "Country Code",
+                                    "from": {
+                                        "data": {
+                                            "url": "https://raw.githubusercontent.com/joel-brand/FIT3179/main/data/countries.csv",
+                                            "format": {
+                                                "type": "csv"
+                                            }
+                                        },
+                                        "key": "country-code",
+                                        "fields": [
+                                            "income-group",
+                                            "region"
+                                        ]
+                                    }
+                                },
+                                {
+                                    "lookup": "Country Code",
+                                    "from": {
+                                        "data": {
+                                            "url": "https://raw.githubusercontent.com/joel-brand/FIT3179-F/main/data/universal-economic-fitness-2014.csv",
+                                            "format": {
+                                                "type": "csv",
+                                                "parse": {
+                                                    "economic-fitness": "number"
+                                                }
+                                            }
+                                        },
+                                        "key": "country-code",
+                                        "fields": [
+                                            "economic-fitness"
+                                        ]
+                                    }
+                                },
+                                {
+                                    "filter": "datum.Year == 2014 && datum.Services != 0 && datum.Services != null&& datum[\"income-group\"] != null"
+                                },
+                                {
+                                    "regression": "Services",
+                                    "on": "economic-fitness",
+                                    "extent": [
+                                        0,
+                                        21
+                                    ],
+                                    "as": [
+                                        "regress-x",
+                                        "regress-y"
+                                    ]
+                                }
+                            ],
+                            "encoding": {
+                                "x": {
+                                    "field": "regress-x",
+                                    "type": "quantitative",
+                                    "axis": {
+                                        "title": null
+                                    },
+                                    "scale": {
+                                        "type": "pow",
+                                        "exponent": 0.34
+                                    }
+                                },
+                                "y": {
+                                    "field": "regress-y",
+                                    "type": "quantitative",
+                                    "axis": {
+                                        "grid": false,
+                                        "title": "Services"
+                                    },
+                                    "scale": {
+                                        "domain": [
+                                            0,
+                                            100
+                                        ]
+                                    }
+                                }
+                            },
+                            "title": null,
+                            "width": 400,
+                            "height": 300
+                        },
+                        {
+                            "mark": {
+                                "type": "text",
+                                "align": "left",
+                                "dy": -17,
+                                "dx": -15,
+                                "baseline": "left"
+                            },
+                            "data": {
+                                "url": "https://raw.githubusercontent.com/joel-brand/FIT3179/main/data/cleaned_wdi_economic_output_breakup.csv",
+                                "format": {
+                                    "type": "csv",
+                                    "parse": {
+                                        "Year": "number",
+                                        "GDP": "number",
+                                        "Industry": "number",
+                                        "Manufacturing": "number"
+                                    }
+                                }
+                            },
+                            "transform": [
+                                {
+                                    "filter": "datum[\"Country Code\"] == \"CHN\" && datum.Year == 2014"
+                                },
+                                {
+                                    "lookup": "Country Code",
+                                    "from": {
+                                        "data": {
+                                            "url": "https://raw.githubusercontent.com/joel-brand/FIT3179-F/main/data/universal-economic-fitness-2014.csv",
+                                            "format": {
+                                                "type": "csv",
+                                                "parse": {
+                                                    "economic-fitness": "number"
+                                                }
+                                            }
+                                        },
+                                        "key": "country-code",
+                                        "fields": [
+                                            "economic-fitness"
+                                        ]
+                                    }
+                                }
+                            ],
+                            "encoding": {
+                                "x": {
+                                    "field": "economic-fitness",
+                                    "type": "quantitative",
+                                    "axis": {
+                                        "title": null
+                                    },
+                                    "scale": {
+                                        "type": "pow",
+                                        "exponent": 0.34
+                                    }
+                                },
+                                "y": {
+                                    "field": "Services",
+                                    "type": "quantitative",
+                                    "axis": {
+                                        "grid": false
+                                    },
+                                    "scale": {
+                                        "domain": [
+                                            0,
+                                            100
+                                        ]
+                                    }
+                                },
+                                "text": {
+                                    "value": "China"
+                                }
+                            },
+                            "title": null,
+                            "width": 400,
+                            "height": 300
+                        }
+                    ]
+                },
+                {
+                    "layer": [
+                        {
+                            "mark": {
+                                "type": "point",
+                                "filled": true
+                            },
+                            "data": {
+                                "url": "https://raw.githubusercontent.com/joel-brand/FIT3179/main/data/cleaned_wdi_economic_output_breakup.csv",
+                                "format": {
+                                    "type": "csv",
+                                    "parse": {
+                                        "Year": "number",
+                                        "GDP": "number",
+                                        "Industry": "number",
+                                        "Manufacturing": "number"
+                                    }
+                                }
+                            },
+                            "transform": [
+                                {
+                                    "lookup": "Country Code",
+                                    "from": {
+                                        "data": {
+                                            "url": "https://raw.githubusercontent.com/joel-brand/FIT3179/main/data/countries.csv",
+                                            "format": {
+                                                "type": "csv"
+                                            }
+                                        },
+                                        "key": "country-code",
+                                        "fields": [
+                                            "income-group",
+                                            "region"
+                                        ]
+                                    }
+                                },
+                                {
+                                    "lookup": "Country Code",
+                                    "from": {
+                                        "data": {
+                                            "url": "https://raw.githubusercontent.com/joel-brand/FIT3179-F/main/data/universal-economic-fitness-2014.csv",
+                                            "format": {
+                                                "type": "csv",
+                                                "parse": {
+                                                    "economic-fitness": "number"
+                                                }
+                                            }
+                                        },
+                                        "key": "country-code",
+                                        "fields": [
+                                            "economic-fitness"
+                                        ]
+                                    }
+                                },
+                                {
+                                    "filter": "datum.Year == 2014 && datum.Manufacturing != 0 && datum.Manufacturing != null&& datum[\"income-group\"] != null"
+                                },
+                                {
+                                    "calculate": "datum.GDP / 1000000000",
+                                    "as": "GDP_billions"
+                                }
+                            ],
+                            "selection": {
+                                "bubbleHover": {
+                                    "fields": [
+                                        "Country Name"
+                                    ],
+                                    "type": "single",
+                                    "on": "mouseover"
+                                }
+                            },
+                            "encoding": {
+                                "x": {
+                                    "field": "economic-fitness",
+                                    "type": "quantitative",
+                                    "axis": {
+                                        "title": null
+                                    },
+                                    "scale": {
+                                        "type": "pow",
+                                        "exponent": 0.34
+                                    }
+                                },
+                                "y": {
+                                    "field": "Manufacturing",
+                                    "type": "quantitative",
+                                    "axis": {
+                                        "grid": false,
+                                        "title": "Manufacturing"
+                                    },
+                                    "scale": {
+                                        "domain": [
+                                            0,
+                                            100
+                                        ]
+                                    }
+                                },
+                                "size": {
+                                    "field": "GDP_billions",
+                                    "type": "quantitative",
+                                    "legend": null,
+                                    "scale": {
+                                        "range": [
+                                            10,
+                                            1000
+                                        ]
+                                    }
+                                },
+                                "opacity": {
+                                    "condition": {
+                                        "selection": "bubbleHover",
+                                        "value": 0.7
+                                    },
+                                    "value": 0.15
+                                },
+                                "tooltip": [
+                                    {
+                                        "field": "economic-fitness",
+                                        "type": "quantitative",
+                                        "title": "Economic Fitness",
+                                        "format": ".2f"
+                                    },
+                                    {
+                                        "field": "Manufacturing",
+                                        "type": "quantitative",
+                                        "title": "Manufacturing (% of GDP)",
+                                        "format": ".2f"
+                                    },
+                                    {
+                                        "field": "GDP_billions",
+                                        "type": "quantitative",
+                                        "title": "GDP (billions USD)",
+                                        "format": ".2f"
+                                    }
+                                ]
+                            },
+                            "title": null,
+                            "width": 400,
+                            "height": 300
+                        },
+                        {
+                            "mark": {
+                                "type": "line",
+                                "color": "#007E20",
+                                "clip": true
+                            },
+                            "data": {
+                                "url": "https://raw.githubusercontent.com/joel-brand/FIT3179/main/data/cleaned_wdi_economic_output_breakup.csv",
+                                "format": {
+                                    "type": "csv",
+                                    "parse": {
+                                        "Year": "number",
+                                        "GDP": "number",
+                                        "Industry": "number",
+                                        "Manufacturing": "number"
+                                    }
+                                }
+                            },
+                            "transform": [
+                                {
+                                    "lookup": "Country Code",
+                                    "from": {
+                                        "data": {
+                                            "url": "https://raw.githubusercontent.com/joel-brand/FIT3179/main/data/countries.csv",
+                                            "format": {
+                                                "type": "csv"
+                                            }
+                                        },
+                                        "key": "country-code",
+                                        "fields": [
+                                            "income-group",
+                                            "region"
+                                        ]
+                                    }
+                                },
+                                {
+                                    "lookup": "Country Code",
+                                    "from": {
+                                        "data": {
+                                            "url": "https://raw.githubusercontent.com/joel-brand/FIT3179-F/main/data/universal-economic-fitness-2014.csv",
+                                            "format": {
+                                                "type": "csv",
+                                                "parse": {
+                                                    "economic-fitness": "number"
+                                                }
+                                            }
+                                        },
+                                        "key": "country-code",
+                                        "fields": [
+                                            "economic-fitness"
+                                        ]
+                                    }
+                                },
+                                {
+                                    "filter": "datum.Year == 2014 && datum.Manufacturing != 0 && datum.Manufacturing != null&& datum[\"income-group\"] != null"
+                                },
+                                {
+                                    "regression": "Manufacturing",
+                                    "on": "economic-fitness",
+                                    "extent": [
+                                        0,
+                                        21
+                                    ],
+                                    "as": [
+                                        "regress-x",
+                                        "regress-y"
+                                    ]
+                                }
+                            ],
+                            "encoding": {
+                                "x": {
+                                    "field": "regress-x",
+                                    "type": "quantitative",
+                                    "axis": {
+                                        "title": null
+                                    },
+                                    "scale": {
+                                        "type": "pow",
+                                        "exponent": 0.34
+                                    }
+                                },
+                                "y": {
+                                    "field": "regress-y",
+                                    "type": "quantitative",
+                                    "axis": {
+                                        "grid": false,
+                                        "title": "Manufacturing"
+                                    },
+                                    "scale": {
+                                        "domain": [
+                                            0,
+                                            100
+                                        ]
+                                    }
+                                }
+                            },
+                            "title": null,
+                            "width": 400,
+                            "height": 300
+                        },
+                        {
+                            "mark": {
+                                "type": "text",
+                                "align": "left",
+                                "dy": -17,
+                                "dx": -15,
+                                "baseline": "left"
+                            },
+                            "data": {
+                                "url": "https://raw.githubusercontent.com/joel-brand/FIT3179/main/data/cleaned_wdi_economic_output_breakup.csv",
+                                "format": {
+                                    "type": "csv",
+                                    "parse": {
+                                        "Year": "number",
+                                        "GDP": "number",
+                                        "Industry": "number",
+                                        "Manufacturing": "number"
+                                    }
+                                }
+                            },
+                            "transform": [
+                                {
+                                    "filter": "datum[\"Country Code\"] == \"CHN\" && datum.Year == 2014"
+                                },
+                                {
+                                    "lookup": "Country Code",
+                                    "from": {
+                                        "data": {
+                                            "url": "https://raw.githubusercontent.com/joel-brand/FIT3179-F/main/data/universal-economic-fitness-2014.csv",
+                                            "format": {
+                                                "type": "csv",
+                                                "parse": {
+                                                    "economic-fitness": "number"
+                                                }
+                                            }
+                                        },
+                                        "key": "country-code",
+                                        "fields": [
+                                            "economic-fitness"
+                                        ]
+                                    }
+                                }
+                            ],
+                            "encoding": {
+                                "x": {
+                                    "field": "economic-fitness",
+                                    "type": "quantitative",
+                                    "axis": {
+                                        "title": null
+                                    },
+                                    "scale": {
+                                        "type": "pow",
+                                        "exponent": 0.34
+                                    }
+                                },
+                                "y": {
+                                    "field": "Manufacturing",
+                                    "type": "quantitative",
+                                    "axis": {
+                                        "grid": false
+                                    },
+                                    "scale": {
+                                        "domain": [
+                                            0,
+                                            100
+                                        ]
+                                    }
+                                },
+                                "text": {
+                                    "value": "China"
+                                }
+                            },
+                            "title": null,
+                            "width": 400,
+                            "height": 300
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "hconcat": [
+                {
+                    "layer": [
+                        {
+                            "layer": [
+                                {
+                                    "mark": {
+                                        "type": "point",
+                                        "filled": true
+                                    },
+                                    "data": {
+                                        "url": "https://raw.githubusercontent.com/joel-brand/FIT3179/main/data/cleaned_wdi_economic_output_breakup.csv",
+                                        "format": {
+                                            "type": "csv",
+                                            "parse": {
+                                                "Year": "number",
+                                                "GDP": "number",
+                                                "Industry": "number",
+                                                "Manufacturing": "number"
+                                            }
+                                        }
+                                    },
+                                    "transform": [
+                                        {
+                                            "lookup": "Country Code",
+                                            "from": {
+                                                "data": {
+                                                    "url": "https://raw.githubusercontent.com/joel-brand/FIT3179/main/data/countries.csv",
+                                                    "format": {
+                                                        "type": "csv"
+                                                    }
+                                                },
+                                                "key": "country-code",
+                                                "fields": [
+                                                    "income-group",
+                                                    "region"
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "lookup": "Country Code",
+                                            "from": {
+                                                "data": {
+                                                    "url": "https://raw.githubusercontent.com/joel-brand/FIT3179-F/main/data/universal-economic-fitness-2014.csv",
+                                                    "format": {
+                                                        "type": "csv",
+                                                        "parse": {
+                                                            "economic-fitness": "number"
+                                                        }
+                                                    }
+                                                },
+                                                "key": "country-code",
+                                                "fields": [
+                                                    "economic-fitness"
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "filter": "datum.Year == 2014 && datum.Industry != 0 && datum.Industry != null&& datum[\"income-group\"] != null"
+                                        },
+                                        {
+                                            "calculate": "datum.GDP / 1000000000",
+                                            "as": "GDP_billions"
+                                        }
+                                    ],
+                                    "selection": {
+                                        "bubbleHover": {
+                                            "fields": [
+                                                "Country Name"
+                                            ],
+                                            "type": "single",
+                                            "on": "mouseover"
+                                        }
+                                    },
+                                    "encoding": {
+                                        "x": {
+                                            "field": "economic-fitness",
+                                            "type": "quantitative",
+                                            "axis": {
+                                                "title": null
+                                            },
+                                            "scale": {
+                                                "type": "pow",
+                                                "exponent": 0.34
+                                            }
+                                        },
+                                        "y": {
+                                            "field": "Industry",
+                                            "type": "quantitative",
+                                            "axis": {
+                                                "grid": false,
+                                                "title": "Industry"
+                                            },
+                                            "scale": {
+                                                "domain": [
+                                                    0,
+                                                    100
+                                                ]
+                                            }
+                                        },
+                                        "size": {
+                                            "field": "GDP_billions",
+                                            "type": "quantitative",
+                                            "legend": null,
+                                            "scale": {
+                                                "range": [
+                                                    10,
+                                                    1000
+                                                ]
+                                            }
+                                        },
+                                        "opacity": {
+                                            "condition": {
+                                                "selection": "bubbleHover",
+                                                "value": 0.7
+                                            },
+                                            "value": 0.15
+                                        },
+                                        "tooltip": [
+                                            {
+                                                "field": "economic-fitness",
+                                                "type": "quantitative",
+                                                "title": "Economic Fitness",
+                                                "format": ".2f"
+                                            },
+                                            {
+                                                "field": "Industry",
+                                                "type": "quantitative",
+                                                "title": "Industry (% of GDP)",
+                                                "format": ".2f"
+                                            },
+                                            {
+                                                "field": "GDP_billions",
+                                                "type": "quantitative",
+                                                "title": "GDP (billions USD)",
+                                                "format": ".2f"
+                                            }
+                                        ]
+                                    },
+                                    "title": null,
+                                    "width": 400,
+                                    "height": 300
+                                },
+                                {
+                                    "mark": {
+                                        "type": "line",
+                                        "color": "#007E20",
+                                        "clip": true
+                                    },
+                                    "data": {
+                                        "url": "https://raw.githubusercontent.com/joel-brand/FIT3179/main/data/cleaned_wdi_economic_output_breakup.csv",
+                                        "format": {
+                                            "type": "csv",
+                                            "parse": {
+                                                "Year": "number",
+                                                "GDP": "number",
+                                                "Industry": "number",
+                                                "Manufacturing": "number"
+                                            }
+                                        }
+                                    },
+                                    "transform": [
+                                        {
+                                            "lookup": "Country Code",
+                                            "from": {
+                                                "data": {
+                                                    "url": "https://raw.githubusercontent.com/joel-brand/FIT3179/main/data/countries.csv",
+                                                    "format": {
+                                                        "type": "csv"
+                                                    }
+                                                },
+                                                "key": "country-code",
+                                                "fields": [
+                                                    "income-group",
+                                                    "region"
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "lookup": "Country Code",
+                                            "from": {
+                                                "data": {
+                                                    "url": "https://raw.githubusercontent.com/joel-brand/FIT3179-F/main/data/universal-economic-fitness-2014.csv",
+                                                    "format": {
+                                                        "type": "csv",
+                                                        "parse": {
+                                                            "economic-fitness": "number"
+                                                        }
+                                                    }
+                                                },
+                                                "key": "country-code",
+                                                "fields": [
+                                                    "economic-fitness"
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "filter": "datum.Year == 2014 && datum.Industry != 0 && datum.Industry != null&& datum[\"income-group\"] != null"
+                                        },
+                                        {
+                                            "regression": "Industry",
+                                            "on": "economic-fitness",
+                                            "extent": [
+                                                0,
+                                                21
+                                            ],
+                                            "as": [
+                                                "regress-x",
+                                                "regress-y"
+                                            ]
+                                        }
+                                    ],
+                                    "encoding": {
+                                        "x": {
+                                            "field": "regress-x",
+                                            "type": "quantitative",
+                                            "axis": {
+                                                "title": null
+                                            },
+                                            "scale": {
+                                                "type": "pow",
+                                                "exponent": 0.34
+                                            }
+                                        },
+                                        "y": {
+                                            "field": "regress-y",
+                                            "type": "quantitative",
+                                            "axis": {
+                                                "grid": false,
+                                                "title": "Industry"
+                                            },
+                                            "scale": {
+                                                "domain": [
+                                                    0,
+                                                    100
+                                                ]
+                                            }
+                                        }
+                                    },
+                                    "title": null,
+                                    "width": 400,
+                                    "height": 300
+                                },
+                                {
+                                    "mark": {
+                                        "type": "text",
+                                        "align": "left",
+                                        "dy": -17,
+                                        "dx": -15,
+                                        "baseline": "left"
+                                    },
+                                    "data": {
+                                        "url": "https://raw.githubusercontent.com/joel-brand/FIT3179/main/data/cleaned_wdi_economic_output_breakup.csv",
+                                        "format": {
+                                            "type": "csv",
+                                            "parse": {
+                                                "Year": "number",
+                                                "GDP": "number",
+                                                "Industry": "number",
+                                                "Manufacturing": "number"
+                                            }
+                                        }
+                                    },
+                                    "transform": [
+                                        {
+                                            "filter": "datum[\"Country Code\"] == \"CHN\" && datum.Year == 2014"
+                                        },
+                                        {
+                                            "lookup": "Country Code",
+                                            "from": {
+                                                "data": {
+                                                    "url": "https://raw.githubusercontent.com/joel-brand/FIT3179-F/main/data/universal-economic-fitness-2014.csv",
+                                                    "format": {
+                                                        "type": "csv",
+                                                        "parse": {
+                                                            "economic-fitness": "number"
+                                                        }
+                                                    }
+                                                },
+                                                "key": "country-code",
+                                                "fields": [
+                                                    "economic-fitness"
+                                                ]
+                                            }
+                                        }
+                                    ],
+                                    "encoding": {
+                                        "x": {
+                                            "field": "economic-fitness",
+                                            "type": "quantitative",
+                                            "axis": {
+                                                "title": null
+                                            },
+                                            "scale": {
+                                                "type": "pow",
+                                                "exponent": 0.34
+                                            }
+                                        },
+                                        "y": {
+                                            "field": "Industry",
+                                            "type": "quantitative",
+                                            "axis": {
+                                                "grid": false
+                                            },
+                                            "scale": {
+                                                "domain": [
+                                                    0,
+                                                    100
+                                                ]
+                                            }
+                                        },
+                                        "text": {
+                                            "value": "China"
+                                        }
+                                    },
+                                    "title": null,
+                                    "width": 400,
+                                    "height": 300
+                                }
+                            ]
+                        },
+                        {
+                            "layer": [
+                                {
+                                    "mark": {
+                                        "type": "rect",
+                                        "filled": true,
+                                        "color": "white",
+                                        "x": 250,
+                                        "y": 40,
+                                        "width": 260,
+                                        "height": 50
+                                    },
+                                    "title": null
+                                },
+                                {
+                                    "mark": {
+                                        "type": "text",
+                                        "x": 250,
+                                        "y": 28,
+                                        "fontSize": 12
+                                    },
+                                    "encoding": {
+                                        "text": {
+                                            "value": [
+                                                "Many advanced economies used to be industry-",
+                                                "focused, giving rise to the term 'post-industrial",
+                                                "economy'"
+                                            ]
+                                        }
+                                    }
+                                }
+                            ],
+                            "data": {
+                                "values": [
+                                    0
+                                ]
+                            }
+                        }
+                    ]
+                },
+                {
+                    "layer": [
+                        {
+                            "layer": [
+                                {
+                                    "mark": {
+                                        "type": "point",
+                                        "filled": true
+                                    },
+                                    "data": {
+                                        "url": "https://raw.githubusercontent.com/joel-brand/FIT3179/main/data/cleaned_wdi_economic_output_breakup.csv",
+                                        "format": {
+                                            "type": "csv",
+                                            "parse": {
+                                                "Year": "number",
+                                                "GDP": "number",
+                                                "Industry": "number",
+                                                "Manufacturing": "number"
+                                            }
+                                        }
+                                    },
+                                    "transform": [
+                                        {
+                                            "lookup": "Country Code",
+                                            "from": {
+                                                "data": {
+                                                    "url": "https://raw.githubusercontent.com/joel-brand/FIT3179/main/data/countries.csv",
+                                                    "format": {
+                                                        "type": "csv"
+                                                    }
+                                                },
+                                                "key": "country-code",
+                                                "fields": [
+                                                    "income-group",
+                                                    "region"
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "lookup": "Country Code",
+                                            "from": {
+                                                "data": {
+                                                    "url": "https://raw.githubusercontent.com/joel-brand/FIT3179-F/main/data/universal-economic-fitness-2014.csv",
+                                                    "format": {
+                                                        "type": "csv",
+                                                        "parse": {
+                                                            "economic-fitness": "number"
+                                                        }
+                                                    }
+                                                },
+                                                "key": "country-code",
+                                                "fields": [
+                                                    "economic-fitness"
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "filter": "datum.Year == 2014 && datum.Agriculture != 0 && datum.Agriculture != null&& datum[\"income-group\"] != null"
+                                        },
+                                        {
+                                            "calculate": "datum.GDP / 1000000000",
+                                            "as": "GDP_billions"
+                                        }
+                                    ],
+                                    "selection": {
+                                        "bubbleHover": {
+                                            "fields": [
+                                                "Country Name"
+                                            ],
+                                            "type": "single",
+                                            "on": "mouseover"
+                                        }
+                                    },
+                                    "encoding": {
+                                        "x": {
+                                            "field": "economic-fitness",
+                                            "type": "quantitative",
+                                            "axis": {
+                                                "title": null
+                                            },
+                                            "scale": {
+                                                "type": "pow",
+                                                "exponent": 0.34
+                                            }
+                                        },
+                                        "y": {
+                                            "field": "Agriculture",
+                                            "type": "quantitative",
+                                            "axis": {
+                                                "grid": false,
+                                                "title": "Agriculture"
+                                            },
+                                            "scale": {
+                                                "domain": [
+                                                    0,
+                                                    100
+                                                ]
+                                            }
+                                        },
+                                        "size": {
+                                            "field": "GDP_billions",
+                                            "type": "quantitative",
+                                            "legend": null,
+                                            "scale": {
+                                                "range": [
+                                                    10,
+                                                    1000
+                                                ]
+                                            }
+                                        },
+                                        "opacity": {
+                                            "condition": {
+                                                "selection": "bubbleHover",
+                                                "value": 0.7
+                                            },
+                                            "value": 0.15
+                                        },
+                                        "tooltip": [
+                                            {
+                                                "field": "economic-fitness",
+                                                "type": "quantitative",
+                                                "title": "Economic Fitness",
+                                                "format": ".2f"
+                                            },
+                                            {
+                                                "field": "Agriculture",
+                                                "type": "quantitative",
+                                                "title": "Agriculture (% of GDP)",
+                                                "format": ".2f"
+                                            },
+                                            {
+                                                "field": "GDP_billions",
+                                                "type": "quantitative",
+                                                "title": "GDP (billions USD)",
+                                                "format": ".2f"
+                                            }
+                                        ]
+                                    },
+                                    "title": null,
+                                    "width": 400,
+                                    "height": 300
+                                },
+                                {
+                                    "mark": {
+                                        "type": "line",
+                                        "color": "#007E20",
+                                        "clip": true
+                                    },
+                                    "data": {
+                                        "url": "https://raw.githubusercontent.com/joel-brand/FIT3179/main/data/cleaned_wdi_economic_output_breakup.csv",
+                                        "format": {
+                                            "type": "csv",
+                                            "parse": {
+                                                "Year": "number",
+                                                "GDP": "number",
+                                                "Industry": "number",
+                                                "Manufacturing": "number"
+                                            }
+                                        }
+                                    },
+                                    "transform": [
+                                        {
+                                            "lookup": "Country Code",
+                                            "from": {
+                                                "data": {
+                                                    "url": "https://raw.githubusercontent.com/joel-brand/FIT3179/main/data/countries.csv",
+                                                    "format": {
+                                                        "type": "csv"
+                                                    }
+                                                },
+                                                "key": "country-code",
+                                                "fields": [
+                                                    "income-group",
+                                                    "region"
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "lookup": "Country Code",
+                                            "from": {
+                                                "data": {
+                                                    "url": "https://raw.githubusercontent.com/joel-brand/FIT3179-F/main/data/universal-economic-fitness-2014.csv",
+                                                    "format": {
+                                                        "type": "csv",
+                                                        "parse": {
+                                                            "economic-fitness": "number"
+                                                        }
+                                                    }
+                                                },
+                                                "key": "country-code",
+                                                "fields": [
+                                                    "economic-fitness"
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "filter": "datum.Year == 2014 && datum.Agriculture != 0 && datum.Agriculture != null&& datum[\"income-group\"] != null"
+                                        },
+                                        {
+                                            "regression": "Agriculture",
+                                            "on": "economic-fitness",
+                                            "extent": [
+                                                0,
+                                                21
+                                            ],
+                                            "as": [
+                                                "regress-x",
+                                                "regress-y"
+                                            ]
+                                        }
+                                    ],
+                                    "encoding": {
+                                        "x": {
+                                            "field": "regress-x",
+                                            "type": "quantitative",
+                                            "axis": {
+                                                "title": null
+                                            },
+                                            "scale": {
+                                                "type": "pow",
+                                                "exponent": 0.34
+                                            }
+                                        },
+                                        "y": {
+                                            "field": "regress-y",
+                                            "type": "quantitative",
+                                            "axis": {
+                                                "grid": false,
+                                                "title": "Agriculture"
+                                            },
+                                            "scale": {
+                                                "domain": [
+                                                    0,
+                                                    100
+                                                ]
+                                            }
+                                        }
+                                    },
+                                    "title": null,
+                                    "width": 400,
+                                    "height": 300
+                                },
+                                {
+                                    "mark": {
+                                        "type": "text",
+                                        "align": "left",
+                                        "dy": -17,
+                                        "dx": -15,
+                                        "baseline": "left"
+                                    },
+                                    "data": {
+                                        "url": "https://raw.githubusercontent.com/joel-brand/FIT3179/main/data/cleaned_wdi_economic_output_breakup.csv",
+                                        "format": {
+                                            "type": "csv",
+                                            "parse": {
+                                                "Year": "number",
+                                                "GDP": "number",
+                                                "Industry": "number",
+                                                "Manufacturing": "number"
+                                            }
+                                        }
+                                    },
+                                    "transform": [
+                                        {
+                                            "filter": "datum[\"Country Code\"] == \"CHN\" && datum.Year == 2014"
+                                        },
+                                        {
+                                            "lookup": "Country Code",
+                                            "from": {
+                                                "data": {
+                                                    "url": "https://raw.githubusercontent.com/joel-brand/FIT3179-F/main/data/universal-economic-fitness-2014.csv",
+                                                    "format": {
+                                                        "type": "csv",
+                                                        "parse": {
+                                                            "economic-fitness": "number"
+                                                        }
+                                                    }
+                                                },
+                                                "key": "country-code",
+                                                "fields": [
+                                                    "economic-fitness"
+                                                ]
+                                            }
+                                        }
+                                    ],
+                                    "encoding": {
+                                        "x": {
+                                            "field": "economic-fitness",
+                                            "type": "quantitative",
+                                            "axis": {
+                                                "title": null
+                                            },
+                                            "scale": {
+                                                "type": "pow",
+                                                "exponent": 0.34
+                                            }
+                                        },
+                                        "y": {
+                                            "field": "Agriculture",
+                                            "type": "quantitative",
+                                            "axis": {
+                                                "grid": false
+                                            },
+                                            "scale": {
+                                                "domain": [
+                                                    0,
+                                                    100
+                                                ]
+                                            }
+                                        },
+                                        "text": {
+                                            "value": "China"
+                                        }
+                                    },
+                                    "title": null,
+                                    "width": 400,
+                                    "height": 300
+                                }
+                            ]
+                        },
+                        {
+                            "layer": [
+                                {
+                                    "mark": {
+                                        "type": "rect",
+                                        "filled": true,
+                                        "color": "white",
+                                        "x": 250,
+                                        "y": 40,
+                                        "width": 220,
+                                        "height": 30
+                                    },
+                                    "title": null
+                                },
+                                {
+                                    "mark": {
+                                        "type": "text",
+                                        "x": 250,
+                                        "y": 33,
+                                        "fontSize": 12
+                                    },
+                                    "encoding": {
+                                        "text": {
+                                            "value": [
+                                                "Most advanced economies have very small",
+                                                "agricultural sectors"
+                                            ]
+                                        }
+                                    }
+                                }
+                            ],
+                            "data": {
+                                "values": [
+                                    0
+                                ]
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "title": null,
+    "config": {
+        "font": "Open Sans"
+    }
+}

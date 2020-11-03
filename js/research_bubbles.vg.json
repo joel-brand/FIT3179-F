@@ -1,0 +1,1103 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+    "hconcat": [
+        {
+            "hconcat": [
+                {
+                    "layer": [
+                        {
+                            "mark": {
+                                "type": "point",
+                                "filled": true
+                            },
+                            "selection": {
+                                "selectRegion": {
+                                    "type": "multi",
+                                    "fields": [
+                                        "region"
+                                    ],
+                                    "on": "click",
+                                    "clear": "dblclick"
+                                },
+                                "selectRegionClick": {
+                                    "fields": [
+                                        "Country Name"
+                                    ],
+                                    "type": "single",
+                                    "on": "mouseover"
+                                }
+                            },
+                            "data": {
+                                "url": "https://raw.githubusercontent.com/joel-brand/FIT3179/main/data/cleaned_wdi_economic_output_breakup.csv",
+                                "format": {
+                                    "type": "csv",
+                                    "parse": {
+                                        "Year": "number",
+                                        "GDP": "number",
+                                        "Industry": "number",
+                                        "Manufacturing": "number"
+                                    }
+                                }
+                            },
+                            "transform": [
+                                {
+                                    "filter": "datum.Year==2014"
+                                },
+                                {
+                                    "lookup": "Country Code",
+                                    "from": {
+                                        "data": {
+                                            "url": "https://raw.githubusercontent.com/joel-brand/FIT3179-F/main/data/universal-economic-fitness-2014.csv",
+                                            "format": {
+                                                "type": "csv",
+                                                "parse": {
+                                                    "economic-fitness": "number"
+                                                }
+                                            }
+                                        },
+                                        "key": "country-code",
+                                        "fields": [
+                                            "economic-fitness"
+                                        ]
+                                    }
+                                },
+                                {
+                                    "lookup": "Country Code",
+                                    "from": {
+                                        "data": {
+                                            "url": "https://raw.githubusercontent.com/joel-brand/FIT3179-F/main/data/research-stats-updated.csv",
+                                            "format": {
+                                                "type": "csv"
+                                            }
+                                        },
+                                        "key": "CountryCode",
+                                        "fields": [
+                                            "GERD - Experimental development %",
+                                            "Researchers per million inhabitants (FTE)"
+                                        ]
+                                    }
+                                },
+                                {
+                                    "filter": "isValid(datum[\"economic-fitness\"]) &&isValid(datum[\"GERD - Experimental development %\"]) && datum[\"GERD - Experimental development %\"] > 0"
+                                },
+                                {
+                                    "lookup": "Country Code",
+                                    "from": {
+                                        "data": {
+                                            "url": "https://raw.githubusercontent.com/joel-brand/FIT3179/main/data/countries.csv",
+                                            "format": {
+                                                "type": "csv"
+                                            }
+                                        },
+                                        "key": "country-code",
+                                        "fields": [
+                                            "region"
+                                        ]
+                                    }
+                                },
+                                {
+                                    "filter": "toNumber(datum[\"Researchers per million inhabitants (FTE)\"]) > SelectResearcherCount"
+                                },
+                                {
+                                    "calculate": "datum.GDP / 1000000000",
+                                    "as": "GDPBillions"
+                                }
+                            ],
+                            "encoding": {
+                                "opacity": {
+                                    "condition": {
+                                        "selection": {
+                                            "or": [
+                                                "selectRegionClick",
+                                                "selectRegion"
+                                            ]
+                                        },
+                                        "value": 0.7
+                                    },
+                                    "value": 0.15
+                                },
+                                "x": {
+                                    "field": "GERD - Experimental development %",
+                                    "type": "quantitative",
+                                    "title": "Experimental Development (% of R&D Expenditure)",
+                                    "scale": {
+                                        "type": "sqrt"
+                                    }
+                                },
+                                "y": {
+                                    "field": "economic-fitness",
+                                    "type": "quantitative",
+                                    "axis": {
+                                        "title": null
+                                    },
+                                    "scale": {
+                                        "domain": [
+                                            0,
+                                            21
+                                        ],
+                                        "type": "sqrt"
+                                    }
+                                },
+                                "size": {
+                                    "field": "GDP",
+                                    "type": "quantitative",
+                                    "scale": {
+                                        "domain": [
+                                            0,
+                                            100000000000000
+                                        ],
+                                        "range": [
+                                            0,
+                                            1000
+                                        ],
+                                        "type": "pow",
+                                        "exponent": 0.5
+                                    }
+                                },
+                                "color": {
+                                    "field": "region",
+                                    "type": "nominal",
+                                    "title": "Region",
+                                    "legend": {
+                                        "offset": 5,
+                                        "orient": "top"
+                                    },
+                                    "scale": {
+                                        "domain": [
+                                            "East Asia & Pacific",
+                                            "Europe & Central Asia",
+                                            "Latin America & Caribbean",
+                                            "Middle East & North Africa",
+                                            "North America",
+                                            "South Asia",
+                                            "Sub-Saharan Africa"
+                                        ],
+                                        "range": [
+                                            "#e41a1c",
+                                            "#377eb8",
+                                            "#4daf4a",
+                                            "#984ea3",
+                                            "#ff7f00",
+                                            "#f781bf",
+                                            "#a65628"
+                                        ]
+                                    }
+                                },
+                                "tooltip": [
+                                    {
+                                        "field": "Country Name",
+                                        "type": "nominal",
+                                        "title": "Country"
+                                    },
+                                    {
+                                        "field": "region",
+                                        "type": "nominal",
+                                        "title": "Region"
+                                    },
+                                    {
+                                        "field": "GDPBillions",
+                                        "type": "quantitative",
+                                        "title": "GDP (billions USD)",
+                                        "format": ".2f"
+                                    },
+                                    {
+                                        "field": "GERD - Experimental development %",
+                                        "type": "quantitative",
+                                        "title": "Experimental Development (% of R&D Expenditure)",
+                                        "format": ".2%"
+                                    },
+                                    {
+                                        "field": "Researchers per million inhabitants (FTE)",
+                                        "type": "quantitative",
+                                        "title": "FTE Researchers per Million Inhabitants",
+                                        "format": ".2f"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "mark": {
+                                "type": "line",
+                                "color": "darkgrey",
+                                "strokeDash": [
+                                    4,
+                                    4
+                                ],
+                                "clip": true
+                            },
+                            "data": {
+                                "url": "https://raw.githubusercontent.com/joel-brand/FIT3179-F/main/data/research-stats-updated.csv",
+                                "format": {
+                                    "type": "csv"
+                                }
+                            },
+                            "transform": [
+                                {
+                                    "lookup": "CountryCode",
+                                    "from": {
+                                        "data": {
+                                            "url": "https://raw.githubusercontent.com/joel-brand/FIT3179-F/main/data/universal-economic-fitness-2014.csv",
+                                            "format": {
+                                                "type": "csv",
+                                                "parse": {
+                                                    "economic-fitness": "number"
+                                                }
+                                            }
+                                        },
+                                        "key": "country-code",
+                                        "fields": [
+                                            "economic-fitness"
+                                        ]
+                                    }
+                                },
+                                {
+                                    "filter": "isValid(datum[\"economic-fitness\"]) &&isValid(datum[\"GERD - Experimental development %\"]) && datum[\"GERD - Experimental development %\"] > 0"
+                                },
+                                {
+                                    "regression": "economic-fitness",
+                                    "extent": [
+                                        0,
+                                        90
+                                    ],
+                                    "on": "GERD - Experimental development %",
+                                    "as": [
+                                        "rx",
+                                        "ry"
+                                    ]
+                                }
+                            ],
+                            "encoding": {
+                                "x": {
+                                    "field": "rx",
+                                    "type": "quantitative"
+                                },
+                                "y": {
+                                    "field": "ry",
+                                    "type": "quantitative",
+                                    "scale": {
+                                        "domain": [
+                                            0,
+                                            9
+                                        ]
+                                    }
+                                }
+                            }
+                        }
+                    ],
+                    "width": 330,
+                    "height": 350
+                },
+                {
+                    "layer": [
+                        {
+                            "mark": {
+                                "type": "point",
+                                "filled": true
+                            },
+                            "selection": {
+                                "selectRegion": {
+                                    "type": "multi",
+                                    "fields": [
+                                        "region"
+                                    ],
+                                    "on": "click",
+                                    "clear": "dblclick"
+                                },
+                                "selectRegionClick": {
+                                    "fields": [
+                                        "Country Name"
+                                    ],
+                                    "type": "single",
+                                    "on": "mouseover"
+                                }
+                            },
+                            "data": {
+                                "url": "https://raw.githubusercontent.com/joel-brand/FIT3179/main/data/cleaned_wdi_economic_output_breakup.csv",
+                                "format": {
+                                    "type": "csv",
+                                    "parse": {
+                                        "Year": "number",
+                                        "GDP": "number",
+                                        "Industry": "number",
+                                        "Manufacturing": "number"
+                                    }
+                                }
+                            },
+                            "transform": [
+                                {
+                                    "filter": "datum.Year==2014"
+                                },
+                                {
+                                    "lookup": "Country Code",
+                                    "from": {
+                                        "data": {
+                                            "url": "https://raw.githubusercontent.com/joel-brand/FIT3179-F/main/data/universal-economic-fitness-2014.csv",
+                                            "format": {
+                                                "type": "csv",
+                                                "parse": {
+                                                    "economic-fitness": "number"
+                                                }
+                                            }
+                                        },
+                                        "key": "country-code",
+                                        "fields": [
+                                            "economic-fitness"
+                                        ]
+                                    }
+                                },
+                                {
+                                    "lookup": "Country Code",
+                                    "from": {
+                                        "data": {
+                                            "url": "https://raw.githubusercontent.com/joel-brand/FIT3179-F/main/data/research-stats-updated.csv",
+                                            "format": {
+                                                "type": "csv"
+                                            }
+                                        },
+                                        "key": "CountryCode",
+                                        "fields": [
+                                            "GERD - financed by Business enterprise %",
+                                            "Researchers per million inhabitants (FTE)"
+                                        ]
+                                    }
+                                },
+                                {
+                                    "filter": "isValid(datum[\"economic-fitness\"]) &&isValid(datum[\"GERD - financed by Business enterprise %\"]) && datum[\"GERD - financed by Business enterprise %\"] > 0"
+                                },
+                                {
+                                    "lookup": "Country Code",
+                                    "from": {
+                                        "data": {
+                                            "url": "https://raw.githubusercontent.com/joel-brand/FIT3179/main/data/countries.csv",
+                                            "format": {
+                                                "type": "csv"
+                                            }
+                                        },
+                                        "key": "country-code",
+                                        "fields": [
+                                            "region"
+                                        ]
+                                    }
+                                },
+                                {
+                                    "filter": "toNumber(datum[\"Researchers per million inhabitants (FTE)\"]) > SelectResearcherCount"
+                                },
+                                {
+                                    "calculate": "datum.GDP / 1000000000",
+                                    "as": "GDPBillions"
+                                }
+                            ],
+                            "encoding": {
+                                "opacity": {
+                                    "condition": {
+                                        "selection": {
+                                            "or": [
+                                                "selectRegionClick",
+                                                "selectRegion"
+                                            ]
+                                        },
+                                        "value": 0.7
+                                    },
+                                    "value": 0.15
+                                },
+                                "x": {
+                                    "field": "GERD - financed by Business enterprise %",
+                                    "type": "quantitative",
+                                    "title": "R&D Funded by Business (% of R&D Expenditure)",
+                                    "scale": {
+                                        "type": "sqrt"
+                                    }
+                                },
+                                "y": {
+                                    "field": "economic-fitness",
+                                    "type": "quantitative",
+                                    "axis": {
+                                        "title": null
+                                    },
+                                    "scale": {
+                                        "domain": [
+                                            0,
+                                            21
+                                        ],
+                                        "type": "sqrt"
+                                    }
+                                },
+                                "size": {
+                                    "field": "GDP",
+                                    "type": "quantitative",
+                                    "scale": {
+                                        "domain": [
+                                            0,
+                                            100000000000000
+                                        ],
+                                        "range": [
+                                            0,
+                                            1000
+                                        ],
+                                        "type": "pow",
+                                        "exponent": 0.5
+                                    }
+                                },
+                                "color": {
+                                    "field": "region",
+                                    "type": "nominal",
+                                    "title": "Region",
+                                    "legend": {
+                                        "offset": 5,
+                                        "orient": "top"
+                                    },
+                                    "scale": {
+                                        "domain": [
+                                            "East Asia & Pacific",
+                                            "Europe & Central Asia",
+                                            "Latin America & Caribbean",
+                                            "Middle East & North Africa",
+                                            "North America",
+                                            "South Asia",
+                                            "Sub-Saharan Africa"
+                                        ],
+                                        "range": [
+                                            "#e41a1c",
+                                            "#377eb8",
+                                            "#4daf4a",
+                                            "#984ea3",
+                                            "#ff7f00",
+                                            "#f781bf",
+                                            "#a65628"
+                                        ]
+                                    }
+                                },
+                                "tooltip": [
+                                    {
+                                        "field": "Country Name",
+                                        "type": "nominal",
+                                        "title": "Country"
+                                    },
+                                    {
+                                        "field": "region",
+                                        "type": "nominal",
+                                        "title": "Region"
+                                    },
+                                    {
+                                        "field": "GDPBillions",
+                                        "type": "quantitative",
+                                        "title": "GDP (billions USD)",
+                                        "format": ".2f"
+                                    },
+                                    {
+                                        "field": "GERD - financed by Business enterprise %",
+                                        "type": "quantitative",
+                                        "title": "R&D Funded by Business (% of R&D Expenditure)",
+                                        "format": ".2%"
+                                    },
+                                    {
+                                        "field": "Researchers per million inhabitants (FTE)",
+                                        "type": "quantitative",
+                                        "title": "FTE Researchers per Million Inhabitants",
+                                        "format": ".2f"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "mark": {
+                                "type": "line",
+                                "color": "darkgrey",
+                                "strokeDash": [
+                                    4,
+                                    4
+                                ],
+                                "clip": true
+                            },
+                            "data": {
+                                "url": "https://raw.githubusercontent.com/joel-brand/FIT3179-F/main/data/research-stats-updated.csv",
+                                "format": {
+                                    "type": "csv"
+                                }
+                            },
+                            "transform": [
+                                {
+                                    "lookup": "CountryCode",
+                                    "from": {
+                                        "data": {
+                                            "url": "https://raw.githubusercontent.com/joel-brand/FIT3179-F/main/data/universal-economic-fitness-2014.csv",
+                                            "format": {
+                                                "type": "csv",
+                                                "parse": {
+                                                    "economic-fitness": "number"
+                                                }
+                                            }
+                                        },
+                                        "key": "country-code",
+                                        "fields": [
+                                            "economic-fitness"
+                                        ]
+                                    }
+                                },
+                                {
+                                    "filter": "isValid(datum[\"economic-fitness\"]) &&isValid(datum[\"GERD - financed by Business enterprise %\"]) && datum[\"GERD - financed by Business enterprise %\"] > 0"
+                                },
+                                {
+                                    "regression": "economic-fitness",
+                                    "extent": [
+                                        0,
+                                        90
+                                    ],
+                                    "on": "GERD - financed by Business enterprise %",
+                                    "as": [
+                                        "rx",
+                                        "ry"
+                                    ]
+                                }
+                            ],
+                            "encoding": {
+                                "x": {
+                                    "field": "rx",
+                                    "type": "quantitative"
+                                },
+                                "y": {
+                                    "field": "ry",
+                                    "type": "quantitative",
+                                    "scale": {
+                                        "domain": [
+                                            0,
+                                            9
+                                        ]
+                                    }
+                                }
+                            }
+                        }
+                    ],
+                    "width": 330,
+                    "height": 350
+                },
+                {
+                    "layer": [
+                        {
+                            "mark": {
+                                "type": "point",
+                                "filled": true
+                            },
+                            "selection": {
+                                "selectRegion": {
+                                    "type": "multi",
+                                    "fields": [
+                                        "region"
+                                    ],
+                                    "on": "click",
+                                    "clear": "dblclick"
+                                },
+                                "selectRegionClick": {
+                                    "fields": [
+                                        "Country Name"
+                                    ],
+                                    "type": "single",
+                                    "on": "mouseover"
+                                }
+                            },
+                            "data": {
+                                "url": "https://raw.githubusercontent.com/joel-brand/FIT3179/main/data/cleaned_wdi_economic_output_breakup.csv",
+                                "format": {
+                                    "type": "csv",
+                                    "parse": {
+                                        "Year": "number",
+                                        "GDP": "number",
+                                        "Industry": "number",
+                                        "Manufacturing": "number"
+                                    }
+                                }
+                            },
+                            "transform": [
+                                {
+                                    "filter": "datum.Year==2014"
+                                },
+                                {
+                                    "lookup": "Country Code",
+                                    "from": {
+                                        "data": {
+                                            "url": "https://raw.githubusercontent.com/joel-brand/FIT3179-F/main/data/universal-economic-fitness-2014.csv",
+                                            "format": {
+                                                "type": "csv",
+                                                "parse": {
+                                                    "economic-fitness": "number"
+                                                }
+                                            }
+                                        },
+                                        "key": "country-code",
+                                        "fields": [
+                                            "economic-fitness"
+                                        ]
+                                    }
+                                },
+                                {
+                                    "lookup": "Country Code",
+                                    "from": {
+                                        "data": {
+                                            "url": "https://raw.githubusercontent.com/joel-brand/FIT3179-F/main/data/research-stats-updated.csv",
+                                            "format": {
+                                                "type": "csv"
+                                            }
+                                        },
+                                        "key": "CountryCode",
+                                        "fields": [
+                                            "GERD per capita (in current PPP$)",
+                                            "Researchers per million inhabitants (FTE)"
+                                        ]
+                                    }
+                                },
+                                {
+                                    "filter": "isValid(datum[\"economic-fitness\"]) &&isValid(datum[\"GERD per capita (in current PPP$)\"]) && datum[\"GERD per capita (in current PPP$)\"] > 0"
+                                },
+                                {
+                                    "lookup": "Country Code",
+                                    "from": {
+                                        "data": {
+                                            "url": "https://raw.githubusercontent.com/joel-brand/FIT3179/main/data/countries.csv",
+                                            "format": {
+                                                "type": "csv"
+                                            }
+                                        },
+                                        "key": "country-code",
+                                        "fields": [
+                                            "region"
+                                        ]
+                                    }
+                                },
+                                {
+                                    "filter": "toNumber(datum[\"Researchers per million inhabitants (FTE)\"]) > SelectResearcherCount"
+                                },
+                                {
+                                    "calculate": "datum.GDP / 1000000000",
+                                    "as": "GDPBillions"
+                                }
+                            ],
+                            "encoding": {
+                                "opacity": {
+                                    "condition": {
+                                        "selection": {
+                                            "or": [
+                                                "selectRegionClick",
+                                                "selectRegion"
+                                            ]
+                                        },
+                                        "value": 0.7
+                                    },
+                                    "value": 0.15
+                                },
+                                "x": {
+                                    "field": "GERD per capita (in current PPP$)",
+                                    "type": "quantitative",
+                                    "title": "R&D Funding per Capita (PPP$, per year)",
+                                    "scale": {
+                                        "type": "sqrt"
+                                    }
+                                },
+                                "y": {
+                                    "field": "economic-fitness",
+                                    "type": "quantitative",
+                                    "axis": {
+                                        "title": null
+                                    },
+                                    "scale": {
+                                        "domain": [
+                                            0,
+                                            21
+                                        ],
+                                        "type": "sqrt"
+                                    }
+                                },
+                                "size": {
+                                    "field": "GDP",
+                                    "type": "quantitative",
+                                    "scale": {
+                                        "domain": [
+                                            0,
+                                            100000000000000
+                                        ],
+                                        "range": [
+                                            0,
+                                            1000
+                                        ],
+                                        "type": "pow",
+                                        "exponent": 0.5
+                                    }
+                                },
+                                "color": {
+                                    "field": "region",
+                                    "type": "nominal",
+                                    "title": "Region",
+                                    "legend": {
+                                        "offset": 5,
+                                        "orient": "top"
+                                    },
+                                    "scale": {
+                                        "domain": [
+                                            "East Asia & Pacific",
+                                            "Europe & Central Asia",
+                                            "Latin America & Caribbean",
+                                            "Middle East & North Africa",
+                                            "North America",
+                                            "South Asia",
+                                            "Sub-Saharan Africa"
+                                        ],
+                                        "range": [
+                                            "#e41a1c",
+                                            "#377eb8",
+                                            "#4daf4a",
+                                            "#984ea3",
+                                            "#ff7f00",
+                                            "#f781bf",
+                                            "#a65628"
+                                        ]
+                                    }
+                                },
+                                "tooltip": [
+                                    {
+                                        "field": "Country Name",
+                                        "type": "nominal",
+                                        "title": "Country"
+                                    },
+                                    {
+                                        "field": "region",
+                                        "type": "nominal",
+                                        "title": "Region"
+                                    },
+                                    {
+                                        "field": "GDPBillions",
+                                        "type": "quantitative",
+                                        "title": "GDP (billions USD)",
+                                        "format": ".2f"
+                                    },
+                                    {
+                                        "field": "GERD per capita (in current PPP$)",
+                                        "type": "quantitative",
+                                        "title": "R&D Funding per Capita (PPP$, per year)",
+                                        "format": ".2f"
+                                    },
+                                    {
+                                        "field": "Researchers per million inhabitants (FTE)",
+                                        "type": "quantitative",
+                                        "title": "FTE Researchers per Million Inhabitants",
+                                        "format": ".2f"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "mark": {
+                                "type": "line",
+                                "color": "darkgrey",
+                                "strokeDash": [
+                                    4,
+                                    4
+                                ],
+                                "clip": true
+                            },
+                            "data": {
+                                "url": "https://raw.githubusercontent.com/joel-brand/FIT3179-F/main/data/research-stats-updated.csv",
+                                "format": {
+                                    "type": "csv"
+                                }
+                            },
+                            "transform": [
+                                {
+                                    "lookup": "CountryCode",
+                                    "from": {
+                                        "data": {
+                                            "url": "https://raw.githubusercontent.com/joel-brand/FIT3179-F/main/data/universal-economic-fitness-2014.csv",
+                                            "format": {
+                                                "type": "csv",
+                                                "parse": {
+                                                    "economic-fitness": "number"
+                                                }
+                                            }
+                                        },
+                                        "key": "country-code",
+                                        "fields": [
+                                            "economic-fitness"
+                                        ]
+                                    }
+                                },
+                                {
+                                    "filter": "isValid(datum[\"economic-fitness\"]) &&isValid(datum[\"GERD per capita (in current PPP$)\"]) && datum[\"GERD per capita (in current PPP$)\"] > 0"
+                                },
+                                {
+                                    "regression": "economic-fitness",
+                                    "extent": [
+                                        0,
+                                        2400
+                                    ],
+                                    "on": "GERD per capita (in current PPP$)",
+                                    "as": [
+                                        "rx",
+                                        "ry"
+                                    ]
+                                }
+                            ],
+                            "encoding": {
+                                "x": {
+                                    "field": "rx",
+                                    "type": "quantitative"
+                                },
+                                "y": {
+                                    "field": "ry",
+                                    "type": "quantitative",
+                                    "scale": {
+                                        "domain": [
+                                            0,
+                                            9
+                                        ]
+                                    }
+                                }
+                            }
+                        }
+                    ],
+                    "width": 330,
+                    "height": 350
+                }
+            ]
+        },
+        {
+            "layer": [
+                {
+                    "mark": {
+                        "type": "point",
+                        "filled": true
+                    },
+                    "selection": {
+                        "selectRegion": {
+                            "type": "multi",
+                            "fields": [
+                                "region"
+                            ],
+                            "on": "click",
+                            "clear": "dblclick"
+                        },
+                        "selectRegionClick": {
+                            "fields": [
+                                "Country Name"
+                            ],
+                            "type": "single",
+                            "on": "mouseover"
+                        }
+                    },
+                    "encoding": {
+                        "size": {
+                            "field": "GDP",
+                            "type": "quantitative",
+                            "title": null,
+                            "legend": null,
+                            "scale": {
+                                "domain": [
+                                    0,
+                                    100000000000000
+                                ],
+                                "range": [
+                                    0,
+                                    1000
+                                ],
+                                "type": "pow",
+                                "exponent": 0.5
+                            }
+                        },
+                        "tooltip": [
+                            {
+                                "field": "Country Name",
+                                "type": "nominal",
+                                "title": "Country"
+                            },
+                            {
+                                "field": "region",
+                                "type": "nominal",
+                                "title": "Region"
+                            },
+                            {
+                                "field": "GDPBillions",
+                                "type": "quantitative",
+                                "title": "GDP (billions USD)",
+                                "format": ".2f"
+                            },
+                            {
+                                "field": "GERD - Experimental development %",
+                                "type": "quantitative",
+                                "title": "Experimental Development (% R&D expenditure)",
+                                "format": ".2%"
+                            },
+                            {
+                                "field": "GERD - Basic research %",
+                                "type": "quantitative",
+                                "title": "Basic Research (% R&D expenditure)",
+                                "format": ".2%"
+                            },
+                            {
+                                "field": "Researchers per million inhabitants (FTE)",
+                                "type": "quantitative",
+                                "title": "FTE Researchers per Million Inhabitants",
+                                "format": ".2f"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "mark": {
+                        "type": "text",
+                        "dy": -9
+                    },
+                    "transform": [
+                        {
+                            "filter": "datum[\"Country Name\"]==\"Israel\""
+                        }
+                    ],
+                    "encoding": {
+                        "text": {
+                            "value": "Israel"
+                        }
+                    }
+                }
+            ],
+            "width": 352,
+            "height": 350,
+            "title": null,
+            "data": {
+                "url": "https://raw.githubusercontent.com/joel-brand/FIT3179/main/data/cleaned_wdi_economic_output_breakup.csv",
+                "format": {
+                    "type": "csv",
+                    "parse": {
+                        "Year": "number",
+                        "GDP": "number",
+                        "Industry": "number",
+                        "Manufacturing": "number"
+                    }
+                }
+            },
+            "transform": [
+                {
+                    "filter": "datum.Year==2014"
+                },
+                {
+                    "lookup": "Country Code",
+                    "from": {
+                        "data": {
+                            "url": "https://raw.githubusercontent.com/joel-brand/FIT3179-F/main/data/research-stats-updated.csv",
+                            "format": {
+                                "type": "csv"
+                            }
+                        },
+                        "key": "CountryCode",
+                        "fields": [
+                            "GERD - Experimental development %",
+                            "GERD - Basic research %",
+                            "Researchers per million inhabitants (FTE)"
+                        ]
+                    }
+                },
+                {
+                    "filter": "toNumber(datum[\"Researchers per million inhabitants (FTE)\"]) > SelectResearcherCount &&isValid(datum[\"GERD - Experimental development %\"]) &&datum[\"GERD - Experimental development %\"] != 0 &&isValid(datum[\"GERD - Basic research %\"]) &&datum[\"GERD - Basic research %\"] != 0"
+                },
+                {
+                    "lookup": "Country Code",
+                    "from": {
+                        "data": {
+                            "url": "https://raw.githubusercontent.com/joel-brand/FIT3179/main/data/countries.csv",
+                            "format": {
+                                "type": "csv"
+                            }
+                        },
+                        "key": "country-code",
+                        "fields": [
+                            "region"
+                        ]
+                    }
+                },
+                {
+                    "filter": "isValid(datum.region)"
+                },
+                {
+                    "calculate": "datum.GDP / 1000000000",
+                    "as": "GDPBillions"
+                }
+            ],
+            "encoding": {
+                "opacity": {
+                    "condition": {
+                        "selection": {
+                            "or": [
+                                "selectRegionClick",
+                                "selectRegion"
+                            ]
+                        },
+                        "value": 0.7
+                    },
+                    "value": 0.15
+                },
+                "x": {
+                    "field": "GERD - Experimental development %",
+                    "type": "quantitative",
+                    "title": "Experimental Development (% R&D expenditure)",
+                    "scale": {
+                        "domain": [
+                            0,
+                            90
+                        ]
+                    }
+                },
+                "y": {
+                    "field": "GERD - Basic research %",
+                    "type": "quantitative",
+                    "title": "Basic Research (% R&D expenditure)",
+                    "scale": {
+                        "domain": [
+                            0,
+                            60
+                        ]
+                    }
+                },
+                "color": {
+                    "field": "region",
+                    "type": "nominal",
+                    "title": "Region",
+                    "legend": {
+                        "offset": 5
+                    },
+                    "scale": {
+                        "domain": [
+                            "East Asia & Pacific",
+                            "Europe & Central Asia",
+                            "Latin America & Caribbean",
+                            "Middle East & North Africa",
+                            "North America",
+                            "South Asia",
+                            "Sub-Saharan Africa"
+                        ],
+                        "range": [
+                            "#e41a1c",
+                            "#377eb8",
+                            "#4daf4a",
+                            "#984ea3",
+                            "#ff7f00",
+                            "#f781bf",
+                            "#a65628"
+                        ]
+                    }
+                }
+            }
+        }
+    ],
+    "spacing": 53,
+    "params": [
+        {
+            "name": "SelectResearcherCount",
+            "value": 0,
+            "bind": {
+                "input": "range",
+                "min": 0,
+                "max": 6000,
+                "step": 1,
+                "name": "Minimum # Researchers per Million Inhabitants"
+            }
+        }
+    ],
+    "config": {
+        "font": "Open Sans"
+    }
+}

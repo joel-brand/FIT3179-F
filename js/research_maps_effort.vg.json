@@ -1,0 +1,597 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+    "hconcat": [
+        {
+            "vconcat": [
+                {
+                    "layer": [
+                        {
+                            "mark": {
+                                "type": "geoshape",
+                                "fill": "#e1ecfa"
+                            },
+                            "data": {
+                                "sphere": {}
+                            }
+                        },
+                        {
+                            "mark": {
+                                "type": "geoshape",
+                                "stroke": "white",
+                                "strokeWidth": 0.5
+                            },
+                            "data": {
+                                "graticule": {}
+                            }
+                        },
+                        {
+                            "mark": {
+                                "type": "geoshape",
+                                "stroke": "grey",
+                                "strokeOpacity": 0.7
+                            },
+                            "data": {
+                                "url": "https://raw.githubusercontent.com/joel-brand/FIT3179/main/data/world.lowres.json",
+                                "format": {
+                                    "type": "topojson",
+                                    "feature": "ne_110m_admin_0_countries"
+                                }
+                            },
+                            "transform": [
+                                {
+                                    "lookup": "properties.ISO_A3",
+                                    "from": {
+                                        "data": {
+                                            "url": "https://raw.githubusercontent.com/joel-brand/FIT3179-F/main/data/research-stats-updated.csv",
+                                            "format": {
+                                                "type": "csv"
+                                            }
+                                        },
+                                        "key": "CountryCode",
+                                        "fields": [
+                                            "Country",
+                                            "Researchers per million inhabitants (FTE)"
+                                        ]
+                                    }
+                                },
+                                {
+                                    "filter": "isValid(datum[\"Researchers per million inhabitants (FTE)\"]) && datum[\"Researchers per million inhabitants (FTE)\"] > 0"
+                                }
+                            ],
+                            "selection": {
+                                "sel84": {
+                                    "type": "multi",
+                                    "fields": [
+                                        "Country"
+                                    ],
+                                    "resolve": "intersect"
+                                }
+                            },
+                            "encoding": {
+                                "color": {
+                                    "field": "Researchers per million inhabitants (FTE)",
+                                    "type": "quantitative",
+                                    "legend": {
+                                        "type": "gradient",
+                                        "gradientLength": 300,
+                                        "direction": "horizontal",
+                                        "orient": "bottom",
+                                        "title": "# per Million"
+                                    },
+                                    "scale": {
+                                        "type": "quantile"
+                                    }
+                                },
+                                "tooltip": [
+                                    {
+                                        "field": "Country",
+                                        "type": "Nominal"
+                                    },
+                                    {
+                                        "field": "Researchers per million inhabitants (FTE)",
+                                        "type": "quantitative",
+                                        "title": "Researchers per Million Inhabitants (FTE)",
+                                        "format": ".2f"
+                                    }
+                                ],
+                                "opacity": {
+                                    "condition": {
+                                        "test": {
+                                            "and": [
+                                                {
+                                                    "selection": "sel84"
+                                                },
+                                                {
+                                                    "selection": "sel85"
+                                                }
+                                            ]
+                                        },
+                                        "value": 0.8
+                                    },
+                                    "value": 0.1
+                                }
+                            },
+                            "title": null,
+                            "width": 473,
+                            "height": 230
+                        },
+                        {
+                            "mark": {
+                                "type": "geoshape",
+                                "stroke": "grey",
+                                "strokeOpacity": 0.7,
+                                "fill": "#e8e8e8"
+                            },
+                            "data": {
+                                "url": "https://raw.githubusercontent.com/joel-brand/FIT3179/main/data/world.lowres.json",
+                                "format": {
+                                    "type": "topojson",
+                                    "feature": "ne_110m_admin_0_countries"
+                                }
+                            },
+                            "transform": [
+                                {
+                                    "lookup": "properties.ISO_A3",
+                                    "from": {
+                                        "data": {
+                                            "url": "https://raw.githubusercontent.com/joel-brand/FIT3179-F/main/data/research-stats-updated.csv",
+                                            "format": {
+                                                "type": "csv"
+                                            }
+                                        },
+                                        "key": "CountryCode",
+                                        "fields": [
+                                            "Country",
+                                            "Researchers per million inhabitants (FTE)"
+                                        ]
+                                    }
+                                },
+                                {
+                                    "filter": "datum[\"Researchers per million inhabitants (FTE)\"] == 0 || datum[\"Researchers per million inhabitants (FTE)\"] == null"
+                                }
+                            ],
+                            "encoding": {
+                                "tooltip": [
+                                    {
+                                        "field": "properties.NAME",
+                                        "type": "Nominal",
+                                        "title": "Country (No Data Available)"
+                                    }
+                                ],
+                                "opacity": {
+                                    "condition": {
+                                        "test": {
+                                            "and": [
+                                                {
+                                                    "selection": "sel84"
+                                                },
+                                                {
+                                                    "selection": "sel85"
+                                                }
+                                            ]
+                                        },
+                                        "value": 0.8
+                                    },
+                                    "value": 0.1
+                                }
+                            },
+                            "width": 473,
+                            "height": 230
+                        }
+                    ],
+                    "projection": {
+                        "type": "equalEarth",
+                        "rotate": [
+                            {
+                                "signal": "RotateWorldEffort"
+                            },
+                            0,
+                            0
+                        ],
+                        "scale": 85,
+                        "translate": [
+                            237,
+                            115
+                        ]
+                    }
+                },
+                {
+                    "mark": {
+                        "type": "bar",
+                        "stroke": "grey"
+                    },
+                    "data": {
+                        "url": "https://raw.githubusercontent.com/joel-brand/FIT3179-F/main/data/research-stats-updated.csv",
+                        "format": {
+                            "type": "csv"
+                        }
+                    },
+                    "transform": [
+                        {
+                            "filter": "isValid(datum[\"Researchers per million inhabitants (FTE)\"]) && datum[\"Researchers per million inhabitants (FTE)\"] > 0"
+                        },
+                        {
+                            "calculate": "toNumber(datum[\"Researchers per million inhabitants (FTE)\"])",
+                            "as": "numField"
+                        }
+                    ],
+                    "selection": {
+                        "sel85": {
+                            "type": "interval",
+                            "encodings": [
+                                "x"
+                            ],
+                            "resolve": "intersect"
+                        }
+                    },
+                    "encoding": {
+                        "color": {
+                            "field": "Researchers per million inhabitants (FTE)",
+                            "type": "quantitative",
+                            "legend": null,
+                            "scale": {
+                                "type": "quantile"
+                            }
+                        },
+                        "y": {
+                            "field": "numField",
+                            "type": "quantitative",
+                            "axis": {
+                                "title": null,
+                                "tickCount": 5
+                            },
+                            "scale": {
+                                "type": "sqrt"
+                            }
+                        },
+                        "x": {
+                            "field": "Country",
+                            "type": "nominal",
+                            "sort": "y",
+                            "axis": null
+                        },
+                        "tooltip": [
+                            {
+                                "field": "Country",
+                                "type": "Nominal"
+                            },
+                            {
+                                "field": "Researchers per million inhabitants (FTE)",
+                                "type": "quantitative",
+                                "title": "Researchers per Million Inhabitants (FTE)",
+                                "format": ".2f"
+                            }
+                        ],
+                        "opacity": {
+                            "condition": {
+                                "test": {
+                                    "and": [
+                                        {
+                                            "selection": "sel84"
+                                        },
+                                        {
+                                            "selection": "sel85"
+                                        }
+                                    ]
+                                },
+                                "value": 0.8
+                            },
+                            "value": 0.1
+                        }
+                    },
+                    "title": null,
+                    "width": 473,
+                    "height": 100
+                }
+            ],
+            "title": "Researchers per Million Inhabitants (FTE)"
+        },
+        {
+            "vconcat": [
+                {
+                    "layer": [
+                        {
+                            "mark": {
+                                "type": "geoshape",
+                                "fill": "#e1ecfa"
+                            },
+                            "data": {
+                                "sphere": {}
+                            }
+                        },
+                        {
+                            "mark": {
+                                "type": "geoshape",
+                                "stroke": "white",
+                                "strokeWidth": 0.5
+                            },
+                            "data": {
+                                "graticule": {}
+                            }
+                        },
+                        {
+                            "mark": {
+                                "type": "geoshape",
+                                "stroke": "grey",
+                                "strokeOpacity": 0.7
+                            },
+                            "data": {
+                                "url": "https://raw.githubusercontent.com/joel-brand/FIT3179/main/data/world.lowres.json",
+                                "format": {
+                                    "type": "topojson",
+                                    "feature": "ne_110m_admin_0_countries"
+                                }
+                            },
+                            "transform": [
+                                {
+                                    "lookup": "properties.ISO_A3",
+                                    "from": {
+                                        "data": {
+                                            "url": "https://raw.githubusercontent.com/joel-brand/FIT3179-F/main/data/research-stats-updated.csv",
+                                            "format": {
+                                                "type": "csv"
+                                            }
+                                        },
+                                        "key": "CountryCode",
+                                        "fields": [
+                                            "Country",
+                                            "GERD per capita (in current PPP$)"
+                                        ]
+                                    }
+                                },
+                                {
+                                    "filter": "isValid(datum[\"GERD per capita (in current PPP$)\"]) && datum[\"GERD per capita (in current PPP$)\"] > 0"
+                                }
+                            ],
+                            "selection": {
+                                "sel84": {
+                                    "type": "multi",
+                                    "fields": [
+                                        "Country"
+                                    ],
+                                    "resolve": "intersect"
+                                }
+                            },
+                            "encoding": {
+                                "color": {
+                                    "field": "GERD per capita (in current PPP$)",
+                                    "type": "quantitative",
+                                    "legend": {
+                                        "type": "gradient",
+                                        "gradientLength": 300,
+                                        "direction": "horizontal",
+                                        "orient": "bottom",
+                                        "title": "PPP$ per Capita"
+                                    },
+                                    "scale": {
+                                        "type": "quantile"
+                                    }
+                                },
+                                "tooltip": [
+                                    {
+                                        "field": "Country",
+                                        "type": "Nominal"
+                                    },
+                                    {
+                                        "field": "GERD per capita (in current PPP$)",
+                                        "type": "quantitative",
+                                        "title": "Research Expenditure per Capita (PPP$ per Year)",
+                                        "format": ".2f"
+                                    }
+                                ],
+                                "opacity": {
+                                    "condition": {
+                                        "test": {
+                                            "and": [
+                                                {
+                                                    "selection": "sel84"
+                                                },
+                                                {
+                                                    "selection": "sel85"
+                                                }
+                                            ]
+                                        },
+                                        "value": 0.8
+                                    },
+                                    "value": 0.1
+                                }
+                            },
+                            "title": null,
+                            "width": 473,
+                            "height": 230
+                        },
+                        {
+                            "mark": {
+                                "type": "geoshape",
+                                "stroke": "grey",
+                                "strokeOpacity": 0.7,
+                                "fill": "#e8e8e8"
+                            },
+                            "data": {
+                                "url": "https://raw.githubusercontent.com/joel-brand/FIT3179/main/data/world.lowres.json",
+                                "format": {
+                                    "type": "topojson",
+                                    "feature": "ne_110m_admin_0_countries"
+                                }
+                            },
+                            "transform": [
+                                {
+                                    "lookup": "properties.ISO_A3",
+                                    "from": {
+                                        "data": {
+                                            "url": "https://raw.githubusercontent.com/joel-brand/FIT3179-F/main/data/research-stats-updated.csv",
+                                            "format": {
+                                                "type": "csv"
+                                            }
+                                        },
+                                        "key": "CountryCode",
+                                        "fields": [
+                                            "Country",
+                                            "GERD per capita (in current PPP$)"
+                                        ]
+                                    }
+                                },
+                                {
+                                    "filter": "datum[\"GERD per capita (in current PPP$)\"] == 0 || datum[\"GERD per capita (in current PPP$)\"] == null"
+                                }
+                            ],
+                            "encoding": {
+                                "tooltip": [
+                                    {
+                                        "field": "properties.NAME",
+                                        "type": "Nominal",
+                                        "title": "Country (No Data Available)"
+                                    }
+                                ],
+                                "opacity": {
+                                    "condition": {
+                                        "test": {
+                                            "and": [
+                                                {
+                                                    "selection": "sel84"
+                                                },
+                                                {
+                                                    "selection": "sel85"
+                                                }
+                                            ]
+                                        },
+                                        "value": 0.8
+                                    },
+                                    "value": 0.1
+                                }
+                            },
+                            "width": 473,
+                            "height": 230
+                        }
+                    ],
+                    "projection": {
+                        "type": "equalEarth",
+                        "rotate": [
+                            {
+                                "signal": "RotateWorldEffort"
+                            },
+                            0,
+                            0
+                        ],
+                        "scale": 85,
+                        "translate": [
+                            237,
+                            115
+                        ]
+                    }
+                },
+                {
+                    "mark": {
+                        "type": "bar",
+                        "stroke": "grey"
+                    },
+                    "data": {
+                        "url": "https://raw.githubusercontent.com/joel-brand/FIT3179-F/main/data/research-stats-updated.csv",
+                        "format": {
+                            "type": "csv"
+                        }
+                    },
+                    "transform": [
+                        {
+                            "filter": "isValid(datum[\"GERD per capita (in current PPP$)\"]) && datum[\"GERD per capita (in current PPP$)\"] > 0"
+                        },
+                        {
+                            "calculate": "toNumber(datum[\"GERD per capita (in current PPP$)\"])",
+                            "as": "numField"
+                        }
+                    ],
+                    "selection": {
+                        "sel85": {
+                            "type": "interval",
+                            "encodings": [
+                                "x"
+                            ],
+                            "resolve": "intersect"
+                        }
+                    },
+                    "encoding": {
+                        "color": {
+                            "field": "GERD per capita (in current PPP$)",
+                            "type": "quantitative",
+                            "legend": null,
+                            "scale": {
+                                "type": "quantile"
+                            }
+                        },
+                        "y": {
+                            "field": "numField",
+                            "type": "quantitative",
+                            "axis": {
+                                "title": null,
+                                "tickCount": 5
+                            },
+                            "scale": {
+                                "type": "sqrt"
+                            }
+                        },
+                        "x": {
+                            "field": "Country",
+                            "type": "nominal",
+                            "sort": "y",
+                            "axis": null
+                        },
+                        "tooltip": [
+                            {
+                                "field": "Country",
+                                "type": "Nominal"
+                            },
+                            {
+                                "field": "GERD per capita (in current PPP$)",
+                                "type": "quantitative",
+                                "title": "Research Expenditure per Capita (PPP$ per Year)",
+                                "format": ".2f"
+                            }
+                        ],
+                        "opacity": {
+                            "condition": {
+                                "test": {
+                                    "and": [
+                                        {
+                                            "selection": "sel84"
+                                        },
+                                        {
+                                            "selection": "sel85"
+                                        }
+                                    ]
+                                },
+                                "value": 0.8
+                            },
+                            "value": 0.1
+                        }
+                    },
+                    "title": null,
+                    "width": 473,
+                    "height": 100
+                }
+            ],
+            "title": "Research Expenditure per Capita (PPP$ per Year)"
+        }
+    ],
+    "params": [
+        {
+            "name": "RotateWorldEffort",
+            "value": 0,
+            "bind": {
+                "input": "range",
+                "min": -180,
+                "max": 180,
+                "step": 1,
+                "name": "Rotation",
+                "element": "#mapSliderEffort"
+            }
+        }
+    ],
+    "config": {
+        "font": "Open Sans"
+    },
+    "resolve": {
+        "scale": {
+            "color": "independent"
+        }
+    }
+}

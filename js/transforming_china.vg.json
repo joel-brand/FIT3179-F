@@ -1,0 +1,242 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+    "vconcat": [
+        {
+            "layer": [
+                {
+                    "mark": {
+                        "type": "area",
+                        "color": "lightgrey"
+                    },
+                    "data": {
+                        "url": "https://raw.githubusercontent.com/joel-brand/FIT3179/main/data/cleaned_wdi_economic_output_breakup.csv",
+                        "format": {
+                            "type": "csv",
+                            "parse": {
+                                "Year": "number",
+                                "GDP": "number",
+                                "Industry": "number",
+                                "Manufacturing": "number"
+                            }
+                        }
+                    },
+                    "transform": [
+                        {
+                            "filter": "datum.Year==1990 || datum.Year==2000 || datum.Year==2011 || datum.Year==2018"
+                        },
+                        {
+                            "filter": "isValid(datum.Services) && datum.Services > 0"
+                        }
+                    ],
+                    "encoding": {
+                        "x": {
+                            "field": "Year",
+                            "type": "ordinal",
+                            "axis": {
+                                "title": null,
+                                "labelAngle": 0
+                            }
+                        },
+                        "y": {
+                            "field": "Services",
+                            "type": "quantitative",
+                            "aggregate": "average"
+                        }
+                    }
+                },
+                {
+                    "mark": {
+                        "type": "line",
+                        "color": "#5e8aba",
+                        "opacity": 1,
+                        "point": {
+                            "fill": "#5e8aba"
+                        },
+                        "tooltip": true
+                    },
+                    "data": {
+                        "url": "https://raw.githubusercontent.com/joel-brand/FIT3179/main/data/cleaned_wdi_economic_output_breakup.csv",
+                        "format": {
+                            "type": "csv",
+                            "parse": {
+                                "Year": "number",
+                                "GDP": "number",
+                                "Industry": "number",
+                                "Manufacturing": "number"
+                            }
+                        }
+                    },
+                    "transform": [
+                        {
+                            "filter": "datum[\"Country Name\"] == 'China' &&(datum.Year==1990 || datum.Year==2000 || datum.Year==2011 || datum.Year==2018)"
+                        }
+                    ],
+                    "encoding": {
+                        "x": {
+                            "field": "Year",
+                            "type": "ordinal",
+                            "axis": {
+                                "title": null,
+                                "labelAngle": 0
+                            }
+                        },
+                        "y": {
+                            "field": "Services",
+                            "type": "quantitative",
+                            "axis": {
+                                "title": "Services (% of GDP)",
+                                "grid": false
+                            }
+                        }
+                    }
+                },
+                {
+                    "mark": {
+                        "type": "text",
+                        "color": "#5e8aba",
+                        "align": "left",
+                        "dy": -15,
+                        "dx": -35
+                    },
+                    "data": {
+                        "url": "https://raw.githubusercontent.com/joel-brand/FIT3179/main/data/cleaned_wdi_economic_output_breakup.csv",
+                        "format": {
+                            "type": "csv",
+                            "parse": {
+                                "Year": "number",
+                                "GDP": "number",
+                                "Industry": "number",
+                                "Manufacturing": "number"
+                            }
+                        }
+                    },
+                    "transform": [
+                        {
+                            "filter": "datum[\"Country Name\"] == 'China' && datum.Year==2018"
+                        }
+                    ],
+                    "encoding": {
+                        "x": {
+                            "field": "Year",
+                            "type": "ordinal",
+                            "axis": {
+                                "title": null,
+                                "labelAngle": 0
+                            }
+                        },
+                        "y": {
+                            "field": "Services",
+                            "type": "quantitative",
+                            "axis": {
+                                "grid": false
+                            }
+                        },
+                        "text": {
+                            "field": "Country Name",
+                            "type": "nominal"
+                        }
+                    }
+                },
+                {
+                    "mark": {
+                        "type": "line",
+                        "color": "#007E20",
+                        "opacity": 1,
+                        "point": {
+                            "fill": "#007E20"
+                        },
+                        "tooltip": true
+                    },
+                    "data": {
+                        "url": "https://raw.githubusercontent.com/joel-brand/FIT3179/main/data/cleaned_wdi_economic_output_breakup.csv",
+                        "format": {
+                            "type": "csv",
+                            "parse": {
+                                "Year": "number",
+                                "GDP": "number",
+                                "Industry": "number",
+                                "Manufacturing": "number"
+                            }
+                        }
+                    },
+                    "transform": [
+                        {
+                            "filter": "datum[\"Country Name\"] == 'United Kingdom' &&(datum.Year==1990 || datum.Year==2000 || datum.Year==2011 || datum.Year==2018)"
+                        }
+                    ],
+                    "encoding": {
+                        "x": {
+                            "field": "Year",
+                            "type": "ordinal",
+                            "axis": {
+                                "title": null,
+                                "labelAngle": 0
+                            }
+                        },
+                        "y": {
+                            "field": "Services",
+                            "type": "quantitative",
+                            "axis": {
+                                "title": "Services (% of GDP)",
+                                "grid": false
+                            }
+                        }
+                    }
+                },
+                {
+                    "mark": {
+                        "type": "text",
+                        "color": "#007E20",
+                        "align": "left",
+                        "dy": -15,
+                        "dx": -35
+                    },
+                    "data": {
+                        "url": "https://raw.githubusercontent.com/joel-brand/FIT3179/main/data/cleaned_wdi_economic_output_breakup.csv",
+                        "format": {
+                            "type": "csv",
+                            "parse": {
+                                "Year": "number",
+                                "GDP": "number",
+                                "Industry": "number",
+                                "Manufacturing": "number"
+                            }
+                        }
+                    },
+                    "transform": [
+                        {
+                            "filter": "datum[\"Country Name\"] == 'United Kingdom' && datum.Year==2018"
+                        }
+                    ],
+                    "encoding": {
+                        "x": {
+                            "field": "Year",
+                            "type": "ordinal",
+                            "axis": {
+                                "title": null,
+                                "labelAngle": 0
+                            }
+                        },
+                        "y": {
+                            "field": "Services",
+                            "type": "quantitative",
+                            "axis": {
+                                "grid": false
+                            }
+                        },
+                        "text": {
+                            "field": "Country Name",
+                            "type": "nominal"
+                        }
+                    }
+                }
+            ],
+            "width": 499,
+            "height": 253
+        }
+    ],
+    "title": null,
+    "config": {
+        "font": "Open Sans"
+    }
+}
