@@ -253,7 +253,7 @@
         "y": {
             "field": "FieldName",
             "type": "nominal",
-            "sort": "-x",
+            "sort": "ascending",
             "title": null,
             "axis": {
                 "ticks": false,
@@ -279,7 +279,7 @@
             },
             {
                 "field": "TechRank",
-                "type": "ordinal",
+                "type": "quantitative",
                 "title": "Rank of IP Grants (rank in column)"
             }
         ]
