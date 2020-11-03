@@ -8,7 +8,93 @@
     <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/pure-min.css">    
 
     <!--Custom Styles-->
-    <link rel="stylesheet" type="text/css" href="css/styles.css" media="all">
+    <style>
+      body{
+    background-color: lightgray;
+  }
+  .main {
+    width: 1600px;  
+    background-color: white;   
+    margin: auto;
+    padding: 50px;
+    padding-top: 35px;
+    font-size:12px;
+  }
+  .pure-g [class*=pure-u] {
+    font-family: 'Open Sans', sans-serif
+  }
+  .vega-bind {
+    font-size:small;
+    margin-left:15px;
+    
+  }
+  .vega-bind label {
+    display:inline-block;
+    width:210px;
+    margin-top:2px;
+  }
+  #visResearchImpacts .vega-bind label {
+    display:initial;
+    width:initial;
+    margin-top:initial;
+  }
+  .text {
+      text-align: left;
+    padding-left: 2em;
+  }
+  .annotation {
+    text-align: center;
+    font-style: italic;
+  }
+  h1 {
+    text-align:center;
+  }
+  .center {
+    text-align: justify;
+    justify-content: center; 
+    margin: auto;
+  }
+  .highlight {
+    background-color: red;
+  }
+  #vlBasicDevResearch {
+    margin:auto;
+  }
+  .margin-below {
+    margin-bottom: 100px;
+  }
+  button {
+    transition-duration: 0.4s;
+    border-radius:0%;
+    border:none;
+  }
+  button:hover {
+    background-color: darkgray;
+    color: white;
+    border:none;
+  }
+  .unpressed {
+    background-color: initial;
+    color: initial;
+    border: initial;
+    outline: initial;
+  }
+  .pressed {
+    background-color: darkgray;
+    color:white;
+    border:none;
+    outline:none;
+  }
+  h1 {
+    font-size: 24px;
+  }
+  .vis-container{
+    font-family: 'Open Sans';
+  }
+  .vega-actions a {
+    margin-right: 5px;
+  }
+    </style>
 
     <!--VegaLite dependencies-->
 	  <script src="https://cdn.jsdelivr.net/npm/vega@5.17.0"></script>
@@ -270,16 +356,16 @@
     </div>
     <script>
       // get specs
-      var vlOutputComparison = "js/output_by_sector.vg.json";
-      var vlServicesOverTime = "js/transforming_china.vg.json";
-      var vlResearchMapFunding = "js/research_maps_funding.vg.json";
-      var vlResearchMapActivity = "js/research_maps_activity.vg.json";
-      var vlResearchMapEffort = "js/research_maps_effort.vg.json";
-      var vlResearchImpacts = "js/research_bubbles.vg.json";
-      var vlManufacturingBreakup = "js/sector_breakup_manufacturing.vg.json";
-      var vlServicesBreakup = "js/sector_breakup_services.vg.json";
-      var vlIPStream = "js/wipo_stream.vg.json";
-      var vlIPHeatmap = "js/wipo_heatmap.vg.json";  
+      var vlOutputComparison = "https://raw.githubusercontent.com/joel-brand/FIT3179-F/main/js/output_by_sector.vg.json";
+      var vlServicesOverTime = "https://raw.githubusercontent.com/joel-brand/FIT3179-F/main/js/transforming_china.vg.json";
+      var vlResearchMapFunding = "https://raw.githubusercontent.com/joel-brand/FIT3179-F/main/js/research_maps_funding.vg.json";
+      var vlResearchMapActivity = "https://raw.githubusercontent.com/joel-brand/FIT3179-F/main/js/research_maps_activity.vg.json";
+      var vlResearchMapEffort = "https://raw.githubusercontent.com/joel-brand/FIT3179-F/main/js/research_maps_effort.vg.json";
+      var vlResearchImpacts = "https://raw.githubusercontent.com/joel-brand/FIT3179-F/main/js/research_bubbles.vg.json";
+      var vlManufacturingBreakup = "https://raw.githubusercontent.com/joel-brand/FIT3179-F/main/js/sector_breakup_manufacturing.vg.json";
+      var vlServicesBreakup = "https://raw.githubusercontent.com/joel-brand/FIT3179-F/main/js/sector_breakup_services.vg.json";
+      var vlIPStream = "https://raw.githubusercontent.com/joel-brand/FIT3179-F/main/js/wipo_stream.vg.json";
+      var vlIPHeatmap = "https://raw.githubusercontent.com/joel-brand/FIT3179-F/main/js/wipo_heatmap.vg.json";  
 
       // embed specs
       var opts = {actions:false}
@@ -293,7 +379,6 @@
       vegaEmbed('#visServicesBreakup', vlServicesBreakup, opts)
       vegaEmbed('#visIPStream', vlIPStream, opts)
       vegaEmbed('#visIPHeatmap', vlIPHeatmap, opts)
-      vegaEmbed('#visIPBOP', vlIPBOP, opts)
 
       // function for showing / hiding sector breakup elements based on user interaction
       function showSectorBreakup(name) {
