@@ -91,9 +91,3 @@ function showResearchMap(name) {
   }
 
 }
-
-// show the desired default elements on load (where the shown element depends on user interaction)
-window.addEventListener("load", function(){
-    showResearchMap("funding");
-    showSectorBreakup("manufacturing");
-});
